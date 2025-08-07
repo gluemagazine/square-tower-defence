@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://biekub6ra6v5j"]
+
+[ext_resource type="Script" uid="uid://b3r861w4pxcm8" path="res://enemies/enemy_template.gd" id="1_sjt85"]
+[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_mafug"]
+[ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="3_icmaq"]
+[ext_resource type="AnimationLibrary" uid="uid://ioawa3flx4j1" path="res://resources/enemies/animations/libraries/Basic Enemy.res" id="4_icmaq"]
+
+[sub_resource type="Resource" id="Resource_54dnp"]
+script = ExtResource("3_icmaq")
+sides = 3
+color = Color(1, 1, 1, 1)
+animations = ExtResource("4_icmaq")
+health = 10
+damage = 10
+speed = 100
+metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icmaq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_icmaq"]
+shader = ExtResource("2_mafug")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmlbt"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "animation")]
+script = ExtResource("1_sjt85")
+stats = SubResource("Resource_54dnp")
+panel = NodePath("Panel")
+animation = NodePath("AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_icmaq")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_icmaq")
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmlbt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"Basic Enemy": ExtResource("4_icmaq")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

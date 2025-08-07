@@ -13,3 +13,10 @@ config_version=5
 config/name="square tower defence"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://resources/enemies/animations/": "gray",
+"res://resources/enemies/materials/": "gray"
+}
