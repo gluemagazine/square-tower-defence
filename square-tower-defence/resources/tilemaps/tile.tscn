@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxdg6x15vicwl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tloti"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Tile" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.013
+anchor_bottom = 0.023
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -6.976
+offset_bottom = -6.904
+theme_override_styles/panel = SubResource("StyleBoxFlat_tloti")

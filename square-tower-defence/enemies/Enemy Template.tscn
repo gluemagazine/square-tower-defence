@@ -1,15 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://biekub6ra6v5j"]
+[gd_scene load_steps=14 format=3 uid="uid://biekub6ra6v5j"]
 
 [ext_resource type="Script" uid="uid://b3r861w4pxcm8" path="res://enemies/enemy_template.gd" id="1_sjt85"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_mafug"]
 [ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="3_icmaq"]
-[ext_resource type="AnimationLibrary" uid="uid://ioawa3flx4j1" path="res://resources/enemies/animations/libraries/Basic Enemy.res" id="4_icmaq"]
+[ext_resource type="Script" uid="uid://l2w56u85nvr0" path="res://components/hitbox.gd" id="4_54dnp"]
+[ext_resource type="Script" uid="uid://3m7pl4h61a5r" path="res://components/health_component.gd" id="5_tmlbt"]
 
 [sub_resource type="Resource" id="Resource_54dnp"]
 script = ExtResource("3_icmaq")
 sides = 3
 color = Color(1, 1, 1, 1)
-animations = ExtResource("4_icmaq")
+animations = {
+&"attack": "attack",
+&"hurt": "hurt",
+&"walk": "walk"
+}
 health = 10
 damage = 10
 speed = 100
@@ -42,11 +47,52 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmlbt"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "animation")]
+[sub_resource type="Animation" id="Animation_mafug"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/rotation_angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 360.0]
+}
+
+[sub_resource type="Animation" id="Animation_icmaq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/rotation_angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54dnp"]
+_data = {
+&"RESET": SubResource("Animation_icmaq"),
+&"walk": SubResource("Animation_mafug")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh075"]
+
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "animation", "health")]
 script = ExtResource("1_sjt85")
 stats = SubResource("Resource_54dnp")
 panel = NodePath("Panel")
 animation = NodePath("AnimationPlayer")
+health = NodePath("HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_icmaq")
@@ -61,8 +107,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tmlbt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"Basic Enemy": ExtResource("4_icmaq")
+&"": SubResource("AnimationLibrary_54dnp")
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("4_54dnp")
+metadata/_custom_type_script = "uid://l2w56u85nvr0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_rh075")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_tmlbt")
+metadata/_custom_type_script = "uid://3m7pl4h61a5r"

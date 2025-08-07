@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bubnfek1p03v2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le77g"]
+bg_color = Color(9.62615e-07, 0.911168, 0.16408, 1)
+
+[node name="Tower" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.013
+anchor_bottom = 0.023
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -6.976
+offset_bottom = -6.904
+theme_override_styles/panel = SubResource("StyleBoxFlat_le77g")
