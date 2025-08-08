@@ -115,6 +115,7 @@ metadata/_edit_group_ = true
 [node name="outline" type="TextureRect" parent="baseTexture"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(1.1, 1.1)
@@ -123,6 +124,7 @@ texture = SubResource("GradientTexture2D_82xki")
 
 [node name="click" type="TextureButton" parent="baseTexture"]
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 44.0
@@ -152,6 +154,7 @@ metadata/_edit_group_ = true
 [node name="outline" type="TextureRect" parent="options/option1"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(1.1, 1.1)
@@ -161,6 +164,7 @@ flip_h = true
 
 [node name="click" type="TextureButton" parent="options/option1"]
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 44.0
@@ -202,6 +206,7 @@ metadata/_edit_group_ = true
 [node name="outline" type="TextureRect" parent="options/option2"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(1.1, 1.1)
@@ -211,6 +216,7 @@ flip_h = true
 
 [node name="click" type="TextureButton" parent="options/option2"]
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 44.0
@@ -253,6 +259,7 @@ metadata/_edit_group_ = true
 [node name="outline" type="TextureRect" parent="options/option3"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(1.1, 1.1)
@@ -262,6 +269,7 @@ flip_h = true
 
 [node name="click" type="TextureButton" parent="options/option3"]
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 44.0
@@ -304,6 +312,7 @@ metadata/_edit_group_ = true
 [node name="outline" type="TextureRect" parent="options/option4"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(1.1, 1.1)
@@ -313,6 +322,7 @@ flip_h = true
 
 [node name="click" type="TextureButton" parent="options/option4"]
 material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 44.0
