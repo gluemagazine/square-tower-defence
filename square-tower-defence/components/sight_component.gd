@@ -10,14 +10,18 @@ var target:Node2D
 var targets:Array = []
 
 func _ready() -> void:
-	area_entered.connect(on_area_entered)
+	body_entered.connect(on_body_entered)
+	body_exited.connect(on_body_exited)
 
-func on_area_entered(body:Node)->void:
-	if body is HitboxComponent:
-		if body.holder.is_in_group(targetGroup):
+func on_body_entered(body:Node)->void:
+		if body.is_in_group(targetGroup):
 			if storeAll:
 				targets += [body]
-				updtateTarget()
+				if pickClosest:
+					updtateTarget()
+				target = body
+			else:
+				target = body
 
 func updtateTarget()->void:
 	var closestTarget:CharacterBody2D = null
@@ -29,7 +33,7 @@ func updtateTarget()->void:
 			closestTarget = i
 	target = closestTarget
 
-func on_area_exited(body:Node)->void:
+func on_body_exited(body:Node)->void:
 	if body in targets:
 		targets.erase(body)
 		if body == target:

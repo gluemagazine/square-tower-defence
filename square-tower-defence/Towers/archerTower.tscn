@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://downv7grip0yk"]
+[gd_scene load_steps=21 format=3 uid="uid://downv7grip0yk"]
 
 [ext_resource type="Script" uid="uid://cci81of4pjdwv" path="res://Towers/archer_tower.gd" id="1_8aiwx"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_pb4we"]
 [ext_resource type="Script" uid="uid://bwatls00pqq80" path="res://components/sight_component.gd" id="3_pb4we"]
 [ext_resource type="Script" uid="uid://dh82b2okfsr5c" path="res://states/state_machine.gd" id="4_oxt30"]
 [ext_resource type="Script" uid="uid://1xd2vlt7m40s" path="res://states/shoot_state.gd" id="5_vat4d"]
+[ext_resource type="Script" uid="uid://le5mvvw0f3nc" path="res://states/cool_down_state.gd" id="6_vat4d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjle4"]
 shader = ExtResource("2_pb4we")
@@ -139,7 +140,9 @@ stretch_mode = 3
 
 [node name="SightComponent" type="Area2D" parent="."]
 visible = false
+scale = Vector2(3, 3)
 script = ExtResource("3_pb4we")
+canLeave = true
 metadata/_custom_type_script = "uid://bwatls00pqq80"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightComponent"]
@@ -167,7 +170,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vat4d")
 script = ExtResource("4_oxt30")
 baseState = NodePath("shootState")
 
-[node name="shootState" type="Node" parent="StateMachine" node_paths=PackedStringArray("holder", "sightComp")]
+[node name="shootState" type="Node" parent="StateMachine" node_paths=PackedStringArray("holder", "sightComp", "nextState")]
 script = ExtResource("5_vat4d")
 holder = NodePath("../..")
 sightComp = NodePath("../../SightComponent")
+nextState = NodePath("../coolDownState")
+
+[node name="coolDownState" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "nextState")]
+script = ExtResource("6_vat4d")
+timer = NodePath("../../coolDown")
+nextState = NodePath("../shootState")
+
+[node name="coolDown" type="Timer" parent="."]
+one_shot = true
