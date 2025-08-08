@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://biekub6ra6v5j"]
+[gd_scene load_steps=13 format=3 uid="uid://biekub6ra6v5j"]
 
 [ext_resource type="Script" uid="uid://b3r861w4pxcm8" path="res://enemies/enemy_template.gd" id="1_sjt85"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_mafug"]
@@ -43,9 +43,6 @@ shader_parameter/sectors = 1
 shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 1.0
 shader_parameter/progress_bias = Vector2(0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmlbt"]
-bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_icmaq"]
 length = 0.001
@@ -107,7 +104,6 @@ offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_tmlbt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

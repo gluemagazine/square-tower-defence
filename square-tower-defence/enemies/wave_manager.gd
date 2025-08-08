@@ -41,7 +41,6 @@ func spawn_wave():
 	var n_of_spawners = options.size()
 	var num_spawned = 0
 	var spawn_again : bool = false
-	var keep_spawning = false
 	for key in current_wave.enemies:
 		if spawn_again:
 			break
