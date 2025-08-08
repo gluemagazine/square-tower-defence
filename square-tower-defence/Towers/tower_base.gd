@@ -1,32 +1,44 @@
 extends Node2D
 class_name TowerBase
 
-@export var options:Node2D
 @export var outline:TextureRect
-
-var canvasLayer:CanvasLayer
+@export var costs:PackedInt32Array = [100,100,100,100]
+var buildOptions:TextureRect
 
 func _ready() -> void:
-	if get_tree().get_nodes_in_group("ui").size() >= 0:
-		canvasLayer = get_tree().get_first_node_in_group("ui")
+	if !outline:
+		push_error("You didn't set the outline for the tower base")
+	if get_tree().get_nodes_in_group("buildOptions").size() >= 0:
+		buildOptions = get_tree().get_first_node_in_group("buildOptions")
 		
 
 func _on_click_pressed() -> void:
-	if canvasLayer:
-		canvasLayer.visible = true
+	if buildOptions:
+		outline.self_modulate = Color.WHITE
+		for i in range(costs.size()):
+			if buildOptions.get_child(i+1).get_child(2):
+				if buildOptions.get_child(i+1).get_child(2) is RichTextLabel:
+					buildOptions.get_child(i+1).get_child(2).text = "[center]Cost: %s"%[costs[i-1]]
+		if "currentBase" in buildOptions:
+			buildOptions.currentBase = self_modulate
+			
+		buildOptions.visible = true
 
 
 func frost_click() -> void:
-	pass # Replace with function body.
+	pass # Replace with function body. 
 
 
 func archer_clicked() -> void:
 	pass # Replace with function body.
 
 
-func bomb_clicked() -> void:
+func bomb() -> void:
 	pass # Replace with function body.
 
 
-func summoner_clicked() -> void:
+func summoner() -> void:
 	pass # Replace with function body.
+
+func close()->void:
+	outline.self_modulate = Color.BLACK

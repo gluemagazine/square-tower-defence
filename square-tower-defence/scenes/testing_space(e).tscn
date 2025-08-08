@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://r04pfp0ohm1u"]
+[gd_scene load_steps=33 format=3 uid="uid://r04pfp0ohm1u"]
 
-[ext_resource type="Script" uid="uid://ct1576t7jful8" path="res://Towers/testing_space.gd" id="1_eojhd"]
-[ext_resource type="PackedScene" uid="uid://w0fce54yv0xv" path="res://Towers/tower_base.tscn" id="1_mk7gk"]
-[ext_resource type="Shader" uid="uid://bdlgodcj6ayir" path="res://Towers/transition.gdshader" id="3_86yhs"]
+[ext_resource type="Script" uid="uid://ct1576t7jful8" path="res://Towers/testing_space.gd" id="1_vtevc"]
+[ext_resource type="PackedScene" uid="uid://w0fce54yv0xv" path="res://Towers/tower_base.tscn" id="2_lrt43"]
+[ext_resource type="Script" uid="uid://b4x0hopcipugf" path="res://Towers/build_options.gd" id="3_6gguj"]
+[ext_resource type="Shader" uid="uid://bdlgodcj6ayir" path="res://Towers/transition.gdshader" id="3_wis2o"]
+[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="5_kj7vi"]
 
 [sub_resource type="Gradient" id="Gradient_eojhd"]
 offsets = PackedFloat32Array(1)
@@ -23,7 +25,7 @@ width = 720
 height = 120
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44d0b"]
-shader = ExtResource("3_86yhs")
+shader = ExtResource("3_wis2o")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
 shader_parameter/transition_type = 2
@@ -44,12 +46,12 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 0.8
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_37o8r"]
+[sub_resource type="Gradient" id="Gradient_vtevc"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0, 1, 0.933333, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bcf6x"]
-gradient = SubResource("Gradient_37o8r")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lrt43"]
+gradient = SubResource("Gradient_vtevc")
 
 [sub_resource type="Gradient" id="Gradient_3eb12"]
 offsets = PackedFloat32Array(0.961039)
@@ -88,38 +90,107 @@ width = 16
 height = 16
 
 [sub_resource type="Theme" id="Theme_tehq5"]
-default_font_size = 40
+default_font_size = 60
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/font_sizes/bold_font_size = 60
+RichTextLabel/font_sizes/bold_italics_font_size = 60
+RichTextLabel/font_sizes/italics_font_size = 60
+RichTextLabel/font_sizes/mono_font_size = 60
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
 
-[sub_resource type="Gradient" id="Gradient_og0sq"]
+[sub_resource type="Gradient" id="Gradient_wis2o"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0, 1, 0.933333, 1)
+colors = PackedColorArray(0.0833333, 1, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l17gt"]
-gradient = SubResource("Gradient_og0sq")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6gguj"]
+gradient = SubResource("Gradient_wis2o")
 
-[sub_resource type="Gradient" id="Gradient_1wsn6"]
+[sub_resource type="Gradient" id="Gradient_kj7vi"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0, 1, 0.933333, 1)
+colors = PackedColorArray(1, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xcio4"]
-gradient = SubResource("Gradient_1wsn6")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_suc7n"]
+gradient = SubResource("Gradient_kj7vi")
 
-[sub_resource type="Gradient" id="Gradient_q73h0"]
+[sub_resource type="Gradient" id="Gradient_k88jk"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0, 1, 0.933333, 1)
+colors = PackedColorArray(0.966667, 0, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x4pmd"]
-gradient = SubResource("Gradient_q73h0")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cxiof"]
+gradient = SubResource("Gradient_k88jk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_suc7n"]
+shader = ExtResource("5_kj7vi")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1.5, 1.5)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(1, 1)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 4
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.5
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_cxiof"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_avyug"]
+gradient = SubResource("Gradient_cxiof")
+width = 48
+height = 48
+
+[sub_resource type="Gradient" id="Gradient_oica8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u2p0o"]
+gradient = SubResource("Gradient_oica8")
+width = 48
+height = 48
 
 [node name="testingSpace" type="Node2D"]
-script = ExtResource("1_eojhd")
+script = ExtResource("1_vtevc")
 
-[node name="towerBase" parent="." instance=ExtResource("1_mk7gk")]
+[node name="towerBase" parent="." instance=ExtResource("2_lrt43")]
 position = Vector2(121, 119)
 
-[node name="ui" type="CanvasLayer" parent="." groups=["ui"]]
+[node name="ui" type="CanvasLayer" parent="."]
 
-[node name="options" type="TextureRect" parent="ui"]
+[node name="buildOptions" type="TextureRect" parent="ui" groups=["buildOptions"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -132,8 +203,9 @@ offset_bottom = 312.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_86yhs")
+script = ExtResource("3_6gguj")
 
-[node name="options" type="TextureRect" parent="ui/options"]
+[node name="outline" type="TextureRect" parent="ui/buildOptions"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 8
@@ -152,19 +224,19 @@ pivot_offset = Vector2(360, 60)
 texture = SubResource("GradientTexture2D_44d0b")
 metadata/_edit_lock_ = true
 
-[node name="option1" type="TextureRect" parent="ui/options"]
+[node name="option1" type="TextureRect" parent="ui/buildOptions"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
-offset_left = 35.0
+offset_left = 92.0
 offset_top = 23.0
-offset_right = 99.0
+offset_right = 156.0
 offset_bottom = 87.0
 scale = Vector2(1.5, 1.5)
-texture = SubResource("GradientTexture2D_bcf6x")
+texture = SubResource("GradientTexture2D_lrt43")
 flip_h = true
 metadata/_edit_group_ = true
 
-[node name="outline" type="TextureRect" parent="ui/options/option1"]
+[node name="outline" type="TextureRect" parent="ui/buildOptions/option1"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
@@ -175,7 +247,7 @@ pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_mmqsq")
 flip_h = true
 
-[node name="click" type="TextureButton" parent="ui/options/option1"]
+[node name="click" type="TextureButton" parent="ui/buildOptions/option1"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
 offset_left = 20.0
@@ -190,32 +262,33 @@ texture_hover = SubResource("GradientTexture2D_824gr")
 stretch_mode = 3
 flip_h = true
 
-[node name="cost" type="RichTextLabel" parent="ui/options/option1"]
+[node name="cost" type="RichTextLabel" parent="ui/buildOptions/option1"]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 4.0
-offset_right = 225.0
-offset_bottom = 60.0
-pivot_offset = Vector2(82, 28)
+offset_left = -48.6667
+offset_top = -11.0
+offset_right = 76.3333
+offset_bottom = 130.0
+scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_tehq5")
 bbcode_enabled = true
-text = "Cost:"
+text = "[center]Cost:
+"
 fit_content = true
 scroll_active = false
 
-[node name="option2" type="TextureRect" parent="ui/options"]
+[node name="option2" type="TextureRect" parent="ui/buildOptions"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
-offset_left = 134.0
+offset_left = 248.0
 offset_top = 23.0
-offset_right = 198.0
+offset_right = 312.0
 offset_bottom = 87.0
 scale = Vector2(1.5, 1.5)
-texture = SubResource("GradientTexture2D_l17gt")
+texture = SubResource("GradientTexture2D_6gguj")
 flip_h = true
 metadata/_edit_group_ = true
 
-[node name="outline" type="TextureRect" parent="ui/options/option2"]
+[node name="outline" type="TextureRect" parent="ui/buildOptions/option2"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
@@ -226,7 +299,7 @@ pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_mmqsq")
 flip_h = true
 
-[node name="click" type="TextureButton" parent="ui/options/option2"]
+[node name="click" type="TextureButton" parent="ui/buildOptions/option2"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
 offset_left = 20.0
@@ -241,32 +314,33 @@ texture_hover = SubResource("GradientTexture2D_824gr")
 stretch_mode = 3
 flip_h = true
 
-[node name="cost" type="RichTextLabel" parent="ui/options/option2"]
+[node name="cost" type="RichTextLabel" parent="ui/buildOptions/option2"]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 4.0
-offset_right = 225.0
-offset_bottom = 60.0
-pivot_offset = Vector2(82, 28)
+offset_left = -48.6667
+offset_top = -11.0
+offset_right = 76.3333
+offset_bottom = 130.0
+scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_tehq5")
 bbcode_enabled = true
-text = "Cost:"
+text = "[center]Cost:
+"
 fit_content = true
 scroll_active = false
 
-[node name="option3" type="TextureRect" parent="ui/options"]
+[node name="option3" type="TextureRect" parent="ui/buildOptions"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
-offset_left = 228.0
+offset_left = 404.0
 offset_top = 23.0
-offset_right = 292.0
+offset_right = 468.0
 offset_bottom = 87.0
 scale = Vector2(1.5, 1.5)
-texture = SubResource("GradientTexture2D_xcio4")
+texture = SubResource("GradientTexture2D_suc7n")
 flip_h = true
 metadata/_edit_group_ = true
 
-[node name="outline" type="TextureRect" parent="ui/options/option3"]
+[node name="outline" type="TextureRect" parent="ui/buildOptions/option3"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
@@ -277,7 +351,7 @@ pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_mmqsq")
 flip_h = true
 
-[node name="click" type="TextureButton" parent="ui/options/option3"]
+[node name="click" type="TextureButton" parent="ui/buildOptions/option3"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
 offset_left = 20.0
@@ -292,32 +366,33 @@ texture_hover = SubResource("GradientTexture2D_824gr")
 stretch_mode = 3
 flip_h = true
 
-[node name="cost" type="RichTextLabel" parent="ui/options/option3"]
+[node name="cost" type="RichTextLabel" parent="ui/buildOptions/option3"]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 4.0
-offset_right = 225.0
-offset_bottom = 60.0
-pivot_offset = Vector2(82, 28)
+offset_left = -48.6667
+offset_top = -11.0
+offset_right = 76.3333
+offset_bottom = 130.0
+scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_tehq5")
 bbcode_enabled = true
-text = "Cost:"
+text = "[center]Cost:
+"
 fit_content = true
 scroll_active = false
 
-[node name="option4" type="TextureRect" parent="ui/options"]
+[node name="option4" type="TextureRect" parent="ui/buildOptions"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
-offset_left = 624.0
+offset_left = 560.0
 offset_top = 23.0
-offset_right = 688.0
+offset_right = 624.0
 offset_bottom = 87.0
 scale = Vector2(1.5, 1.5)
-texture = SubResource("GradientTexture2D_x4pmd")
+texture = SubResource("GradientTexture2D_cxiof")
 flip_h = true
 metadata/_edit_group_ = true
 
-[node name="outline" type="TextureRect" parent="ui/options/option4"]
+[node name="outline" type="TextureRect" parent="ui/buildOptions/option4"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
@@ -328,7 +403,7 @@ pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_mmqsq")
 flip_h = true
 
-[node name="click" type="TextureButton" parent="ui/options/option4"]
+[node name="click" type="TextureButton" parent="ui/buildOptions/option4"]
 material = SubResource("ShaderMaterial_44d0b")
 layout_mode = 0
 offset_left = 20.0
@@ -343,15 +418,30 @@ texture_hover = SubResource("GradientTexture2D_824gr")
 stretch_mode = 3
 flip_h = true
 
-[node name="cost" type="RichTextLabel" parent="ui/options/option4"]
+[node name="cost" type="RichTextLabel" parent="ui/buildOptions/option4"]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 4.0
-offset_right = 225.0
-offset_bottom = 60.0
-pivot_offset = Vector2(82, 28)
+offset_left = -48.6667
+offset_top = -11.0
+offset_right = 76.3333
+offset_bottom = 130.0
+scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_tehq5")
 bbcode_enabled = true
-text = "Cost:"
+text = "[center]Cost:
+"
 fit_content = true
 scroll_active = false
+
+[node name="close" type="TextureButton" parent="ui/buildOptions"]
+material = SubResource("ShaderMaterial_suc7n")
+layout_mode = 0
+offset_left = 690.0
+offset_top = -6.0
+offset_right = 738.0
+offset_bottom = 42.0
+rotation = 0.785398
+texture_normal = SubResource("GradientTexture2D_avyug")
+texture_pressed = SubResource("GradientTexture2D_avyug")
+texture_hover = SubResource("GradientTexture2D_u2p0o")
+
+[connection signal="pressed" from="ui/buildOptions/close" to="ui/buildOptions" method="_on_close_pressed"]
