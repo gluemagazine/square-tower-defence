@@ -1,0 +1,110 @@
+[gd_scene load_steps=14 format=3 uid="uid://w0fce54yv0xv"]
+
+[ext_resource type="Shader" uid="uid://bdlgodcj6ayir" path="res://Towers/transition.gdshader" id="1_3eb12"]
+[ext_resource type="Script" uid="uid://dg6iwjpjgfhn4" path="res://Towers/tower_base.gd" id="1_j7nfp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7nfp"]
+shader = ExtResource("1_3eb12")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.8
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_711ak"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.316667, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n1cik"]
+gradient = SubResource("Gradient_711ak")
+
+[sub_resource type="Gradient" id="Gradient_h53ua"]
+offsets = PackedFloat32Array(0.961039)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h53ua"]
+gradient = SubResource("Gradient_h53ua")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_3c0bo"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e7hih"]
+gradient = SubResource("Gradient_3c0bo")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_yd85g"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.0383972, 0.0383972, 0.0383971, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_37o8r"]
+gradient = SubResource("Gradient_yd85g")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_7b6am"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.306923, 0.306923, 0.306922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kf5uw"]
+gradient = SubResource("Gradient_7b6am")
+width = 16
+height = 16
+
+[node name="towerBase" type="Node2D" node_paths=PackedStringArray("outline")]
+script = ExtResource("1_j7nfp")
+outline = NodePath("baseTexture/outline")
+
+[node name="baseTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_j7nfp")
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_n1cik")
+metadata/_edit_group_ = true
+
+[node name="outline" type="TextureRect" parent="baseTexture"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_h53ua")
+
+[node name="click" type="TextureButton" parent="baseTexture"]
+material = SubResource("ShaderMaterial_j7nfp")
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 44.0
+offset_bottom = 44.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(12, 12)
+texture_normal = SubResource("GradientTexture2D_e7hih")
+texture_pressed = SubResource("GradientTexture2D_37o8r")
+texture_hover = SubResource("GradientTexture2D_kf5uw")
+stretch_mode = 3
+
+[connection signal="pressed" from="baseTexture/click" to="." method="_on_click_pressed"]

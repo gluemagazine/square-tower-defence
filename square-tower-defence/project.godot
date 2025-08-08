@@ -30,10 +30,14 @@ enabled=PackedStringArray("res://addons/panku_console/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://Towers+EWorkSpace/": "blue",
+"res://Towers/": "blue",
 "res://resources/enemies/animations/": "gray",
 "res://resources/enemies/materials/": "gray"
 }
+
+[global_group]
+
+enemy=""
 
 [layer_names]
 
