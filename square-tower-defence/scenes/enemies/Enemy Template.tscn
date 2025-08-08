@@ -112,7 +112,6 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
-enabled = false
 zoom = Vector2(2, 2)
 
 [node name="HitboxComponent" type="Area2D" parent="."]

@@ -34,6 +34,8 @@ func _ready() -> void:
 	panel.add_theme_stylebox_override("panel",panel_texture)
 	
 	animation.play(stats.animations["walk"])
+	
+	health.damaged.connect(damage)
 
 func _physics_process(_delta: float) -> void:
 	var next_position = nav.get_next_path_position()
@@ -51,3 +53,6 @@ func die():
 	killed.emit(self)
 	await get_tree().physics_frame
 	queue_free()
+
+func damage():
+	pass
