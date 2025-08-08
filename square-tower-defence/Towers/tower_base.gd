@@ -20,24 +20,28 @@ func _on_click_pressed() -> void:
 				if buildOptions.get_child(i+1).get_child(2) is RichTextLabel:
 					buildOptions.get_child(i+1).get_child(2).text = "[center]Cost: %s"%[costs[i-1]]
 		if "currentBase" in buildOptions:
-			buildOptions.currentBase = self_modulate
+			buildOptions.currentBase = self
 			
 		buildOptions.visible = true
 
 
-func frost_click() -> void:
+func frost_clicked() -> void:
 	pass # Replace with function body. 
 
 
 func archer_clicked() -> void:
+	if true:#replace with gold checking logic
+		var archer:ArcherTower = ResourceLoader.load("res://Towers/archerTower.tscn").instantiate()
+		get_parent().add_child(archer)
+		archer.global_position = global_position
+		queue_free()
+
+
+func bomb_clicked() -> void:
 	pass # Replace with function body.
 
 
-func bomb() -> void:
-	pass # Replace with function body.
-
-
-func summoner() -> void:
+func summoner_clicked() -> void:
 	pass # Replace with function body.
 
 func close()->void:

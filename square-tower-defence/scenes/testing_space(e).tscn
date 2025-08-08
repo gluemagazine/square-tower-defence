@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://r04pfp0ohm1u"]
+[gd_scene load_steps=45 format=3 uid="uid://r04pfp0ohm1u"]
 
 [ext_resource type="Script" uid="uid://ct1576t7jful8" path="res://Towers/testing_space.gd" id="1_vtevc"]
 [ext_resource type="PackedScene" uid="uid://w0fce54yv0xv" path="res://Towers/tower_base.tscn" id="2_lrt43"]
@@ -182,6 +182,74 @@ gradient = SubResource("Gradient_oica8")
 width = 48
 height = 48
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wis2o"]
+radius = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6gguj"]
+shader = ExtResource("5_kj7vi")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.8
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_suc7n"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.0833333, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k88jk"]
+gradient = SubResource("Gradient_suc7n")
+
+[sub_resource type="Gradient" id="Gradient_8aiwx"]
+offsets = PackedFloat32Array(0.961039)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oica8"]
+gradient = SubResource("Gradient_8aiwx")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_xjle4"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dwjnh"]
+gradient = SubResource("Gradient_xjle4")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_vat4d"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.0383972, 0.0383972, 0.0383971, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nywd5"]
+gradient = SubResource("Gradient_vat4d")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_26jbd"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.306923, 0.306923, 0.306922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pyayi"]
+gradient = SubResource("Gradient_26jbd")
+width = 16
+height = 16
+
 [node name="testingSpace" type="Node2D"]
 script = ExtResource("1_vtevc")
 
@@ -191,6 +259,7 @@ position = Vector2(121, 119)
 [node name="ui" type="CanvasLayer" parent="."]
 
 [node name="buildOptions" type="TextureRect" parent="ui" groups=["buildOptions"]]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -444,4 +513,50 @@ texture_normal = SubResource("GradientTexture2D_avyug")
 texture_pressed = SubResource("GradientTexture2D_avyug")
 texture_hover = SubResource("GradientTexture2D_u2p0o")
 
+[node name="fakeEnemy" type="CharacterBody2D" parent="." groups=["enemy"]]
+position = Vector2(226, 228)
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fakeEnemy"]
+shape = SubResource("CircleShape2D_wis2o")
+
+[node name="baseTexture" type="TextureRect" parent="fakeEnemy"]
+material = SubResource("ShaderMaterial_6gguj")
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_k88jk")
+metadata/_edit_group_ = true
+
+[node name="outline" type="TextureRect" parent="fakeEnemy/baseTexture"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_6gguj")
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_oica8")
+
+[node name="click" type="TextureButton" parent="fakeEnemy/baseTexture"]
+material = SubResource("ShaderMaterial_6gguj")
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 44.0
+offset_bottom = 44.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(12, 12)
+texture_normal = SubResource("GradientTexture2D_dwjnh")
+texture_pressed = SubResource("GradientTexture2D_nywd5")
+texture_hover = SubResource("GradientTexture2D_pyayi")
+stretch_mode = 3
+
+[connection signal="pressed" from="ui/buildOptions/option1/click" to="ui/buildOptions" method="frostClicked"]
+[connection signal="pressed" from="ui/buildOptions/option2/click" to="ui/buildOptions" method="archerClicked"]
+[connection signal="pressed" from="ui/buildOptions/option3/click" to="ui/buildOptions" method="bombClicked"]
+[connection signal="pressed" from="ui/buildOptions/option4/click" to="ui/buildOptions" method="summonerClicked"]
 [connection signal="pressed" from="ui/buildOptions/close" to="ui/buildOptions" method="_on_close_pressed"]

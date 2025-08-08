@@ -69,14 +69,15 @@ width = 16
 height = 16
 
 [node name="towerBase" type="Node2D" node_paths=PackedStringArray("outline")]
-scale = Vector2(2, 2)
 script = ExtResource("1_j7nfp")
 outline = NodePath("baseTexture/outline")
 
 [node name="baseTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_j7nfp")
-offset_right = 64.0
-offset_bottom = 64.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_n1cik")
 metadata/_edit_group_ = true

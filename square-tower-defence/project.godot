@@ -22,6 +22,10 @@ folder_colors={
 "res://resources/enemies/materials/": "gray"
 }
 
+[global_group]
+
+enemy=""
+
 [layer_names]
 
 2d_physics/layer_2="attacks"

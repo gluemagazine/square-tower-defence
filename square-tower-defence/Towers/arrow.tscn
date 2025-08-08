@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2xoy8bd7beyr"]
+
+[ext_resource type="Script" uid="uid://cuubqgjvoqrw8" path="res://Towers/shot.gd" id="1_b5ofy"]
+[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_k1tyv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8tg3"]
+radius = 30.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gruw"]
+shader = ExtResource("2_k1tyv")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 30
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mt8a"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o0jc"]
+bg_color = Color(0.0833333, 1, 0, 1)
+
+[node name="arrow" type="CharacterBody2D" node_paths=PackedStringArray("sight")]
+script = ExtResource("1_b5ofy")
+sight = NodePath("range")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m8tg3")
+
+[node name="range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
+shape = SubResource("CircleShape2D_m8tg3")
+
+[node name="outline" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_8gruw")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8mt8a")
+
+[node name="size" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_8gruw")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3o0jc")
