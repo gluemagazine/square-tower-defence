@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=4 uid="uid://kl6qgmxpv6il"]
+
+[ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://enemies/wave_manager.gd" id="1_fjhfp"]
+[ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_gj7s8"]
+[ext_resource type="Script" uid="uid://dsrsqrxwy3wns" path="res://enemies/manual_spawner.gd" id="2_xd6eh"]
+[ext_resource type="Resource" uid="uid://ce5c5uu5q1ncf" path="res://resources/waves/basic wave.tres" id="3_xscvl"]
+[ext_resource type="TileSet" uid="uid://c4hina6s2qtir" path="res://resources/tilemaps/map tiles.tres" id="5_24haj"]
+[ext_resource type="TileSet" uid="uid://ckmygcjmpbdex" path="res://resources/tilemaps/navigation tiles.tres" id="6_fjhfp"]
+
+[node name="Map Template" type="Node2D"]
+
+[node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("spawner_array")]
+script = ExtResource("1_fjhfp")
+spawner_array = [NodePath("ManualSpawner"), NodePath("ManualSpawner2"), NodePath("ManualSpawner3"), NodePath("ManualSpawner4")]
+waves = Array[ExtResource("2_gj7s8")]([ExtResource("3_xscvl")])
+metadata/_custom_type_script = "uid://bplmlt0rdsi7r"
+
+[node name="ManualSpawner" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(105, -6)
+script = ExtResource("2_xd6eh")
+path_num = 1
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner2" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(120, -6)
+script = ExtResource("2_xd6eh")
+path_num = 2
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D2")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner3" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(136, -7)
+script = ExtResource("2_xd6eh")
+path_num = 3
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D3")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner4" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(153, -7)
+script = ExtResource("2_xd6eh")
+path_num = 4
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D4")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="visual" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAHAAIAAQADAAEAAAAHAAMAAQADAAEAAAAHAAQAAQADAAEAAAAHAAUAAQADAAEAAAAHAAYAAQADAAEAAAAGAAYAAQADAAEAAAAFAAYAAQADAAEAAAAEAAYAAQADAAEAAAAEAAcAAQADAAEAAAAEAAgAAQADAAEAAAAEAAkAAQADAAEAAAAEAAoAAQADAAEAAAAEAAsAAQADAAEAAAAHAAcAAQADAAEAAAAGAAcAAQADAAEAAAAFAAcAAQADAAEAAAAFAAgAAQACAAIAAAAFAAkAAQACAAIAAAAFAAoAAQACAAIAAAAFAAsAAQACAAIAAAAIAAIAAQADAAEAAAAIAAMAAQADAAEAAAAIAAQAAQACAAIAAAAIAAUAAQACAAIAAAAIAAYAAQACAAIAAAAIAAcAAQACAAIAAAAJAAIAAQADAAEAAAAJAAMAAQADAAEAAAAJAAQAAQADAAEAAAAJAAUAAQADAAEAAAAJAAYAAQADAAEAAAAJAAcAAQADAAEAAAAJAAgAAQADAAEAAAAIAAgAAQADAAEAAAAHAAgAAQADAAEAAAAGAAgAAQADAAEAAAAGAAkAAQADAAEAAAAGAAoAAQADAAEAAAAGAAsAAQADAAEAAAAHAP//AQADAAEAAAAHAAAAAQADAAEAAAAHAAEAAQADAAEAAAAIAP//AQADAAEAAAAIAAAAAQACAAIAAAAIAAEAAQACAAIAAAAJAP//AQADAAEAAAAJAAAAAQADAAEAAAAJAAEAAQADAAEAAAAGAP//AQACAAEAAAAGAAAAAQACAAEAAAAGAAEAAQACAAEAAAAGAAIAAQACAAEAAAAGAAMAAQACAAEAAAAGAAQAAQACAAEAAAAGAAUAAQADAAEAAAAFAAUAAQACAAEAAAAEAAUAAQACAAEAAAADAAUAAQACAAEAAAADAAYAAQACAAEAAAADAAcAAQACAAEAAAADAAgAAQACAAEAAAADAAkAAQACAAEAAAADAAoAAQACAAEAAAADAAsAAQACAAEAAAA=")
+tile_set = ExtResource("5_24haj")
+
+[node name="navigation" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAAGAP//AgACAAEAAAAGAAAAAgACAAEAAAAGAAEAAgACAAEAAAAGAAIAAgACAAEAAAAGAAMAAgACAAEAAAAGAAQAAgACAAEAAAAGAAUAAgACAAEAAAAFAAUAAgACAAEAAAAEAAUAAgACAAEAAAADAAUAAgACAAEAAAADAAYAAgACAAEAAAADAAcAAgACAAEAAAADAAgAAgACAAEAAAADAAkAAgACAAEAAAADAAoAAgACAAEAAAADAAsAAgACAAEAAAAEAAsAAgADAAEAAAAEAAoAAgADAAEAAAAEAAkAAgADAAEAAAAEAAgAAgADAAEAAAAEAAcAAgADAAEAAAAEAAYAAgADAAEAAAAFAAYAAgADAAEAAAAGAAYAAgADAAEAAAAHAAYAAgADAAEAAAAHAP//AgADAAEAAAAHAAAAAgADAAEAAAAHAAEAAgADAAEAAAAHAAIAAgADAAEAAAAHAAMAAgADAAEAAAAHAAQAAgADAAEAAAAHAAUAAgADAAEAAAAIAP//AgACAAIAAAAIAAAAAgACAAIAAAAIAAEAAgACAAIAAAAIAAIAAgACAAIAAAAIAAMAAgACAAIAAAAIAAQAAgACAAIAAAAIAAUAAgACAAIAAAAIAAYAAgACAAIAAAAIAAcAAgACAAIAAAAHAAcAAgACAAIAAAAGAAcAAgACAAIAAAAFAAcAAgACAAIAAAAFAAgAAgACAAIAAAAFAAkAAgACAAIAAAAFAAoAAgACAAIAAAAFAAsAAgACAAIAAAAGAAgAAgADAAIAAAAGAAkAAgADAAIAAAAGAAoAAgADAAIAAAAGAAsAAgADAAIAAAAHAAgAAgADAAIAAAAIAAgAAgADAAIAAAAJAAgAAgADAAIAAAAJAP//AgADAAIAAAAJAAAAAgADAAIAAAAJAAEAAgADAAIAAAAJAAIAAgADAAIAAAAJAAMAAgADAAIAAAAJAAQAAgADAAIAAAAJAAUAAgADAAIAAAAJAAYAAgADAAIAAAAJAAcAAgADAAIAAAA=")
+tile_set = ExtResource("6_fjhfp")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(56, 183)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(72, 183)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(88, 183)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(104, 183)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(133, 95)
+zoom = Vector2(2, 2)

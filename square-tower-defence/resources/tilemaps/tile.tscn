@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxdg6x15vicwl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tloti"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tloti"]
+vertices = PackedVector2Array(16, 16, 0, 16, 0, 0, 16, 0)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)])
+agent_radius = 0.0
+
+[node name="Tile" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.013
+anchor_bottom = 0.023
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -6.976
+offset_bottom = -6.904
+theme_override_styles/panel = SubResource("StyleBoxFlat_tloti")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_tloti")

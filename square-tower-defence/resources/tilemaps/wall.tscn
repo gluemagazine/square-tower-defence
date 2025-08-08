@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsddjfcx5lsfv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_444wr"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Wall" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.013
+anchor_bottom = 0.023
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -6.976
+offset_bottom = -6.904
+theme_override_styles/panel = SubResource("StyleBoxFlat_444wr")
