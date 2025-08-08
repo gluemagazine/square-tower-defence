@@ -29,6 +29,8 @@ func _ready() -> void:
 	timer.start()
 
 func next_wave():
+	if current_wave and not current_wave.finished:
+		return
 	if final_wave:
 		return
 	current_wave = waves.pop_front().duplicate()
@@ -60,6 +62,7 @@ func spawn_wave():
 		await get_tree().create_timer(current_wave.spawn_interval).timeout
 		spawn_wave()
 	else:
+		current_wave.finished = true
 		timer.start()
 
 
@@ -69,7 +72,7 @@ func check_for_wave_end(erased_enemy):
 		current_enemies.erase(erased_enemy)
 	if current_enemies == []:
 		timer.stop()
-		spawn_wave()
-		if final_wave:
+		next_wave()
+		if final_wave and current_wave.finished:
 			print("victory, change effect later")
 	

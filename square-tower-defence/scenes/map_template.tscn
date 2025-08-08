@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://kl6qgmxpv6il"]
+[gd_scene load_steps=16 format=4 uid="uid://kl6qgmxpv6il"]
 
 [ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://scenes/enemies/wave_manager.gd" id="1_fjhfp"]
 [ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/player_manager.tscn" id="1_xscvl"]
@@ -13,6 +13,7 @@
 [ext_resource type="TileSet" uid="uid://dcxxr1qhfql2o" path="res://resources/tilemaps/buildings.tres" id="7_xd6eh"]
 [ext_resource type="PackedScene" uid="uid://bgubqo0qquoyr" path="res://scenes/base.tscn" id="8_gj7s8"]
 [ext_resource type="Resource" uid="uid://14321q0em26i" path="res://resources/enemies/fast enemy.tres" id="8_w0p8v"]
+[ext_resource type="PackedScene" uid="uid://su4d30wrw3ed" path="res://scenes/instakill zone.tscn" id="14_s6h2y"]
 
 [sub_resource type="Resource" id="Resource_73rso"]
 script = ExtResource("2_gj7s8")
@@ -39,7 +40,7 @@ position = Vector2(233, 1)
 script = ExtResource("2_xd6eh")
 path_num = 1
 new_parent = NodePath("../..")
-target = NodePath("../../bases/Base2")
+target = NodePath("../../bases/Base")
 metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
 
 [node name="ManualSpawner2" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
@@ -47,7 +48,7 @@ position = Vector2(250, 1)
 script = ExtResource("2_xd6eh")
 path_num = 2
 new_parent = NodePath("../..")
-target = NodePath("../../bases/Base2")
+target = NodePath("../../bases/Base")
 metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
 
 [node name="ManualSpawner3" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
@@ -103,7 +104,10 @@ position = Vector2(224, 162)
 [node name="bases" type="Node2D" parent="."]
 
 [node name="Base" parent="bases" instance=ExtResource("8_gj7s8")]
-position = Vector2(41, 192)
+position = Vector2(64, 192)
 
-[node name="Base2" parent="bases" instance=ExtResource("8_gj7s8")]
-position = Vector2(86, 192)
+[node name="InstakillZone" parent="." instance=ExtResource("14_s6h2y")]
+position = Vector2(183, 82)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InstakillZone"]
+polygon = PackedVector2Array(-40, -86, 119, 22, 24, 94, -106, -46)
