@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=4 uid="uid://kl6qgmxpv6il"]
+[gd_scene load_steps=20 format=4 uid="uid://kl6qgmxpv6il"]
 
+[ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://enemies/wave_manager.gd" id="1_fjhfp"]
 [ext_resource type="PackedScene" uid="uid://dxdg6x15vicwl" path="res://resources/tilemaps/tile.tscn" id="1_y45xn"]
 [ext_resource type="PackedScene" uid="uid://bubnfek1p03v2" path="res://resources/tilemaps/tower.tscn" id="2_f5a3m"]
+[ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_gj7s8"]
+[ext_resource type="Script" uid="uid://dsrsqrxwy3wns" path="res://enemies/manual_spawner.gd" id="2_xd6eh"]
 [ext_resource type="PackedScene" uid="uid://dsddjfcx5lsfv" path="res://resources/tilemaps/wall.tscn" id="3_vvwyf"]
+[ext_resource type="Resource" uid="uid://ce5c5uu5q1ncf" path="res://resources/waves/basic wave.tres" id="3_xscvl"]
 [ext_resource type="Texture2D" uid="uid://cta7c5832t11s" path="res://resources/tilemaps/Color Tiles.png" id="4_24haj"]
-[ext_resource type="PackedScene" uid="uid://biekub6ra6v5j" path="res://enemies/Enemy Template.tscn" id="4_vvwyf"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xww52"]
 scenes/1/scene = ExtResource("1_y45xn")
@@ -96,6 +99,44 @@ sources/1 = SubResource("TileSetAtlasSource_fjhfp")
 
 [node name="Map Template" type="Node2D"]
 
+[node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("spawner_array")]
+script = ExtResource("1_fjhfp")
+spawner_array = [NodePath("ManualSpawner"), NodePath("ManualSpawner2"), NodePath("ManualSpawner3"), NodePath("ManualSpawner4")]
+waves = Array[ExtResource("2_gj7s8")]([ExtResource("3_xscvl")])
+metadata/_custom_type_script = "uid://bplmlt0rdsi7r"
+
+[node name="ManualSpawner" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(105, -6)
+script = ExtResource("2_xd6eh")
+path_num = 1
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner2" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(120, -6)
+script = ExtResource("2_xd6eh")
+path_num = 2
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D2")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner3" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(136, -7)
+script = ExtResource("2_xd6eh")
+path_num = 3
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D3")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner4" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(153, -7)
+script = ExtResource("2_xd6eh")
+path_num = 4
+new_parent = NodePath("../..")
+target = NodePath("../../Marker2D4")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAHAAIAAQAAAAEAAAAHAAMAAQAAAAEAAAAHAAQAAQAAAAEAAAAHAAUAAQAAAAEAAAAHAAYAAQAAAAEAAAAGAAYAAQAAAAEAAAAFAAYAAQAAAAEAAAAEAAYAAQAAAAEAAAAEAAcAAQAAAAEAAAAEAAgAAQAAAAEAAAAEAAkAAQAAAAEAAAAEAAoAAQAAAAEAAAAEAAsAAQAAAAEAAAAHAAcAAQACAAIAAAAGAAcAAQACAAIAAAAFAAcAAQACAAIAAAAFAAgAAQACAAIAAAAFAAkAAQACAAIAAAAFAAoAAQACAAIAAAAFAAsAAQACAAIAAAAIAAIAAQACAAIAAAAIAAMAAQACAAIAAAAIAAQAAQACAAIAAAAIAAUAAQACAAIAAAAIAAYAAQACAAIAAAAIAAcAAQACAAIAAAAJAAIAAQAAAAMAAAAJAAMAAQAAAAMAAAAJAAQAAQAAAAMAAAAJAAUAAQAAAAMAAAAJAAYAAQAAAAMAAAAJAAcAAQAAAAMAAAAJAAgAAQAAAAMAAAAIAAgAAQAAAAMAAAAHAAgAAQAAAAMAAAAGAAgAAQAAAAMAAAAGAAkAAQAAAAMAAAAGAAoAAQAAAAMAAAAGAAsAAQAAAAMAAAAHAP//AQAAAAEAAAAHAAAAAQAAAAEAAAAHAAEAAQAAAAEAAAAIAP//AAAAAAAAAQAIAAAAAQACAAIAAAAIAAEAAQACAAIAAAAJAP//AQAAAAMAAAAJAAAAAQAAAAMAAAAJAAEAAQAAAAMAAAAGAP//AQACAAEAAAAGAAAAAQACAAEAAAAGAAEAAQACAAEAAAAGAAIAAQACAAEAAAAGAAMAAQACAAEAAAAGAAQAAQACAAEAAAAGAAUAAQACAAEAAAAFAAUAAQACAAEAAAAEAAUAAQACAAEAAAADAAUAAQACAAEAAAADAAYAAQACAAEAAAADAAcAAQACAAEAAAADAAgAAQACAAEAAAADAAkAAQACAAEAAAADAAoAAQACAAEAAAADAAsAAQACAAEAAAA=")
 tile_set = SubResource("TileSet_y45xn")
@@ -104,24 +145,13 @@ tile_set = SubResource("TileSet_y45xn")
 position = Vector2(56, 183)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(76, 182)
+position = Vector2(72, 183)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(101, 183)
+position = Vector2(88, 183)
 
-[node name="EnemyTemplate" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_vvwyf")]
-position = Vector2(107, -6)
-target = NodePath("../Marker2D")
-
-[node name="EnemyTemplate2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_vvwyf")]
-position = Vector2(129, -5)
-target = NodePath("../Marker2D2")
-path_num = 2
-
-[node name="EnemyTemplate3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_vvwyf")]
-position = Vector2(150, -5)
-target = NodePath("../Marker2D3")
-path_num = 3
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(104, 183)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(133, 95)

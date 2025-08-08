@@ -17,7 +17,7 @@ animations = {
 }
 health = 10
 damage = 10
-speed = 100
+speed = 50
 metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icmaq"]
@@ -130,4 +130,5 @@ metadata/_custom_type_script = "uid://3m7pl4h61a5r"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
+radius = 3.0
 debug_enabled = true

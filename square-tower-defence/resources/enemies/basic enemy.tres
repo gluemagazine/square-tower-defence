@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://40154clyob1r"]
+
+[ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="1_6v01x"]
+
+[resource]
+script = ExtResource("1_6v01x")
+sides = 3
+color = Color(0.697578, 0.697578, 0.697578, 1)
+animations = {
+&"attack": "attack",
+&"hurt": "hurt",
+&"walk": "walk"
+}
+health = 10
+damage = 10
+speed = 50
+metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
