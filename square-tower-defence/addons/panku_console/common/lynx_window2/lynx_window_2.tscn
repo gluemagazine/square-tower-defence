@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://s88loppa6gja"]
 
 [ext_resource type="Material" uid="uid://dyipeqsa8lcpc" path="res://addons/panku_console/common/lynx_window2/lynx_window_shader_material.tres" id="1_tvp6i"]
-[ext_resource type="Script" path="res://addons/panku_console/common/lynx_window2/lynx_window_2.gd" id="2_1ul5o"]
+[ext_resource type="Script" uid="uid://1hdc1fmocen2" path="res://addons/panku_console/common/lynx_window2/lynx_window_2.gd" id="2_1ul5o"]
 [ext_resource type="Theme" uid="uid://bk18yfu0d77wk" path="res://addons/panku_console/res/panku_console_theme.tres" id="2_3fhqk"]
 [ext_resource type="Texture2D" uid="uid://dosm26riekruh" path="res://addons/panku_console/res/icons2/menu.svg" id="4_4dlyn"]
 [ext_resource type="PackedScene" uid="uid://drn5t13m088fb" path="res://addons/panku_console/common/panku_button.tscn" id="4_dnesi"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://8g5afcuanbl6" path="res://addons/panku_console/res/icons2/close.svg" id="5_l4qpm"]
 [ext_resource type="Texture2D" uid="uid://dvr12fl5prm78" path="res://addons/panku_console/res/effect/square_shadow.png" id="6_mfp1h"]
 [ext_resource type="Texture2D" uid="uid://ciu5jiw4xmkq0" path="res://addons/panku_console/res/icons2/resize-svgrepo-com.svg" id="7_duwqn"]
-[ext_resource type="Script" path="res://addons/panku_console/common/lynx_window2/border.gd" id="8_gj3ji"]
+[ext_resource type="Script" uid="uid://c6iktaye2tsn4" path="res://addons/panku_console/common/lynx_window2/border.gd" id="8_gj3ji"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv45g"]
 draw_center = false
@@ -35,13 +35,13 @@ draw_center = false
 shadow_color = Color(0, 0, 0, 0.0627451)
 shadow_size = 16
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5muk4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3y6j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0x7y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p7tml"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3y6j"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5muk4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uldta"]
 draw_center = false
@@ -170,10 +170,10 @@ offset_top = -12.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_5muk4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p3y6j")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_r0x7y")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_p7tml")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p3y6j")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5muk4")
 icon = ExtResource("7_duwqn")
 flat = true
 expand_icon = true
