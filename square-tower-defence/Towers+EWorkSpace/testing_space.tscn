@@ -154,6 +154,7 @@ metadata/_edit_lock_ = true
 
 [node name="option1" type="TextureRect" parent="ui/options"]
 material = SubResource("ShaderMaterial_44d0b")
+layout_mode = 0
 offset_left = 35.0
 offset_top = 23.0
 offset_right = 99.0
@@ -204,6 +205,7 @@ scroll_active = false
 
 [node name="option2" type="TextureRect" parent="ui/options"]
 material = SubResource("ShaderMaterial_44d0b")
+layout_mode = 0
 offset_left = 134.0
 offset_top = 23.0
 offset_right = 198.0
@@ -254,6 +256,7 @@ scroll_active = false
 
 [node name="option3" type="TextureRect" parent="ui/options"]
 material = SubResource("ShaderMaterial_44d0b")
+layout_mode = 0
 offset_left = 228.0
 offset_top = 23.0
 offset_right = 292.0
@@ -304,6 +307,7 @@ scroll_active = false
 
 [node name="option4" type="TextureRect" parent="ui/options"]
 material = SubResource("ShaderMaterial_44d0b")
+layout_mode = 0
 offset_left = 624.0
 offset_top = 23.0
 offset_right = 688.0
