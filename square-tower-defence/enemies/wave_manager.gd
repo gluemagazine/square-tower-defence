@@ -35,7 +35,6 @@ func next_wave():
 	if waves == []:
 		final_wave = true
 	timer.wait_time = current_wave.duration
-	timer.start()
 	spawn_wave()
 
 func spawn_wave():
@@ -49,17 +48,20 @@ func spawn_wave():
 		for i in range(current_wave.enemies[key]):
 			if current_wave.enemies[key] <= 0:
 				break
-			var new_enemy = spawners[i % (n_of_spawners) + 1].spawn(key)
+			var new_enemy = spawners[max(num_spawned % (n_of_spawners) + 1,1)].spawn(key)
 			current_enemies.append(new_enemy)
 			new_enemy.killed.connect(check_for_wave_end)
 			num_spawned += 1
 			current_wave.enemies[key] -= 1
 			if num_spawned >= options.size():
+				num_spawned -= options.size()
 				spawn_again = true
 				break
 	if spawn_again:
 		await get_tree().create_timer(current_wave.spawn_interval).timeout
 		spawn_wave()
+	else:
+		timer.start()
 
 
 func check_for_wave_end(erased_enemy):

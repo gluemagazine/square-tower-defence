@@ -1,14 +1,28 @@
-[gd_scene load_steps=10 format=4 uid="uid://kl6qgmxpv6il"]
+[gd_scene load_steps=15 format=4 uid="uid://kl6qgmxpv6il"]
 
 [ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://enemies/wave_manager.gd" id="1_fjhfp"]
 [ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/player_manager.tscn" id="1_xscvl"]
 [ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_gj7s8"]
 [ext_resource type="Script" uid="uid://dsrsqrxwy3wns" path="res://enemies/manual_spawner.gd" id="2_xd6eh"]
 [ext_resource type="Resource" uid="uid://ce5c5uu5q1ncf" path="res://resources/waves/basic wave.tres" id="3_xscvl"]
+[ext_resource type="Resource" uid="uid://bslwvov6rrvqv" path="res://resources/waves/fast wave.tres" id="5_7nsrw"]
 [ext_resource type="TileSet" uid="uid://c4hina6s2qtir" path="res://resources/tilemaps/map tiles.tres" id="5_24haj"]
 [ext_resource type="TileSet" uid="uid://ckmygcjmpbdex" path="res://resources/tilemaps/navigation tiles.tres" id="6_fjhfp"]
+[ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="6_i4h0e"]
+[ext_resource type="Resource" uid="uid://40154clyob1r" path="res://resources/enemies/basic enemy.tres" id="7_s6h2y"]
 [ext_resource type="TileSet" uid="uid://dcxxr1qhfql2o" path="res://resources/tilemaps/buildings.tres" id="7_xd6eh"]
 [ext_resource type="PackedScene" uid="uid://bgubqo0qquoyr" path="res://scenes/base.tscn" id="8_gj7s8"]
+[ext_resource type="Resource" uid="uid://14321q0em26i" path="res://resources/enemies/fast enemy.tres" id="8_w0p8v"]
+
+[sub_resource type="Resource" id="Resource_73rso"]
+script = ExtResource("2_gj7s8")
+enemies = Dictionary[ExtResource("6_i4h0e"), int]({
+ExtResource("7_s6h2y"): 10,
+ExtResource("8_w0p8v"): 5
+})
+duration = 5.0
+spawn_interval = 0.0
+metadata/_custom_type_script = "uid://cimw6eha4lytp"
 
 [node name="Map Template" type="Node2D"]
 
@@ -17,11 +31,11 @@
 [node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("spawner_array")]
 script = ExtResource("1_fjhfp")
 spawner_array = [NodePath("ManualSpawner"), NodePath("ManualSpawner2"), NodePath("ManualSpawner3"), NodePath("ManualSpawner4")]
-waves = Array[ExtResource("2_gj7s8")]([ExtResource("3_xscvl")])
+waves = Array[ExtResource("2_gj7s8")]([ExtResource("3_xscvl"), ExtResource("5_7nsrw"), SubResource("Resource_73rso")])
 metadata/_custom_type_script = "uid://bplmlt0rdsi7r"
 
 [node name="ManualSpawner" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
-position = Vector2(233, 5)
+position = Vector2(233, 1)
 script = ExtResource("2_xd6eh")
 path_num = 1
 new_parent = NodePath("../..")
@@ -29,7 +43,7 @@ target = NodePath("../../bases/Base2")
 metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
 
 [node name="ManualSpawner2" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
-position = Vector2(250, 7)
+position = Vector2(250, 1)
 script = ExtResource("2_xd6eh")
 path_num = 2
 new_parent = NodePath("../..")
@@ -37,7 +51,7 @@ target = NodePath("../../bases/Base2")
 metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
 
 [node name="ManualSpawner3" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
-position = Vector2(216, 8)
+position = Vector2(216, 1)
 script = ExtResource("2_xd6eh")
 path_num = 3
 new_parent = NodePath("../..")
@@ -45,7 +59,7 @@ target = NodePath("../../bases/Base")
 metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
 
 [node name="ManualSpawner4" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
-position = Vector2(199, 7)
+position = Vector2(199, 1)
 script = ExtResource("2_xd6eh")
 path_num = 4
 new_parent = NodePath("../..")
@@ -76,7 +90,7 @@ tile_map_data = PackedByteArray("AAAMAAAAAgADAAIAAAALAAAAAgADAAIAAAAKAAAAAgADAAI
 tile_set = ExtResource("6_fjhfp")
 
 [node name="universal navigation" type="TileMapLayer" parent="Paths"]
-tile_map_data = PackedByteArray("AAADAAwAAgABAAAAAAADAA0AAgABAAAAAAAEAAwAAgABAAAAAAAEAA0AAgABAAAAAAAFAAwAAgABAAAAAAAFAA0AAgABAAAAAAAGAAwAAgABAAAAAAAGAA0AAgABAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAwAAgABAAAAAAADAA0AAgABAAAAAAAEAAwAAgABAAAAAAAEAA0AAgABAAAAAAAFAAwAAgABAAAAAAAFAA0AAgABAAAAAAAGAAwAAgABAAAAAAAGAA0AAgABAAAAAAACAAwAAgABAAAAAAACAA0AAgABAAAAAAAHAAwAAgABAAAAAAAHAA0AAgABAAAAAAA=")
 tile_set = ExtResource("6_fjhfp")
 
 [node name="buildings" type="TileMapLayer" parent="."]

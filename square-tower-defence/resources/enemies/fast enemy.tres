@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://14321q0em26i"]
+
+[ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="1_4jqii"]
+
+[resource]
+script = ExtResource("1_4jqii")
+sides = 4
+color = Color(1, 1, 1, 1)
+animations = {
+&"attack": "attack",
+&"hurt": "hurt",
+&"walk": "walk"
+}
+health = 5
+damage = 10
+speed = 100
+metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
