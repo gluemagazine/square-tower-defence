@@ -17,10 +17,4 @@ config/icon="res://icon.svg"
 [file_customization]
 
 folder_colors={
-"res://resources/enemies/animations/": "gray",
-"res://resources/enemies/materials/": "gray"
-}
 
-[layer_names]
-
-2d_physics/layer_2="attacks"
