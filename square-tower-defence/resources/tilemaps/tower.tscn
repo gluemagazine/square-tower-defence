@@ -13,3 +13,8 @@ offset_top = -8.0
 offset_right = -6.976
 offset_bottom = -6.904
 theme_override_styles/panel = SubResource("StyleBoxFlat_le77g")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

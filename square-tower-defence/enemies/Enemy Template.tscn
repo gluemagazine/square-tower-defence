@@ -47,6 +47,21 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmlbt"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_icmaq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/rotation_angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_mafug"]
 resource_name = "walk"
 length = 2.0
@@ -64,21 +79,6 @@ tracks/0/keys = {
 "values": [0.0, 360.0]
 }
 
-[sub_resource type="Animation" id="Animation_icmaq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:material:shader_parameter/rotation_angle")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54dnp"]
 _data = {
 &"RESET": SubResource("Animation_icmaq"),
@@ -87,17 +87,19 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh075"]
 
-[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "animation", "health")]
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "animation", "health", "nav")]
 script = ExtResource("1_sjt85")
 stats = SubResource("Resource_54dnp")
 panel = NodePath("Panel")
 animation = NodePath("AnimationPlayer")
 health = NodePath("HealthComponent")
+nav = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_icmaq")
 
 [node name="Panel" type="Panel" parent="."]
+modulate = Color(0.485703, 0.485704, 0.485703, 1)
 material = SubResource("ShaderMaterial_icmaq")
 offset_left = -10.0
 offset_top = -10.0
@@ -111,6 +113,8 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
 zoom = Vector2(2, 2)
 
 [node name="HitboxComponent" type="Area2D" parent="."]
@@ -123,3 +127,7 @@ shape = SubResource("RectangleShape2D_rh075")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("5_tmlbt")
 metadata/_custom_type_script = "uid://3m7pl4h61a5r"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
