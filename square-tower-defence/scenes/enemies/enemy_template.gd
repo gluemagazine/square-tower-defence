@@ -2,7 +2,10 @@ extends CharacterBody2D
 class_name Enemy
 @export var stats : EnemyResource
 @export var panel : Panel
-@export var animation : AnimationPlayer
+@export var movement : AnimationPlayer 
+@export var hurt: AnimationPlayer
+@export var attack: AnimationPlayer 
+
 @export var health : HealthComponent
 @export var target : Node2D
 @export var nav : NavigationAgent2D
@@ -33,7 +36,7 @@ func _ready() -> void:
 	panel_texture.bg_color = stats.color
 	panel.add_theme_stylebox_override("panel",panel_texture)
 	
-	animation.play(stats.animations["walk"])
+	movement.play(stats.animations["walk"])
 	
 	health.damaged.connect(damage)
 
@@ -51,8 +54,9 @@ func on_velocity_computed(safe_elocity):
 
 func die():
 	killed.emit(self)
+	Game.add_gold(stats.reward)
 	await get_tree().physics_frame
 	queue_free()
 
 func damage():
-	pass
+	hurt.play(stats.animations["hurt"])

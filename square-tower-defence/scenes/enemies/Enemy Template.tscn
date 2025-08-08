@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://biekub6ra6v5j"]
+[gd_scene load_steps=15 format=3 uid="uid://biekub6ra6v5j"]
 
 [ext_resource type="Script" uid="uid://b3r861w4pxcm8" path="res://scenes/enemies/enemy_template.gd" id="1_sjt85"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_mafug"]
@@ -18,6 +18,7 @@ animations = {
 health = 10
 damage = 10
 speed = 50
+reward = 10
 metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icmaq"]
@@ -44,6 +45,9 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 1.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4mil"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="Animation" id="Animation_icmaq"]
 length = 0.001
 tracks/0/type = "value"
@@ -57,6 +61,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:material:shader_parameter/shape_feather")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_mafug"]
@@ -76,21 +116,63 @@ tracks/0/keys = {
 "values": [0.0, 360.0]
 }
 
+[sub_resource type="Animation" id="Animation_e4mil"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:material:shader_parameter/shape_feather")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54dnp"]
 _data = {
 &"RESET": SubResource("Animation_icmaq"),
+&"hurt": SubResource("Animation_e4mil"),
 &"walk": SubResource("Animation_mafug")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh075"]
 
-[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "animation", "health", "nav")]
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "movement", "hurt", "attack", "health", "nav")]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_sjt85")
 stats = SubResource("Resource_54dnp")
 panel = NodePath("Panel")
-animation = NodePath("AnimationPlayer")
+movement = NodePath("movement")
+hurt = NodePath("hurt")
+attack = NodePath("attack")
 health = NodePath("HealthComponent")
 nav = NodePath("NavigationAgent2D")
 
@@ -98,14 +180,24 @@ nav = NodePath("NavigationAgent2D")
 shape = SubResource("RectangleShape2D_icmaq")
 
 [node name="Panel" type="Panel" parent="."]
-modulate = Color(0.485703, 0.485704, 0.485703, 1)
 material = SubResource("ShaderMaterial_icmaq")
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e4mil")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="movement" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_54dnp")
+}
+
+[node name="hurt" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_54dnp")
+}
+
+[node name="attack" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_54dnp")
 }
