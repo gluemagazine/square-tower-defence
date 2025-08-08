@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://r04pfp0ohm1u"]
 
-[ext_resource type="Script" uid="uid://ct1576t7jful8" path="res://Towers+EWorkSpace/testing_space.gd" id="1_eojhd"]
-[ext_resource type="PackedScene" uid="uid://w0fce54yv0xv" path="res://Towers+EWorkSpace/tower_base.tscn" id="1_mk7gk"]
-[ext_resource type="Shader" uid="uid://bdlgodcj6ayir" path="res://Towers+EWorkSpace/transition.gdshader" id="3_86yhs"]
+[ext_resource type="Script" uid="uid://ct1576t7jful8" path="res://Towers/testing_space.gd" id="1_eojhd"]
+[ext_resource type="PackedScene" uid="uid://w0fce54yv0xv" path="res://Towers/tower_base.tscn" id="1_mk7gk"]
+[ext_resource type="Shader" uid="uid://bdlgodcj6ayir" path="res://Towers/transition.gdshader" id="3_86yhs"]
 
 [sub_resource type="Gradient" id="Gradient_eojhd"]
 offsets = PackedFloat32Array(1)
