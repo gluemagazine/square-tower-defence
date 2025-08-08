@@ -4,6 +4,7 @@ class_name PlayerManager
 
 func _ready() -> void:
 	health.death.connect(loss)
+	Game.manager = self
 
 func damage(attack : Attack):
 	health.damage(attack)

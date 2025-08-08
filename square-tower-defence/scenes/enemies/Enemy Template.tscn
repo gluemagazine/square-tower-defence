@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://biekub6ra6v5j"]
 
-[ext_resource type="Script" uid="uid://b3r861w4pxcm8" path="res://enemies/enemy_template.gd" id="1_sjt85"]
+[ext_resource type="Script" uid="uid://b3r861w4pxcm8" path="res://scenes/enemies/enemy_template.gd" id="1_sjt85"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_mafug"]
 [ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="3_icmaq"]
 [ext_resource type="Script" uid="uid://l2w56u85nvr0" path="res://components/hitbox.gd" id="4_54dnp"]
