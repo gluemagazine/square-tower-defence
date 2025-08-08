@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://su4d30wrw3ed"]
+
+[ext_resource type="Script" uid="uid://dhf68d3ogqskp" path="res://scenes/instakill_zone.gd" id="1_30xn8"]
+
+[node name="InstakillZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_30xn8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -13,3 +13,5 @@ class_name EnemyResource
 @export var health : int = 10
 @export var damage : int = 10
 @export var speed : int = 100
+
+@export var reward : int = 10

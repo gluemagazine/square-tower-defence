@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://qunequ0snvhy"]
+
+[ext_resource type="Script" uid="uid://bqrg4trqp0qqc" path="res://scenes/player_manager.gd" id="1_ve51y"]
+[ext_resource type="Script" uid="uid://3m7pl4h61a5r" path="res://components/health_component.gd" id="2_1aieh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve51y"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1aieh"]
+bg_color = Color(0, 0.788235, 0, 1)
+
+[node name="PlayerManager" type="Node2D" node_paths=PackedStringArray("health")]
+script = ExtResource("1_ve51y")
+health = NodePath("HealthComponent")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_1aieh")
+metadata/_custom_type_script = "uid://3m7pl4h61a5r"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="gold" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Gold: 0"
+
+[node name="health" type="Label" parent="CanvasLayer"]
+offset_top = 31.0
+offset_right = 59.0
+offset_bottom = 54.0
+text = "health: "
+
+[node name="health2" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 70.0
+offset_top = 32.0
+offset_right = 206.0
+offset_bottom = 59.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ve51y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1aieh")
+value = 100.0

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyftuo4syatlv"]
+
+[ext_resource type="Script" uid="uid://dmgm5qx587a" path="res://addons/panku_console/console.gd" id="1_dohs1"]
+[ext_resource type="Theme" uid="uid://bk18yfu0d77wk" path="res://addons/panku_console/res/panku_console_theme.tres" id="2_wxhx6"]
+[ext_resource type="Script" uid="uid://g7ajqlbu3was" path="res://addons/panku_console/common/lynx_window2/lynx_windows_manager_2.gd" id="10_f7qaq"]
+
+[node name="Console" type="CanvasLayer"]
+process_mode = 3
+layer = 128
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+script = ExtResource("1_dohs1")
+
+[node name="LynxWindowsManager" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchor_right = 2.0
+anchor_bottom = 1.975
+offset_bottom = 0.199951
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_wxhx6")
+script = ExtResource("10_f7qaq")

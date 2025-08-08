@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6v01x")
 sides = 3
-color = Color(0.697578, 0.697578, 0.697578, 1)
+color = Color(0.391115, 0.801302, 1.15514e-06, 1)
 animations = {
 &"attack": "attack",
 &"hurt": "hurt",
