@@ -164,7 +164,7 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh075"]
 
-[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "movement", "hurt", "attack", "health", "nav")]
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "movement", "hurt", "attack", "health", "nav") groups=["enemy"]]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_sjt85")
@@ -206,8 +206,10 @@ libraries = {
 visible = false
 zoom = Vector2(2, 2)
 
-[node name="HitboxComponent" type="Area2D" parent="."]
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component", "holder")]
 script = ExtResource("4_54dnp")
+health_component = NodePath("../HealthComponent")
+holder = NodePath("..")
 metadata/_custom_type_script = "uid://l2w56u85nvr0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
