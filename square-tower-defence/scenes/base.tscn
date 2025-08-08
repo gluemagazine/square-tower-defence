@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgubqo0qquoyr"]
+
+[ext_resource type="Script" uid="uid://bs0f5xto8nepy" path="res://scenes/base.gd" id="1_pvqg0"]
+[ext_resource type="Script" uid="uid://l2w56u85nvr0" path="res://components/hitbox.gd" id="3_h5ip5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd1f8"]
+bg_color = Color(0.0156863, 0.254902, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22p3g"]
+size = Vector2(32, 32)
+
+[node name="Base" type="Node2D" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_pvqg0")
+hitbox = NodePath("HitboxComponent")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jd1f8")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_h5ip5")
+metadata/_custom_type_script = "uid://l2w56u85nvr0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_22p3g")
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

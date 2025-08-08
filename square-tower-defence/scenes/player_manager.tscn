@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://qunequ0snvhy"]
+
+[ext_resource type="Script" uid="uid://bqrg4trqp0qqc" path="res://scenes/player_manager.gd" id="1_ve51y"]
+[ext_resource type="Script" uid="uid://3m7pl4h61a5r" path="res://components/health_component.gd" id="2_1aieh"]
+
+[node name="PlayerManager" type="Node2D" node_paths=PackedStringArray("health")]
+script = ExtResource("1_ve51y")
+health = NodePath("HealthComponent")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_1aieh")
+metadata/_custom_type_script = "uid://3m7pl4h61a5r"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "gold: 100"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_top = 31.0
+offset_right = 59.0
+offset_bottom = 54.0
+text = "health: "
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 59.0
+offset_top = 31.0
+offset_right = 195.0
+offset_bottom = 58.0
+value = 100.0

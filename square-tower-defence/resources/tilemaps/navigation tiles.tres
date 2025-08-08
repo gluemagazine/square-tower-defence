@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://ckmygcjmpbdex"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://ckmygcjmpbdex"]
 
 [ext_resource type="Texture2D" uid="uid://bhdy3o6rewghn" path="res://resources/tilemaps/Color Tiles with numbers.png" id="5_tiqcc"]
 
@@ -21,6 +21,20 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_817fy"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_01c43"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7svan"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_aqqao"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_irqco"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p8ubb"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
@@ -55,6 +69,11 @@ texture = ExtResource("5_tiqcc")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4bi2w")
 1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_01c43")
+1:0/0/navigation_layer_1/polygon = SubResource("NavigationPolygon_7svan")
+1:0/0/navigation_layer_2/polygon = SubResource("NavigationPolygon_aqqao")
+1:0/0/navigation_layer_3/polygon = SubResource("NavigationPolygon_irqco")
+1:0/0/navigation_layer_4/polygon = SubResource("NavigationPolygon_p8ubb")
 2:0/0 = 0
 3:0/0 = 0
 0:1/0 = 0
@@ -82,4 +101,5 @@ navigation_layer_0/layers = 1
 navigation_layer_1/layers = 2
 navigation_layer_2/layers = 4
 navigation_layer_3/layers = 8
+navigation_layer_4/layers = 255
 sources/2 = SubResource("TileSetAtlasSource_rjxjg")
