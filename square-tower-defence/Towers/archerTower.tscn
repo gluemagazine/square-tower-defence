@@ -101,6 +101,7 @@ shader_parameter/progress_bias = Vector2(0, 0)
 bg_color = Color(0.52, 0.52, 0.52, 0.415686)
 
 [node name="archerTower" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_8aiwx")
 
 [node name="baseTexture" type="TextureRect" parent="."]
@@ -139,7 +140,6 @@ texture_hover = SubResource("GradientTexture2D_bky7u")
 stretch_mode = 3
 
 [node name="SightComponent" type="Area2D" parent="."]
-visible = false
 scale = Vector2(3, 3)
 script = ExtResource("3_pb4we")
 canLeave = true
@@ -179,6 +179,7 @@ nextState = NodePath("../coolDownState")
 [node name="coolDownState" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "nextState")]
 script = ExtResource("6_vat4d")
 timer = NodePath("../../coolDown")
+coolDown = 0.1
 nextState = NodePath("../shootState")
 
 [node name="coolDown" type="Timer" parent="."]

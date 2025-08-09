@@ -28,7 +28,9 @@ func _physics_process(delta: float) -> void:
 
 func on_area_entered(body:Node)->void:
 	if body is HitboxComponent:
-		if body.holder.is_in_group(target):
+		if not is_instance_valid(body.holder):
+			return
+		elif body.holder.is_in_group(target):
 			var attak:Attack = Attack.new()
 			attak.damage = damage
 			body.damage(attak)

@@ -14,6 +14,8 @@ var current_wave : Wave
 
 var timer : Timer
 
+var clearout_timer : Timer
+
 func _ready() -> void:
 	for i in range(spawner_array.size()):
 		spawners[i+1] = spawner_array[i]
@@ -27,6 +29,17 @@ func _ready() -> void:
 	add_child(timer)
 	timer.timeout.connect(next_wave)
 	timer.start()
+	
+	Game.enemy_killed.connect(clear_dead_enemies)
+
+func clear_dead_enemies():
+	var to_keep : Array[Enemy] = []
+	for enemy in current_enemies:
+		if is_instance_valid(enemy):
+			to_keep.append(enemy)
+	current_enemies = to_keep
+	check_for_victory()
+	
 
 func next_wave():
 	if current_wave and not current_wave.finished:
@@ -73,6 +86,8 @@ func check_for_wave_end(erased_enemy):
 	if current_enemies == []:
 		timer.stop()
 		next_wave()
-		if final_wave and current_wave.finished:
-			print("victory, change effect later")
-	
+		check_for_victory()
+
+func check_for_victory():
+	if final_wave and current_wave.finished and Game.manager.health.health > 0:
+		print("victory, change effect later")

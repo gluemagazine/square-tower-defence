@@ -17,6 +17,7 @@ var speed
 signal killed
 
 func _ready() -> void:
+	
 	if target:
 		nav.target_position = target.global_position
 	else:
@@ -60,3 +61,6 @@ func die():
 
 func damage():
 	hurt.play(stats.animations["hurt"])
+
+func _exit_tree() -> void:
+	Game.enemy_killed.emit()
