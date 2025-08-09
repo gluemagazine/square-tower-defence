@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://kl6qgmxpv6il"]
+[gd_scene load_steps=19 format=4 uid="uid://kl6qgmxpv6il"]
 
 [ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://scenes/enemies/wave_manager.gd" id="1_fjhfp"]
 [ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/player_manager.tscn" id="1_xscvl"]
+[ext_resource type="Script" uid="uid://cfidvnm38saep" path="res://resources/User/level_info.gd" id="2_73rso"]
 [ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_gj7s8"]
 [ext_resource type="Script" uid="uid://dsrsqrxwy3wns" path="res://scenes/enemies/manual_spawner.gd" id="2_xd6eh"]
 [ext_resource type="Resource" uid="uid://ce5c5uu5q1ncf" path="res://resources/waves/basic wave.tres" id="3_xscvl"]
@@ -16,6 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://su4d30wrw3ed" path="res://scenes/instakill zone.tscn" id="14_s6h2y"]
 [ext_resource type="PackedScene" uid="uid://downv7grip0yk" path="res://Towers/archerTower.tscn" id="15_w0p8v"]
 
+[sub_resource type="Resource" id="Resource_7ebxn"]
+script = ExtResource("2_73rso")
+starting_gold = 50
+base_health = 500
+base_max_health = 500
+level_name = "Level 1"
+metadata/_custom_type_script = "uid://cfidvnm38saep"
+
 [sub_resource type="Resource" id="Resource_73rso"]
 script = ExtResource("2_gj7s8")
 enemies = Dictionary[ExtResource("6_i4h0e"), int]({
@@ -29,6 +38,7 @@ metadata/_custom_type_script = "uid://cimw6eha4lytp"
 [node name="Map Template" type="Node2D"]
 
 [node name="PlayerManager" parent="." instance=ExtResource("1_xscvl")]
+info = SubResource("Resource_7ebxn")
 
 [node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("spawner_array")]
 script = ExtResource("1_fjhfp")

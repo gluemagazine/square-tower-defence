@@ -7,16 +7,25 @@ var options = []
 
 @export var waves : Array[Wave] = []
 var wave_length : int = 10
-var final_wave : bool = false
+var final_wave : bool = false:
+	set(new):
+		final_wave = new
+		if not victory_checker:
+			var timer : Timer = Timer.new()
+			timer.wait_time = 1
+			add_child(timer)
+			timer.start()
+			timer.timeout.connect(check_for_victory)
+var victory_checker : Timer
+var won : bool = false
 
 var current_enemies : Array[Enemy] = []
 var current_wave : Wave
 
 var timer : Timer
 
-var clearout_timer : Timer
-
 func _ready() -> void:
+	Engine.time_scale = 5
 	for i in range(spawner_array.size()):
 		spawners[i+1] = spawner_array[i]
 	for key in spawners:
@@ -38,8 +47,6 @@ func clear_dead_enemies():
 		if is_instance_valid(enemy):
 			to_keep.append(enemy)
 	current_enemies = to_keep
-	check_for_victory()
-	
 
 func next_wave():
 	if current_wave and not current_wave.finished:
@@ -78,9 +85,7 @@ func spawn_wave():
 		current_wave.finished = true
 		timer.start()
 
-
 func check_for_wave_end(erased_enemy):
-	
 	if erased_enemy in current_enemies:
 		current_enemies.erase(erased_enemy)
 	if current_enemies == []:
@@ -89,5 +94,22 @@ func check_for_wave_end(erased_enemy):
 		check_for_victory()
 
 func check_for_victory():
-	if final_wave and current_wave.finished and Game.manager.health.health > 0:
+	if won:
+		return "won"
+	if not final_wave:
+		return "wrong wave"
+	if not current_wave.finished:
+		return "not finished"
+	if Game.manager.health.health <= 0:
+		return "dead"
+	if current_enemies == []:
+		won = true
 		print("victory, change effect later")
+		return "victory"
+	else:
+		clear_dead_enemies()
+		return "not caught"
+
+func test_check():
+	var result = check_for_victory()
+	print(result)
