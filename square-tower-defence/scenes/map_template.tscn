@@ -126,4 +126,10 @@ polygon = PackedVector2Array(-40, -86, 119, 22, 24, 94, -106, -46)
 disabled = true
 
 [node name="archerTower" parent="." instance=ExtResource("15_w0p8v")]
-position = Vector2(82, 82)
+position = Vector2(186, 100)
+
+[node name="archerTower2" parent="." instance=ExtResource("15_w0p8v")]
+position = Vector2(161, 75)
+
+[node name="archerTower4" parent="." instance=ExtResource("15_w0p8v")]
+position = Vector2(158, 104)

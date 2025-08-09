@@ -11,11 +11,11 @@ var final_wave : bool = false:
 	set(new):
 		final_wave = new
 		if not victory_checker:
-			var timer : Timer = Timer.new()
-			timer.wait_time = 1
-			add_child(timer)
-			timer.start()
-			timer.timeout.connect(check_for_victory)
+			var new_timer : Timer = Timer.new()
+			new_timer.wait_time = 1
+			add_child(new_timer)
+			new_timer.start()
+			new_timer.timeout.connect(check_for_victory)
 var victory_checker : Timer
 var won : bool = false
 
@@ -25,7 +25,6 @@ var current_wave : Wave
 var timer : Timer
 
 func _ready() -> void:
-	Engine.time_scale = 5
 	for i in range(spawner_array.size()):
 		spawners[i+1] = spawner_array[i]
 	for key in spawners:
@@ -110,6 +109,6 @@ func check_for_victory():
 		clear_dead_enemies()
 		return "not caught"
 
-func test_check():
-	var result = check_for_victory()
-	print(result)
+#func test_check():
+	#var result = check_for_victory()
+	#print(result)
