@@ -60,6 +60,7 @@ func die():
 	queue_free()
 
 func damage():
+	hurt.stop()
 	hurt.play(stats.animations["hurt"])
 
 func _exit_tree() -> void:

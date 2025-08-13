@@ -14,4 +14,5 @@ animations = {
 health = 10
 damage = 10
 speed = 50
+reward = 10
 metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
