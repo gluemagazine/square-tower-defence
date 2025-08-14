@@ -195,7 +195,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh075"]
 
 [node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "movement", "hurt", "attack", "health", "nav") groups=["enemy"]]
-collision_layer = 3
+collision_layer = 7
 collision_mask = 0
 script = ExtResource("1_sjt85")
 stats = SubResource("Resource_54dnp")
@@ -237,6 +237,8 @@ visible = false
 zoom = Vector2(2, 2)
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component", "holder")]
+collision_layer = 2
+collision_mask = 6
 script = ExtResource("4_54dnp")
 health_component = NodePath("../HealthComponent")
 holder = NodePath("..")

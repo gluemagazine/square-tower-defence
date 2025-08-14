@@ -72,6 +72,7 @@ func expire():
 func explode():
 	wait = true
 	visual.hide()
+	velocity = 0
 
 func attack_single():
 	for area in get_overlapping_areas():

@@ -16,10 +16,10 @@ bullet_stats = Dictionary[String, Variant]({
 "bullet_size": Vector2(10, 10),
 "damage": 1,
 "damage_one": true,
-"explode": false,
-"explosion_color": Color(1, 0, 0, 1),
-"explosion_damage": 1,
-"explosion_radius": 15,
+"explode": true,
+"explosion_color": Color(1, 0, 0, 0.584314),
+"explosion_damage": 100,
+"explosion_radius": 30,
 "homing": false,
 "velocity": 300
 })

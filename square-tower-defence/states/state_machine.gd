@@ -14,10 +14,12 @@ func _ready()->void:
 	currentState.enter()
 
 func _process(delta:float)->void:
+	return
 	if currentState:
 		currentState.update(delta)
 
 func _physics_process(delta:float)->void:
+	return
 	if currentState:
 		currentState.physicsUpdate(delta)
 
