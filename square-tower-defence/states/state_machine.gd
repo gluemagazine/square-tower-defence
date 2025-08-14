@@ -5,6 +5,7 @@ var stateDict:Dictionary
 var currentState:State
 @export var baseState:State
 
+#disabled, moved machine to tower code
 func _ready()->void:
 	for i:Node in get_children():
 		if i is State:
@@ -13,11 +14,13 @@ func _ready()->void:
 	currentState = baseState
 	currentState.enter()
 
+#disabled, moved machine to tower code
 func _process(delta:float)->void:
 	return
 	if currentState:
 		currentState.update(delta)
-
+		
+#disabled, moved machine to tower code
 func _physics_process(delta:float)->void:
 	return
 	if currentState:

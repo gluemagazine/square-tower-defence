@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 		shot.dir = (sightComp.target.global_position-global_position).normalized()
 		cool_down.start()
 		lock()
+
 func lock():
 	locked = true
 func unlock():
