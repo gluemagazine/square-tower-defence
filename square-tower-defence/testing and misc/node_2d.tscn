@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dum371m308ykk"]
 
 [ext_resource type="Script" uid="uid://gp2qjs1qojd3" path="res://testing and misc/node_2d.gd" id="1_fot8j"]
-[ext_resource type="Script" uid="uid://chm5b7j15jddi" path="res://resources/UI/tweener_animated_panel.gd" id="2_ad10i"]
-[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/UI/panel_animation.gd" id="2_fot8j"]
+[ext_resource type="Script" uid="uid://chm5b7j15jddi" path="res://resources/animations/scripts/animated_panel.gd" id="2_ad10i"]
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="2_fot8j"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_y0f4g"]
-[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/UI/property_animation.gd" id="3_y0f4g"]
+[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="3_y0f4g"]
 
 [sub_resource type="Resource" id="Resource_y0f4g"]
 script = ExtResource("3_y0f4g")

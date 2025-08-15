@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://biekub6ra6v5j"]
+[gd_scene load_steps=9 format=3 uid="uid://biekub6ra6v5j"]
 
 [ext_resource type="Script" uid="uid://b3r861w4pxcm8" path="res://scenes/enemies/enemy_template.gd" id="1_sjt85"]
-[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/UI/panel_animations_container.gd" id="2_m7kat"]
-[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_mafug"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_m7kat"]
 [ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="3_icmaq"]
 [ext_resource type="Script" uid="uid://l2w56u85nvr0" path="res://components/hitbox.gd" id="4_54dnp"]
 [ext_resource type="Script" uid="uid://3m7pl4h61a5r" path="res://components/health_component.gd" id="5_tmlbt"]
@@ -25,214 +24,18 @@ metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icmaq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_icmaq"]
-shader = ExtResource("2_mafug")
-shader_parameter/use_sprite_alpha = true
-shader_parameter/use_transition_texture = false
-shader_parameter/transition_type = 2
-shader_parameter/position = Vector2(0.5, 0.5)
-shader_parameter/invert = true
-shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 0.0
-shader_parameter/stagger = Vector2(0, 0)
-shader_parameter/stagger_frequency = Vector2i(2, 2)
-shader_parameter/flip_frequency = Vector2i(1, 1)
-shader_parameter/basic_feather = 0.0
-shader_parameter/use_mask_size = false
-shader_parameter/mask_size = Vector2(100, 100)
-shader_parameter/edges = 6
-shader_parameter/shape_feather = 0.0
-shader_parameter/sectors = 1
-shader_parameter/clock_feather = 0.0
-shader_parameter/progress = 1.0
-shader_parameter/progress_bias = Vector2(0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4mil"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_icmaq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:material:shader_parameter/rotation_angle")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:material:shader_parameter/shape_feather")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:material:shader_parameter/edges")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-
-[sub_resource type="Animation" id="Animation_m7kat"]
-resource_name = "change sides"
-length = 4.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:material:shader_parameter/edges")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3, 20]
-}
-
-[sub_resource type="Animation" id="Animation_e4mil"]
-resource_name = "hurt"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:material:shader_parameter/shape_feather")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_mafug"]
-resource_name = "walk"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:material:shader_parameter/rotation_angle")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 360.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_54dnp"]
-_data = {
-&"RESET": SubResource("Animation_icmaq"),
-&"change sides": SubResource("Animation_m7kat"),
-&"hurt": SubResource("Animation_e4mil"),
-&"walk": SubResource("Animation_mafug")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh075"]
 
-[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("panel", "movement", "hurt", "attack", "health", "nav") groups=["enemy"]]
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("health", "nav") groups=["enemy"]]
 collision_layer = 7
 collision_mask = 0
 script = ExtResource("1_sjt85")
 stats = SubResource("Resource_54dnp")
-panel = NodePath("Panel")
-movement = NodePath("movement")
-hurt = NodePath("hurt")
-attack = NodePath("attack")
 health = NodePath("HealthComponent")
 nav = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_icmaq")
-
-[node name="Panel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_icmaq")
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_e4mil")
-
-[node name="movement" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_54dnp")
-}
-
-[node name="hurt" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_54dnp")
-}
-
-[node name="attack" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_54dnp")
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false

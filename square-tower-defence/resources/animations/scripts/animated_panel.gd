@@ -3,7 +3,7 @@ class_name AnimatedPanel
 
 @export var color : Color
 @export var animation_resources : Array[PanelAnimation]
-@export var starting_material : ShaderMaterial
+@export var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicate()
 
 var stylebox = StyleBoxFlat.new()
 var animation_player : AnimationPlayer
@@ -27,7 +27,7 @@ func play_animation(animation_name):
 			animation_name = current_animation
 		else:
 			return
-	stop(false)
+	#stop(false)
 	for animation in animation_resources:
 		if not animation.animation_name == animation_name:
 			continue

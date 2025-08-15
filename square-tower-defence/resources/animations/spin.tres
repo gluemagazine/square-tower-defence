@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PropertyAnimation" load_steps=2 format=3 uid="uid://bpas0a87vke8n"]
+
+[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="1_g5mki"]
+
+[resource]
+script = ExtResource("1_g5mki")
+property = "rotation_angle"
+number_animated = true
+initial_value = 0.0
+final_value = 360.0
+initial_color = Color(0, 0, 0, 1)
+final_color = Color(0, 0, 0, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"

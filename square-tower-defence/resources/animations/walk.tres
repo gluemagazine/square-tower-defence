@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PanelAnimation" load_steps=4 format=3 uid="uid://crt7om12wk80p"]
+
+[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="1_u5s0x"]
+[ext_resource type="Resource" uid="uid://bpas0a87vke8n" path="res://resources/animations/spin.tres" id="2_kixmr"]
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="3_3whor"]
+
+[resource]
+script = ExtResource("3_3whor")
+animation_name = "walk"
+duration = 2.0
+loop = true
+properties = Array[ExtResource("1_u5s0x")]([ExtResource("2_kixmr")])
+metadata/_custom_type_script = "uid://bttbxankdbyq"

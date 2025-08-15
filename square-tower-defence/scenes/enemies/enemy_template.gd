@@ -1,10 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 @export var stats : EnemyResource
-@export var panel : Panel
-@export var movement : AnimationPlayer 
-@export var hurt: AnimationPlayer
-@export var attack: AnimationPlayer 
+var panels : Array[AnimatedPanel]
 
 @export var health : HealthComponent
 @export var target : Node2D
@@ -31,15 +28,19 @@ func _ready() -> void:
 	health.max_health = stats.health
 	health.health = stats.health
 	health.death.connect(die)
-	
-	panel.material = panel.material.duplicate(true)
-	panel.material.set_shader_parameter("edges",stats.sides)
-	panel_texture.bg_color = stats.color
-	panel.add_theme_stylebox_override("panel",panel_texture)
-	
-	movement.play(stats.animations["walk"])
-	
 	health.damaged.connect(damage)
+	
+	for key in stats.panels:
+		var panel = AnimatedPanel.new()
+		var params = stats.panels[key]
+		panel.color = params.color
+		panel.starting_material = params.starting_material.duplicate()
+		panel.animation_resources = params.animations
+		panel.size = params.dimentions
+		add_child(panel)
+		panel.position = -params.dimentions / 2
+	for panel in panels:
+		panel.play_animation("walk")
 
 func _physics_process(_delta: float) -> void:
 	var next_position = nav.get_next_path_position()
@@ -60,8 +61,8 @@ func die():
 	queue_free()
 
 func damage():
-	hurt.stop()
-	hurt.play(stats.animations["hurt"])
+	for panel in panels:
+		panel.play_on_top("hurt")
 
 func _exit_tree() -> void:
 	Game.enemy_killed.emit()

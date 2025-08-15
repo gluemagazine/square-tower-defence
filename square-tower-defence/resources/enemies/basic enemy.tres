@@ -1,6 +1,18 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://40154clyob1r"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=7 format=3 uid="uid://40154clyob1r"]
 
 [ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="1_6v01x"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="1_88uqf"]
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="2_lnn5f"]
+[ext_resource type="Resource" uid="uid://crt7om12wk80p" path="res://resources/animations/walk.tres" id="3_as0px"]
+[ext_resource type="Material" uid="uid://b0cobtuo68gj7" path="res://resources/enemies/materials/default shader material.tres" id="4_0m457"]
+
+[sub_resource type="Resource" id="Resource_svl2q"]
+script = ExtResource("1_88uqf")
+dimentions = Vector2(20, 20)
+animations = Array[ExtResource("2_lnn5f")]([ExtResource("3_as0px")])
+color = Color(0, 0, 0, 1)
+starting_material = ExtResource("4_0m457")
+metadata/_custom_type_script = "uid://dqusptgsgmn34"
 
 [resource]
 script = ExtResource("1_6v01x")
@@ -11,6 +23,9 @@ animations = {
 &"hurt": "hurt",
 &"walk": "walk"
 }
+panels = Dictionary[int, ExtResource("1_88uqf")]({
+0: SubResource("Resource_svl2q")
+})
 health = 100
 damage = 10
 speed = 50
