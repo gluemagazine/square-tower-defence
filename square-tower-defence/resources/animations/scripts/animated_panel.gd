@@ -118,5 +118,13 @@ func reset():
 		material.set_shader_parameter(value,starting_values[value])
 	current_animation = ""
 
+func create_container():
+	var container = PanelAnimationContainer.new()
+	container.color = color
+	container.animations = animation_resources.duplicate(true)
+	container.starting_material = starting_material.duplicate()
+	container.dimentions = size 
+	return container
+
 @export_tool_button("run animation") var call : Callable = self.play_index.bind(0)
 @export_tool_button("stop animation") var new_call : Callable = self.stop.bind(true)

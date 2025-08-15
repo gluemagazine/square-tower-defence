@@ -15,7 +15,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 269.902
+shader_parameter/rotation_angle = 0.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -60,7 +60,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 194.951
+shader_parameter/rotation_angle = 60.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -105,7 +105,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 134.951
+shader_parameter/rotation_angle = 0.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -119,20 +119,21 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 0.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx4m5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rion"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="AnimationBuilder" type="Node2D"]
 script = ExtResource("1_dctvm")
+path = "res://resources/animations/testing/"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [node name="AnimatedPanel" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_1kfbc")
-offset_left = -20.0
+offset_left = -74.0
 offset_top = -20.0
-offset_right = 20.0
+offset_right = -34.0
 offset_bottom = 20.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1kfbc")
 script = ExtResource("1_ktjvc")
@@ -167,7 +168,7 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_xx4m5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3rion")
 script = ExtResource("1_ktjvc")
 color = Color(0, 0, 0, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([ExtResource("5_xq12u")])
