@@ -10,6 +10,8 @@ class_name EnemyResource
 	"hurt" = "hurt"
 }
 
+@export var panels : Dictionary[int,PanelAnimationContainer]
+
 @export var health : int = 10
 @export var damage : int = 10
 @export var speed : int = 100
