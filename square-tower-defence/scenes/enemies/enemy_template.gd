@@ -33,12 +33,10 @@ func _ready() -> void:
 	for key in stats.panels:
 		var panel = AnimatedPanel.new()
 		var params = stats.panels[key]
-		panel.color = params.color
-		panel.starting_material = params.starting_material.duplicate()
-		panel.animation_resources = params.animations
-		panel.size = params.dimentions
+		panel.setup_from_container(params)
 		add_child(panel)
 		panel.position = -params.dimentions / 2
+		panels.append(panel)
 	for panel in panels:
 		panel.play_animation("walk")
 

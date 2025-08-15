@@ -2,6 +2,7 @@ extends Node2D
 class_name Base
 
 @export var hitbox : HitboxComponent
+@onready var panel: AnimatedPanel = $AnimatedPanel
 
 func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	if body is Enemy:
@@ -10,3 +11,4 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 		hitbox.damage(attack)
 		body.queue_free()
 		Game.manager.damage(attack)
+		panel.play_on_top("hurt")
