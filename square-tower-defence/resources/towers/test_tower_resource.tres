@@ -8,7 +8,7 @@ script = ExtResource("2_xiilh")
 tower_name = "Archer"
 sides = 3
 color = Color(0, 1, 0, 1)
-cooldown = 0.01
+cooldown = 1.0
 range_radius = 50
 bullet_scene = ExtResource("1_5dxai")
 bullet_stats = Dictionary[String, Variant]({
@@ -18,8 +18,8 @@ bullet_stats = Dictionary[String, Variant]({
 "damage_one": true,
 "explode": true,
 "explosion_color": Color(1, 0, 0, 0.196078),
-"explosion_damage": 1,
-"explosion_radius": 1000,
+"explosion_damage": 25,
+"explosion_radius": 100,
 "homing": false,
 "velocity": 300
 })

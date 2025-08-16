@@ -25,13 +25,13 @@ shader_parameter/basic_feather = 0.0
 shader_parameter/use_mask_size = false
 shader_parameter/mask_size = Vector2(100, 100)
 shader_parameter/edges = 3
-shader_parameter/shape_feather = 0.0
+shader_parameter/shape_feather = 0.1
 shader_parameter/sectors = 1
 shader_parameter/clock_feather = 0.0
-shader_parameter/progress = 1.0
+shader_parameter/progress = 0.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqfsp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40w10"]
 bg_color = Color(0, 0, 1, 1)
 
 [node name="Base" type="Node2D" node_paths=PackedStringArray("hitbox")]
@@ -52,7 +52,7 @@ shape = SubResource("RectangleShape2D_22p3g")
 material = SubResource("ShaderMaterial_hh5oj")
 offset_right = 32.0
 offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vqfsp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_40w10")
 script = ExtResource("3_t45w4")
 color = Color(0, 0, 1, 1)
 animation_resources = Array[ExtResource("5_xvvcp")]([])

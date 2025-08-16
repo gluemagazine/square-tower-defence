@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="Wave" load_steps=4 format=3 uid="uid://bslwvov6rrvqv"]
+[gd_resource type="Resource" script_class="Wave" load_steps=5 format=3 uid="uid://bslwvov6rrvqv"]
 
 [ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="1_qhdjo"]
 [ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_0fo7l"]
 [ext_resource type="Resource" uid="uid://14321q0em26i" path="res://resources/enemies/fast enemy.tres" id="2_e7t6q"]
+[ext_resource type="Resource" uid="uid://dami5qp85u4yd" path="res://resources/enemies/star.tres" id="3_e7t6q"]
 
 [resource]
 script = ExtResource("2_0fo7l")
 enemies = Dictionary[ExtResource("1_qhdjo"), int]({
-ExtResource("2_e7t6q"): 20
+ExtResource("2_e7t6q"): 20,
+ExtResource("3_e7t6q"): 1
 })
 duration = 1.0
 spawn_interval = 0.5

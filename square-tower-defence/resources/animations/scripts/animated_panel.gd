@@ -20,6 +20,8 @@ var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicat
 		starting_material = new
 		material = starting_material
 
+var on_alt = false
+
 func _get_property_list() -> Array[Dictionary]:
 	var properties : Array[Dictionary] = []
 	
@@ -50,9 +52,10 @@ var timer : Timer
 
 func setup_from_container(container : PanelAnimationContainer):
 	color = container.color
-	animation_resources = container.animations
-	starting_material = container.starting_material
+	animation_resources = container.animations.duplicate(true)
+	starting_material = container.starting_material.duplicate(true)
 	size = container.dimentions
+	starting_values = container.starting_values
 
 func adjust_n_of_sides(new_num):
 	material.set_shader_parameter("sides",new_num)
@@ -65,6 +68,11 @@ func _ready() -> void:
 	add_child(timer)
 	timer.timeout.connect(play_animation.bind(""))
 	timer.one_shot = true
+	for value in starting_values:
+		material.set_shader_parameter(value,starting_values[value])
+	stylebox.bg_color = color
+	true_duplicate()
+	starting_material = starting_material.duplicate()
 
 var current_tweeners : Array[Tween] = []
 var current_animation = "walk"
@@ -81,13 +89,17 @@ func play_animation(animation_name):
 		if animation.loop:
 			timer.wait_time = animation.duration
 			timer.start()
+			
+		if not animation.loop:
+
+			timer.stop()
 		var properties = animation.properties
 		
-		if animation.on_secondary:
-			animation.on_secondary = false
+		if on_alt:
+			on_alt = false
 			properties = animation.secondary_animation.properties
 		elif animation.secondary_animation:
-			animation.on_secondary = true
+			on_alt = true
 		
 		
 		
@@ -137,3 +149,18 @@ func create_container():
 
 @export_tool_button("run animation") var call : Callable = self.play_index.bind(0)
 @export_tool_button("stop animation") var new_call : Callable = self.stop.bind(true)
+
+func true_duplicate():
+	var dupe = []
+	for animation in animation_resources:
+		var anim := PanelAnimation.new()
+		anim.animation_name = animation.animation_name
+		anim.duration = animation.duration
+		anim.loop = animation.loop
+		for property in animation.properties:
+			anim.properties.append(property.duplicate(true))
+		anim.played = animation.played
+		anim.on_secondary = animation.on_secondary
+		if animation.secondary_animation:
+			anim.secondary_animation = animation.secondary_animation.duplicate(true)
+		dupe.append(anim)

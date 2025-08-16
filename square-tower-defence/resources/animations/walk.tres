@@ -10,4 +10,6 @@ animation_name = "walk"
 duration = 2.0
 loop = true
 properties = Array[ExtResource("1_u5s0x")]([ExtResource("2_kixmr")])
+played = false
+on_secondary = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"

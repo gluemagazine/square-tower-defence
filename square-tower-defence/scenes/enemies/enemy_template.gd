@@ -29,7 +29,6 @@ func _ready() -> void:
 	health.health = stats.health
 	health.death.connect(die)
 	health.damaged.connect(damage)
-	
 	for key in stats.panels:
 		var panel = AnimatedPanel.new()
 		var params = stats.panels[key]
@@ -38,7 +37,8 @@ func _ready() -> void:
 		panel.position = -params.dimentions / 2
 		panels.append(panel)
 	for panel in panels:
-		panel.play_animation("walk")
+		panel.stop()
+		panel.play_index(0)
 
 func _physics_process(_delta: float) -> void:
 	var next_position = nav.get_next_path_position()

@@ -7,5 +7,7 @@ class_name PanelAnimation
 
 @export var properties : Array[PropertyAnimation]
 
+@export var played : bool = false
+
 @export var on_secondary : bool = false
 @export var secondary_animation : PanelAnimation = null

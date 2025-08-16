@@ -8,13 +8,6 @@
 
 [sub_resource type="Resource" id="Resource_54dnp"]
 script = ExtResource("3_icmaq")
-sides = 3
-color = Color(1, 1, 1, 1)
-animations = {
-&"attack": "attack",
-&"hurt": "hurt",
-&"walk": "walk"
-}
 panels = Dictionary[int, ExtResource("2_m7kat")]({})
 health = 10
 damage = 10
