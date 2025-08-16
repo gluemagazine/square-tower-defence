@@ -9,8 +9,8 @@
 script = ExtResource("2_0fo7l")
 enemies = Dictionary[ExtResource("1_qhdjo"), int]({
 ExtResource("2_e7t6q"): 20,
-ExtResource("3_e7t6q"): 1
+ExtResource("3_e7t6q"): 8
 })
 duration = 1.0
-spawn_interval = 0.5
+spawn_interval = 1.0
 metadata/_custom_type_script = "uid://cimw6eha4lytp"

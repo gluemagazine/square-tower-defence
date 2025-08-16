@@ -101,7 +101,7 @@ on_secondary = false
 secondary_animation = SubResource("Resource_d057m")
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xx4m5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3rion"]
 shader = ExtResource("5_3rion")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -123,7 +123,7 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 0.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg3kb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx4m5"]
 bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_6bx5l"]
@@ -195,7 +195,7 @@ on_secondary = false
 secondary_animation = SubResource("Resource_xb0la")
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xb0la"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg3kb"]
 shader = ExtResource("5_3rion")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -217,7 +217,7 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 0.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rr8g"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3rcj"]
 bg_color = Color(0, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_pf1yj"]
@@ -306,12 +306,12 @@ starting_material = SubResource("ShaderMaterial_1kfbc")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [node name="AnimatedPanel2" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_xx4m5")
+material = SubResource("ShaderMaterial_3rion")
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_lg3kb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xx4m5")
 script = ExtResource("1_ktjvc")
 starting_values = Dictionary[String, Variant]({
 "edges": 3,
@@ -322,18 +322,18 @@ starting_values = Dictionary[String, Variant]({
 })
 color = Color(1, 0, 0, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_l1i5v")])
-starting_material = SubResource("ShaderMaterial_xx4m5")
+starting_material = SubResource("ShaderMaterial_3rion")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [node name="AnimatedPanel3" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_xb0la")
+material = SubResource("ShaderMaterial_lg3kb")
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4rr8g")
+theme_override_styles/panel = SubResource("StyleBoxFlat_d3rcj")
 script = ExtResource("1_ktjvc")
 color = Color(0, 0, 1, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_h8e6y")])
-starting_material = SubResource("ShaderMaterial_xb0la")
+starting_material = SubResource("ShaderMaterial_lg3kb")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"

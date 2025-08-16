@@ -52,18 +52,18 @@ played = false
 on_secondary = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="Resource" id="Resource_l1i5v"]
+[sub_resource type="Resource" id="Resource_h8e6y"]
 script = ExtResource("1_ar1cn")
 animation_name = "walk"
 duration = 2.0
 loop = true
 properties = Array[ExtResource("2_cdvo4")]([SubResource("Resource_pf1yj"), SubResource("Resource_m5ccf")])
 played = false
-on_secondary = true
+on_secondary = false
 secondary_animation = SubResource("Resource_4rr8g")
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yoh7u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ar1cn"]
 shader = ExtResource("5_841vl")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -89,9 +89,9 @@ shader_parameter/progress_bias = Vector2(0, 0)
 script = ExtResource("4_utxn0")
 layer_num = 1
 dimentions = Vector2(40, 40)
-animations = Array[ExtResource("1_ar1cn")]([SubResource("Resource_l1i5v")])
-color = Color(0, 0, 0, 1)
-starting_material = SubResource("ShaderMaterial_yoh7u")
+animations = Array[ExtResource("1_ar1cn")]([SubResource("Resource_h8e6y")])
+color = Color(0, 0, 1, 1)
+starting_material = SubResource("ShaderMaterial_ar1cn")
 starting_values = Dictionary[String, Variant]({
 "edges": 3,
 "position": Vector2(0.5, 0.5),
