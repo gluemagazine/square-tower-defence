@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="3_hdth1"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="4_ls8m5"]
 
-[sub_resource type="Resource" id="Resource_1kfbc"]
+[sub_resource type="Resource" id="Resource_qdivu"]
 script = ExtResource("2_j8fqp")
 property = "color"
 number_animated = false
@@ -29,7 +29,7 @@ start = 0.0
 end = 2.0
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_qdivu"]
+[sub_resource type="Resource" id="Resource_ugsxj"]
 script = ExtResource("2_j8fqp")
 property = "color"
 number_animated = false
@@ -53,28 +53,28 @@ start = 0.0
 end = 2.0
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_d057m"]
+[sub_resource type="Resource" id="Resource_j8fqp"]
 script = ExtResource("1_ugsxj")
 animation_name = "shift"
 duration = 2.0
 loop = true
-properties = Array[ExtResource("2_j8fqp")]([SubResource("Resource_qdivu"), SubResource("Resource_xx4m5")])
+properties = Array[ExtResource("2_j8fqp")]([SubResource("Resource_ugsxj"), SubResource("Resource_xx4m5")])
 played = false
 on_secondary = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="Resource" id="Resource_3rion"]
+[sub_resource type="Resource" id="Resource_lg3kb"]
 script = ExtResource("1_ugsxj")
-animation_name = "shift"
+animation_name = "walk"
 duration = 2.0
 loop = true
-properties = Array[ExtResource("2_j8fqp")]([SubResource("Resource_1kfbc"), SubResource("Resource_d3rcj")])
+properties = Array[ExtResource("2_j8fqp")]([SubResource("Resource_qdivu"), SubResource("Resource_d3rcj")])
 played = false
-on_secondary = false
-secondary_animation = SubResource("Resource_d057m")
+on_secondary = true
+secondary_animation = SubResource("Resource_j8fqp")
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugsxj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0acb"]
 shader = ExtResource("4_ls8m5")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -100,11 +100,11 @@ shader_parameter/progress_bias = Vector2(0, 0)
 script = ExtResource("3_hdth1")
 layer_num = 1
 dimentions = Vector2(40, 40)
-animations = Array[ExtResource("1_ugsxj")]([SubResource("Resource_3rion")])
-color = Color(0, 1, 0, 1)
-starting_material = SubResource("ShaderMaterial_ugsxj")
+animations = Array[ExtResource("1_ugsxj")]([SubResource("Resource_lg3kb")])
+color = Color(0.647131, 0.6766, 0.825152, 1)
+starting_material = SubResource("ShaderMaterial_g0acb")
 starting_values = Dictionary[String, Variant]({
-"edges": 3,
+"edges": 6,
 "position": Vector2(0.5, 0.5),
 "progress": 1,
 "rotation_angle": 0.0,
