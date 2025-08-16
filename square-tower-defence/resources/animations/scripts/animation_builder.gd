@@ -2,6 +2,7 @@
 extends Node2D
 
 @export var path : String 
+@export var resource_name : String
 
 func run_animation():
 	for child in get_children():
@@ -19,7 +20,7 @@ func save_animations():
 			animations.append(child.create_container())
 	var index = 1
 	for animation in animations:
-		ResourceSaver.save(animation,path + "container%s.tres" %str(index))
+		ResourceSaver.save(animation,path + resource_name + "%s.tres" %str(index))
 		index += 1
 
 @export_tool_button("save anmiation") var anim_save : Callable = self.save_animations.bind()

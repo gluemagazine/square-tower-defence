@@ -20,7 +20,6 @@ var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicat
 		starting_material = new
 		material = starting_material
 
-
 func _get_property_list() -> Array[Dictionary]:
 	var properties : Array[Dictionary] = []
 	
@@ -74,6 +73,7 @@ func play_animation(animation_name):
 	if animation_name == "":
 		if current_animation != "":
 			animation_name = current_animation
+	
 	#stop(false)
 	for animation in animation_resources:
 		if not animation.animation_name == animation_name:
@@ -81,8 +81,17 @@ func play_animation(animation_name):
 		if animation.loop:
 			timer.wait_time = animation.duration
 			timer.start()
+		var properties = animation.properties
 		
-		for property in animation.properties:
+		if animation.on_secondary:
+			animation.on_secondary = false
+			properties = animation.secondary_animation.properties
+		elif animation.secondary_animation:
+			animation.on_secondary = true
+		
+		
+		
+		for property in properties:
 			var tweener = create_tween()
 			current_tweeners.append(tweener)
 			if property.number_animated:
@@ -104,7 +113,6 @@ func play_on_top(animation_name):
 func play_index(index : int):
 	current_animation = animation_resources[0].animation_name
 	play_animation(animation_resources[0].animation_name)
-	
 
 func stop(reset = true):
 	for tweener in current_tweeners:
@@ -116,6 +124,7 @@ func stop(reset = true):
 func reset():
 	for value in starting_values:
 		material.set_shader_parameter(value,starting_values[value])
+	stylebox.bg_color = color
 	current_animation = ""
 
 func create_container():

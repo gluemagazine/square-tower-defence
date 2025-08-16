@@ -1,13 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgubqo0qquoyr"]
+[gd_scene load_steps=9 format=3 uid="uid://bgubqo0qquoyr"]
 
 [ext_resource type="Script" uid="uid://bs0f5xto8nepy" path="res://scenes/base.gd" id="1_pvqg0"]
+[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="3_40w10"]
 [ext_resource type="Script" uid="uid://l2w56u85nvr0" path="res://components/hitbox.gd" id="3_h5ip5"]
 [ext_resource type="Script" uid="uid://chm5b7j15jddi" path="res://resources/animations/scripts/animated_panel.gd" id="3_t45w4"]
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="5_xvvcp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22p3g"]
 size = Vector2(32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t45w4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh5oj"]
+shader = ExtResource("3_40w10")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqfsp"]
 bg_color = Color(0, 0, 1, 1)
 
 [node name="Base" type="Node2D" node_paths=PackedStringArray("hitbox")]
@@ -25,11 +49,14 @@ position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_22p3g")
 
 [node name="AnimatedPanel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_hh5oj")
 offset_right = 32.0
 offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_t45w4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vqfsp")
 script = ExtResource("3_t45w4")
 color = Color(0, 0, 1, 1)
+animation_resources = Array[ExtResource("5_xvvcp")]([])
+starting_material = SubResource("ShaderMaterial_hh5oj")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="PanelAnimationContainer" load_steps=12 format=3 uid="uid://bttds11qjdn3i"]
+
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="1_usjwp"]
+[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="2_x82nc"]
+[ext_resource type="Resource" uid="uid://bpas0a87vke8n" path="res://resources/animations/spin.tres" id="3_8xkrf"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="4_dwyis"]
+[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="5_5vibk"]
+
+[sub_resource type="Resource" id="Resource_pf1yj"]
+script = ExtResource("2_x82nc")
+property = "rotation_angle"
+number_animated = true
+initial_value = 0.0
+final_value = 360.0
+initial_color = Color(0, 0, 0, 1)
+final_color = Color(0, 0, 0, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_m5ccf"]
+script = ExtResource("2_x82nc")
+property = "rotation_angle"
+number_animated = false
+initial_value = 0.0
+final_value = 0.0
+initial_color = Color(0.380392, 0.380392, 0.380392, 1)
+final_color = Color(1, 1, 1, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_wecuw"]
+script = ExtResource("2_x82nc")
+property = "rotation_angle"
+number_animated = false
+initial_value = 0.0
+final_value = 0.0
+initial_color = Color(1, 1, 1, 1)
+final_color = Color(0.380392, 0.380392, 0.380392, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_4rr8g"]
+script = ExtResource("1_usjwp")
+animation_name = "walk"
+duration = 2.0
+loop = true
+properties = Array[ExtResource("2_x82nc")]([ExtResource("3_8xkrf"), SubResource("Resource_wecuw")])
+on_secondary = false
+metadata/_custom_type_script = "uid://bttbxankdbyq"
+
+[sub_resource type="Resource" id="Resource_l1i5v"]
+script = ExtResource("1_usjwp")
+animation_name = "walk"
+duration = 2.0
+loop = true
+properties = Array[ExtResource("2_x82nc")]([SubResource("Resource_pf1yj"), SubResource("Resource_m5ccf")])
+on_secondary = false
+secondary_animation = SubResource("Resource_4rr8g")
+metadata/_custom_type_script = "uid://bttbxankdbyq"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywnh4"]
+shader = ExtResource("5_5vibk")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 352.005
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[resource]
+script = ExtResource("4_dwyis")
+dimentions = Vector2(40, 40)
+animations = Array[ExtResource("1_usjwp")]([SubResource("Resource_l1i5v")])
+color = Color(0, 0, 0, 1)
+starting_material = SubResource("ShaderMaterial_ywnh4")
