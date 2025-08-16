@@ -29,6 +29,28 @@ func create_panel_with_shader(sides,color):
 	
 	return panel
 
+##sorts by a property value, prioritizing the lowest value
+
+func sort_prop_low(property : String,nodes : Array):
+	var best = INF
+	var best_node = null
+	for node in nodes:
+		if node.get(property) < best:
+			best_node = node
+			best = node.get(property)
+	return best_node
+
+##sorts by a property value, prioritizing the highest value
+func sort_prop_high(property,nodes):
+	var best = -INF
+	var best_node = null
+	for node in nodes:
+		if node.get(property) > best:
+			best_node = node
+			best = node.get(property)
+	return best_node
+
+
 ##sets the engine time scale to a given float
 func set_speed_scale(scale : float):
 	Engine.time_scale = scale

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://kl6qgmxpv6il"]
+[gd_scene load_steps=19 format=4 uid="uid://kl6qgmxpv6il"]
 
 [ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://scenes/enemies/wave_manager.gd" id="1_fjhfp"]
 [ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/player_manager.tscn" id="1_xscvl"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_gj7s8"]
 [ext_resource type="Script" uid="uid://dsrsqrxwy3wns" path="res://scenes/enemies/manual_spawner.gd" id="2_xd6eh"]
 [ext_resource type="Resource" uid="uid://ce5c5uu5q1ncf" path="res://resources/waves/basic wave.tres" id="3_xscvl"]
-[ext_resource type="Resource" uid="uid://bd5e1itlkx167" path="res://resources/waves/stars.tres" id="5_7ebxn"]
 [ext_resource type="Resource" uid="uid://bslwvov6rrvqv" path="res://resources/waves/fast wave.tres" id="5_7nsrw"]
 [ext_resource type="TileSet" uid="uid://c4hina6s2qtir" path="res://resources/tilemaps/map tiles.tres" id="5_24haj"]
 [ext_resource type="TileSet" uid="uid://ckmygcjmpbdex" path="res://resources/tilemaps/navigation tiles.tres" id="6_fjhfp"]
@@ -33,7 +32,7 @@ ExtResource("7_s6h2y"): 10,
 ExtResource("8_w0p8v"): 5
 })
 duration = 5.0
-spawn_interval = 0.0
+spawn_interval = 1.0
 metadata/_custom_type_script = "uid://cimw6eha4lytp"
 
 [node name="Map Template" type="Node2D"]
@@ -44,7 +43,7 @@ info = SubResource("Resource_7ebxn")
 [node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("spawner_array")]
 script = ExtResource("1_fjhfp")
 spawner_array = [NodePath("ManualSpawner"), NodePath("ManualSpawner2"), NodePath("ManualSpawner3"), NodePath("ManualSpawner4")]
-waves = Array[ExtResource("2_gj7s8")]([ExtResource("5_7ebxn"), ExtResource("3_xscvl"), ExtResource("5_7nsrw"), SubResource("Resource_73rso")])
+waves = Array[ExtResource("2_gj7s8")]([ExtResource("3_xscvl"), ExtResource("5_7nsrw"), SubResource("Resource_73rso")])
 metadata/_custom_type_script = "uid://bplmlt0rdsi7r"
 
 [node name="ManualSpawner" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
@@ -126,11 +125,11 @@ visible = false
 polygon = PackedVector2Array(-40, -86, 119, 22, 24, 94, -106, -46)
 disabled = true
 
-[node name="archerTower" parent="." instance=ExtResource("15_w0p8v")]
-position = Vector2(329, 223)
-
 [node name="archerTower2" parent="." instance=ExtResource("15_w0p8v")]
 position = Vector2(161, 75)
 
+[node name="archerTower3" parent="." instance=ExtResource("15_w0p8v")]
+position = Vector2(107, 233)
+
 [node name="archerTower4" parent="." instance=ExtResource("15_w0p8v")]
-position = Vector2(112, 231)
+position = Vector2(323, 231)

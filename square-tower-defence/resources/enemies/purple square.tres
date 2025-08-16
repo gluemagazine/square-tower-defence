@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=7 format=3 uid="uid://cmbv1bxs7gi1f"]
+
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="1_5ge2m"]
+[ext_resource type="Resource" uid="uid://cfgarteaew7vs" path="res://resources/animations/random stuff/star with purple thing1.tres" id="2_4kh1p"]
+[ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="2_efrbn"]
+[ext_resource type="Resource" uid="uid://dcphxfx2nnwyg" path="res://resources/animations/random stuff/star with purple thing2.tres" id="3_75abl"]
+[ext_resource type="Resource" uid="uid://cxyyf36ootb61" path="res://resources/animations/random stuff/star with purple thing4.tres" id="4_8jw5s"]
+[ext_resource type="Resource" uid="uid://ofh40ay1q3gc" path="res://resources/animations/random stuff/star with purple thing3.tres" id="5_gyx8j"]
+
+[resource]
+script = ExtResource("2_efrbn")
+panels = Dictionary[int, ExtResource("1_5ge2m")]({
+0: ExtResource("2_4kh1p"),
+1: ExtResource("3_75abl"),
+2: ExtResource("5_gyx8j"),
+3: ExtResource("4_8jw5s")
+})
+health = 10000000000
+damage = 100000000
+speed = 15
+reward = 1000000000
+metadata/_custom_type_script = "uid://n1c5q3ar4ftf"

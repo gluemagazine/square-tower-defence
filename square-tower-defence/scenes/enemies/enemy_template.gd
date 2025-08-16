@@ -10,6 +10,7 @@ var panels : Array[AnimatedPanel]
 var shader : Shader = preload("uid://chudojcwfpmos").duplicate()
 var panel_texture = StyleBoxFlat.new()
 var speed
+var distance = 0
 
 signal killed
 
@@ -39,14 +40,21 @@ func _ready() -> void:
 	for panel in panels:
 		panel.stop()
 		panel.play_index(0)
+	await get_tree().physics_frame
+	nav.get_next_path_position()
+	var points = nav.get_current_navigation_path()
+	points.insert(0,global_position)
+	for i in range(points.size() - 1):
+		distance += points[i].distance_to(points[i+1])
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var next_position = nav.get_next_path_position()
 	var new_velocity = global_position.direction_to(next_position) * speed
 	if nav.avoidance_enabled:
 		nav.set_velocity(new_velocity)
 	else:
 		on_velocity_computed(new_velocity)
+	distance -= velocity.length() * delta
 	move_and_slide()
 
 func on_velocity_computed(safe_elocity):

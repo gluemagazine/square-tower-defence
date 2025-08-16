@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22p3g"]
 size = Vector2(32, 32)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh5oj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40w10"]
 shader = ExtResource("3_40w10")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -24,14 +24,14 @@ shader_parameter/flip_frequency = Vector2i(1, 1)
 shader_parameter/basic_feather = 0.0
 shader_parameter/use_mask_size = false
 shader_parameter/mask_size = Vector2(100, 100)
-shader_parameter/edges = 3
+shader_parameter/edges = 4
 shader_parameter/shape_feather = 0.1
 shader_parameter/sectors = 1
 shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 0.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40w10"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvvcp"]
 bg_color = Color(0, 0, 1, 1)
 
 [node name="Base" type="Node2D" node_paths=PackedStringArray("hitbox")]
@@ -49,14 +49,21 @@ position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_22p3g")
 
 [node name="AnimatedPanel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_hh5oj")
+material = SubResource("ShaderMaterial_40w10")
 offset_right = 32.0
 offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_40w10")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvvcp")
 script = ExtResource("3_t45w4")
+starting_values = Dictionary[String, Variant]({
+"edges": 4,
+"position": Vector2(0.5, 0.5),
+"progress": 1,
+"rotation_angle": 0.0,
+"shape_feather": 0
+})
 color = Color(0, 0, 1, 1)
 animation_resources = Array[ExtResource("5_xvvcp")]([])
-starting_material = SubResource("ShaderMaterial_hh5oj")
+starting_material = SubResource("ShaderMaterial_40w10")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
