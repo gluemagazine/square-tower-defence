@@ -15,7 +15,6 @@ var distance = 0
 signal killed
 
 func _ready() -> void:
-	
 	if target:
 		nav.target_position = target.global_position
 	else:
@@ -43,11 +42,11 @@ func _ready() -> void:
 	await get_tree().physics_frame
 	nav.get_next_path_position()
 	var points = nav.get_current_navigation_path()
-	points.insert(0,global_position)
 	for i in range(points.size() - 1):
 		distance += points[i].distance_to(points[i+1])
 
 func _physics_process(delta: float) -> void:
+	$Label.text = str(distance)
 	var next_position = nav.get_next_path_position()
 	var new_velocity = global_position.direction_to(next_position) * speed
 	if nav.avoidance_enabled:

@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("2_rgcve")
 enemies = Dictionary[ExtResource("1_jl4kw"), int]({
-ExtResource("2_4rerq"): 4
+ExtResource("2_4rerq"): 8
 })
-duration = 20.0
-spawn_interval = 2.0
+duration = 30.0
+spawn_interval = 5.0
 metadata/_custom_type_script = "uid://cimw6eha4lytp"

@@ -8,6 +8,7 @@ signal damaged
 @export var health : int = 100
 @export var max_health : int = 100
 var percent : float = 100
+var dead = false
 
 func _ready() -> void:
 	health_changed.connect(calculate_percent)
@@ -38,6 +39,9 @@ func check():
 		cap_health()
 
 func die():
+	if dead:
+		return
+	dead = true
 	health = 0
 	death.emit()
 

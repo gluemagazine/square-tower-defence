@@ -15,7 +15,7 @@ panels = Dictionary[int, ExtResource("1_5ge2m")]({
 2: ExtResource("5_gyx8j"),
 3: ExtResource("4_8jw5s")
 })
-health = 10000000000
+health = 1000000
 damage = 100000000
 speed = 15
 reward = 1000000000

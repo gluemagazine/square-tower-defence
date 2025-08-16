@@ -4,7 +4,11 @@ class_name Bullet
 
 @export var damage : int = 1
 @export var velocity : int = 300
-@export var dir : Vector2 = Vector2(1,0)
+@export var dir : Vector2 = Vector2(1,0):
+	set(new):
+		dir = new
+		global_rotation = dir.angle() + PI / 2
+		
 
 @export var build_params : Dictionary[String,Variant] ={
 	"velocity" = 300,
@@ -30,7 +34,7 @@ func _ready():
 	area_entered.connect(check)
 	$CollisionShape2D.shape.radius = min(build_params["bullet_size"].x,build_params["bullet_size"].y)/2
 	velocity = build_params["velocity"]
-	visual = QOL. create_panel_with_shader(50,build_params["bullet_color"])
+	visual = QOL.create_panel_with_shader(50,build_params["bullet_color"])
 	visual.size = build_params["bullet_size"]
 	visual.position = -build_params["bullet_size"] / 2
 	add_child(visual)

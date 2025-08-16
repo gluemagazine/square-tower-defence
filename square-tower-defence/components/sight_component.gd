@@ -40,7 +40,6 @@ func on_body_entered(body:Node)->void:
 func updtateTarget()->void:
 	if targets != []:
 		target = QOL.sort_prop_low("distance",targets)
-		#print(target.get("distance"))
 	return
 	var closestTarget:CharacterBody2D = null
 	for i:CharacterBody2D in targets:
