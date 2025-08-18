@@ -103,7 +103,7 @@ tile_map_data = PackedByteArray("AAAMAAAAAgADAAIAAAALAAAAAgADAAIAAAAKAAAAAgADAAI
 tile_set = ExtResource("6_fjhfp")
 
 [node name="universal navigation" type="TileMapLayer" parent="Paths"]
-tile_map_data = PackedByteArray("AAADAAwAAgABAAAAAAADAA0AAgABAAAAAAAEAAwAAgABAAAAAAAEAA0AAgABAAAAAAAFAAwAAgABAAAAAAAFAA0AAgABAAAAAAAGAAwAAgABAAAAAAAGAA0AAgABAAAAAAACAAwAAgABAAAAAAACAA0AAgABAAAAAAAHAAwAAgABAAAAAAAHAA0AAgABAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAwAAgABAAAAAAADAA0AAgABAAAAAAAEAAwAAgABAAAAAAAEAA0AAgABAAAAAAAFAAwAAgABAAAAAAAFAA0AAgABAAAAAAAGAAwAAgABAAAAAAAGAA0AAgABAAAAAAA=")
 tile_set = ExtResource("6_fjhfp")
 
 [node name="buildings" type="TileMapLayer" parent="."]
@@ -127,4 +127,4 @@ polygon = PackedVector2Array(-40, -86, 119, 22, 24, 94, -106, -46)
 disabled = true
 
 [node name="archerTower2" parent="." instance=ExtResource("15_w0p8v")]
-position = Vector2(161, 75)
+position = Vector2(199, 194)

@@ -9,6 +9,7 @@
 [sub_resource type="Resource" id="Resource_pf1yj"]
 script = ExtResource("2_632b8")
 property = "rotation_angle"
+invert_on_flip = true
 number_animated = true
 initial_value = 0.0
 final_value = 360.0
@@ -21,6 +22,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_m5ccf"]
 script = ExtResource("2_632b8")
 property = "rotation_angle"
+invert_on_flip = true
 number_animated = false
 initial_value = 0.0
 final_value = 0.0
@@ -33,6 +35,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_wecuw"]
 script = ExtResource("2_632b8")
 property = "rotation_angle"
+invert_on_flip = true
 number_animated = false
 initial_value = 0.0
 final_value = 0.0
@@ -50,6 +53,7 @@ loop = true
 properties = Array[ExtResource("2_632b8")]([ExtResource("3_vlwq7"), SubResource("Resource_wecuw")])
 played = false
 on_secondary = false
+mirror_animation = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
 [sub_resource type="Resource" id="Resource_h8e6y"]
@@ -60,6 +64,7 @@ loop = true
 properties = Array[ExtResource("2_632b8")]([SubResource("Resource_pf1yj"), SubResource("Resource_m5ccf")])
 played = false
 on_secondary = false
+mirror_animation = false
 secondary_animation = SubResource("Resource_4rr8g")
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 

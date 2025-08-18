@@ -18,7 +18,7 @@ func _ready() -> void:
 	sort_timer = Timer.new()
 	sort_timer.wait_time = 1
 	sort_timer.autostart = true
-	sort_timer.timeout.connect(updtateTarget)
+	sort_timer.timeout.connect(updateTarget)
 	add_child(sort_timer)
 
 func sort():
@@ -32,15 +32,18 @@ func on_body_entered(body:Node)->void:
 			if storeAll:
 				targets += [body]
 				if pickClosest:
-					updtateTarget()
+					updateTarget()
 				target = body
 			else:
 				target = body
 
-func updtateTarget()->void:
+func updateTarget()->void:
 	if targets != []:
 		target = QOL.sort_prop_low("distance",targets)
 	return
+	#this section works, however I wanted to make the turrets target
+	#the enemies that were closest to the base. eventually this will
+	#be a toggle for fire mode
 	var closestTarget:CharacterBody2D = null
 	for i:CharacterBody2D in targets:
 		if closestTarget != null:
@@ -54,4 +57,4 @@ func on_body_exited(body:Node)->void:
 	if body in targets:
 		targets.erase(body)
 		if body == target:
-			updtateTarget()
+			updateTarget()

@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_qdivu"]
 script = ExtResource("2_ogskk")
 property = "progress"
+invert_on_flip = true
 number_animated = true
 initial_value = 0.0
 final_value = 1.0
@@ -20,6 +21,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_lg3kb"]
 script = ExtResource("2_ogskk")
 property = "rotation_angle"
+invert_on_flip = true
 number_animated = true
 initial_value = 0.0
 final_value = -360.0
@@ -32,6 +34,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_cjq17"]
 script = ExtResource("2_ogskk")
 property = "progress"
+invert_on_flip = true
 number_animated = true
 initial_value = 1.0
 final_value = 0.0
@@ -44,6 +47,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_1bxkr"]
 script = ExtResource("2_ogskk")
 property = "rotation_angle"
+invert_on_flip = true
 number_animated = true
 initial_value = 360.0
 final_value = 0.0
@@ -61,6 +65,7 @@ loop = true
 properties = Array[ExtResource("2_ogskk")]([SubResource("Resource_cjq17"), SubResource("Resource_1bxkr")])
 played = false
 on_secondary = false
+mirror_animation = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
 [sub_resource type="Resource" id="Resource_uci2g"]
@@ -71,6 +76,7 @@ loop = true
 properties = Array[ExtResource("2_ogskk")]([SubResource("Resource_qdivu"), SubResource("Resource_lg3kb")])
 played = false
 on_secondary = false
+mirror_animation = false
 secondary_animation = SubResource("Resource_jw3cb")
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 

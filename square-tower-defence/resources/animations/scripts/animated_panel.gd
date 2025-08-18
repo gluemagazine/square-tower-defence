@@ -6,8 +6,8 @@ class_name AnimatedPanel
 	"position" : Vector2(0.5,0.5),
 	"rotation_angle" : 0.0,
 	"edges" : 3,
-	"shape_feather" : 0,
-	"progress" : 1,
+	"shape_feather" : 0.0,
+	"progress" : 1.0,
 }
 
 var color : Color:
@@ -21,6 +21,7 @@ var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicat
 		material = starting_material
 
 var on_alt = false
+var on_mirror = false
 
 func _get_property_list() -> Array[Dictionary]:
 	var properties : Array[Dictionary] = []
@@ -95,7 +96,11 @@ func play_animation(animation_name):
 			timer.stop()
 		var properties = animation.properties
 		
-		if on_alt:
+		if on_mirror:
+			on_mirror = false
+		elif animation.mirror_animation:
+			on_mirror = true
+		elif on_alt:
 			on_alt = false
 			properties = animation.secondary_animation.properties
 		elif animation.secondary_animation:
@@ -106,11 +111,16 @@ func play_animation(animation_name):
 		for property in properties:
 			var tweener = create_tween()
 			current_tweeners.append(tweener)
-			if property.number_animated:
-				tweener.tween_method(func(value): material.set_shader_parameter(property.property,value),property.initial_value,property.final_value,property.end)
+			if not on_mirror or not property.invert_on_flip:
+				if property.number_animated:
+					tweener.tween_method(func(value): material.set_shader_parameter(property.property,value),property.initial_value,property.final_value,property.end)
+				else:
+					tweener.tween_method(func(value): stylebox.set("bg_color",value),property.initial_color,property.final_color,property.end)
 			else:
-				tweener.tween_method(func(value): stylebox.set("bg_color",value),property.initial_color,property.final_color,property.end)
-
+				if property.number_animated:
+					tweener.tween_method(func(value): material.set_shader_parameter(property.property,value),property.final_value,property.initial_value,property.end)
+				else:
+					tweener.tween_method(func(value): stylebox.set("bg_color",value),property.final_color,property.initial_color,property.end)
 func play_on_top(animation_name):
 	for animation in animation_resources:
 		if not animation.animation_name == animation_name:
