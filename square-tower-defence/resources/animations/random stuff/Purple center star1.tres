@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="PanelAnimationContainer" load_steps=9 format=3 uid="uid://bgtlpvi64w5wr"]
+
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="1_nvybf"]
+[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="2_7oomw"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="3_5i00o"]
+[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="4_wwdfb"]
+
+[sub_resource type="Resource" id="Resource_1kfbc"]
+script = ExtResource("2_7oomw")
+property = "color"
+invert_on_flip = true
+number_animated = false
+initial_value = 0.0
+final_value = 0.0
+initial_color = Color(1, 1, 1, 1)
+final_color = Color(0, 1, 0, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_d3rcj"]
+script = ExtResource("2_7oomw")
+property = "rotation_angle"
+invert_on_flip = false
+number_animated = true
+initial_value = 0.0
+final_value = 360.0
+initial_color = Color(0, 0, 0, 1)
+final_color = Color(0, 0, 0, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_3rion"]
+script = ExtResource("1_nvybf")
+animation_name = "shift"
+duration = 2.0
+loop = true
+properties = Array[ExtResource("2_7oomw")]([SubResource("Resource_1kfbc"), SubResource("Resource_d3rcj")])
+played = false
+on_secondary = false
+mirror_animation = true
+metadata/_custom_type_script = "uid://bttbxankdbyq"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssta6"]
+shader = ExtResource("4_wwdfb")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[resource]
+script = ExtResource("3_5i00o")
+layer_num = 1
+dimentions = Vector2(40, 40)
+animations = Array[ExtResource("1_nvybf")]([SubResource("Resource_3rion")])
+color = Color(0, 1, 0, 1)
+starting_material = SubResource("ShaderMaterial_ssta6")
+starting_values = Dictionary[String, Variant]({
+"edges": 3,
+"position": Vector2(0.5, 0.5),
+"progress": 1,
+"rotation_angle": 0.0,
+"shape_feather": 0
+})

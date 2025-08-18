@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=4 uid="uid://kl6qgmxpv6il"]
 
 [ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://scenes/enemies/wave_manager.gd" id="1_fjhfp"]
-[ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/player_manager.tscn" id="1_xscvl"]
+[ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/locations/player_manager.tscn" id="1_xscvl"]
 [ext_resource type="Script" uid="uid://cfidvnm38saep" path="res://resources/User/level_info.gd" id="2_73rso"]
 [ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_gj7s8"]
 [ext_resource type="Script" uid="uid://dsrsqrxwy3wns" path="res://scenes/enemies/manual_spawner.gd" id="2_xd6eh"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="6_i4h0e"]
 [ext_resource type="Resource" uid="uid://40154clyob1r" path="res://resources/enemies/basic enemy.tres" id="7_s6h2y"]
 [ext_resource type="TileSet" uid="uid://dcxxr1qhfql2o" path="res://resources/tilemaps/buildings.tres" id="7_xd6eh"]
-[ext_resource type="PackedScene" uid="uid://bgubqo0qquoyr" path="res://scenes/base.tscn" id="8_gj7s8"]
+[ext_resource type="PackedScene" uid="uid://bgubqo0qquoyr" path="res://scenes/towers/base.tscn" id="8_gj7s8"]
 [ext_resource type="Resource" uid="uid://14321q0em26i" path="res://resources/enemies/fast enemy.tres" id="8_w0p8v"]
 [ext_resource type="PackedScene" uid="uid://su4d30wrw3ed" path="res://scenes/instakill zone.tscn" id="14_s6h2y"]
 [ext_resource type="PackedScene" uid="uid://downv7grip0yk" path="res://Towers/archerTower.tscn" id="15_w0p8v"]

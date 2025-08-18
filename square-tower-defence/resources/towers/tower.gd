@@ -5,6 +5,7 @@ class_name TowerResource
 
 @export var sides : int = 3
 @export var color : Color = Color.GREEN
+@export var panels : Array[PanelAnimationContainer]
 @export var cooldown : float = 2
 @export var range_radius : int = 50
 @export var bullet_scene : PackedScene = preload("uid://d2xoy8bd7beyr")

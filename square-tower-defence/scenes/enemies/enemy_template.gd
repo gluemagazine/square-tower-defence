@@ -46,7 +46,6 @@ func _ready() -> void:
 		distance += points[i].distance_to(points[i+1])
 
 func _physics_process(delta: float) -> void:
-	$Label.text = str(distance)
 	var next_position = nav.get_next_path_position()
 	var new_velocity = global_position.direction_to(next_position) * speed
 	if nav.avoidance_enabled:

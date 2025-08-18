@@ -1,8 +1,8 @@
 @tool
 extends Node2D
 
-@export var path : String 
-@export var resource_name : String
+@export var path : String = "res://resources/animations/random stuff/"
+@export var resource_name : String = "Testing"
 
 func run_animation():
 	for child in get_children():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://qunequ0snvhy"]
 
-[ext_resource type="Script" uid="uid://bqrg4trqp0qqc" path="res://scenes/player_manager.gd" id="1_ve51y"]
+[ext_resource type="Script" uid="uid://bqrg4trqp0qqc" path="res://scenes/locations/player_manager.gd" id="1_ve51y"]
 [ext_resource type="Script" uid="uid://3m7pl4h61a5r" path="res://components/health_component.gd" id="2_1aieh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve51y"]
