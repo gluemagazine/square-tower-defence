@@ -71,7 +71,7 @@ width = 16
 height = 16
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pb4we"]
-radius = 60.0
+radius = 40.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oxt30"]
 shader = ExtResource("2_pb4we")
@@ -98,10 +98,12 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vat4d"]
 bg_color = Color(0.52, 0.52, 0.52, 0.415686)
 
-[node name="archerTower" type="Node2D" node_paths=PackedStringArray("sightComp")]
+[node name="Tower Template" type="Node2D" node_paths=PackedStringArray("sightComp", "range", "range_visual")]
 script = ExtResource("1_8aiwx")
 stats = ExtResource("2_77yxy")
 sightComp = NodePath("SightComponent")
+range = NodePath("SightComponent/CollisionShape2D")
+range_visual = NodePath("SightComponent/range")
 
 [node name="baseTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_xjle4")
@@ -158,14 +160,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -120.0
-offset_right = -80.0
-offset_bottom = -80.0
+offset_left = -40.0
+offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(6, 6)
+scale = Vector2(2, 2)
 theme_override_styles/panel = SubResource("StyleBoxFlat_vat4d")
 
 [node name="coolDown" type="Timer" parent="."]
 one_shot = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+focus_mode = 0
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

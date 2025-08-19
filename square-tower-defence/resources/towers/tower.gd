@@ -20,5 +20,7 @@ class_name TowerResource
 	"explosion_radius" = 15,
 	"explosion_damage" = 1,
 	"explosion_color" = Color.RED,
-	"homing" = false
+	"freeze" = false,
+	"set_target" = false,
+	"homing" = false,
 }

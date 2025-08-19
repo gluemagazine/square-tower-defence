@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://bdlgodcj6ayir" path="res://Towers/transition.gdshader" id="3_wis2o"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="5_kj7vi"]
 [ext_resource type="Script" uid="uid://l2w56u85nvr0" path="res://components/hitbox.gd" id="6_6gguj"]
-[ext_resource type="PackedScene" uid="uid://downv7grip0yk" path="res://Towers/archerTower.tscn" id="7_kj7vi"]
+[ext_resource type="PackedScene" uid="uid://downv7grip0yk" path="res://Towers/TowerTemplate.tscn" id="7_kj7vi"]
 
 [sub_resource type="Gradient" id="Gradient_eojhd"]
 offsets = PackedFloat32Array(1)

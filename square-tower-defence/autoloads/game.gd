@@ -5,6 +5,8 @@ var gold : int = 0
 
 signal enemy_killed
 
+signal tower_opened(slot)
+
 var manager : PlayerManager = null
 
 var tracking := Thread.new()

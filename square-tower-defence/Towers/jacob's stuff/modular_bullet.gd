@@ -8,7 +8,7 @@ class_name Bullet
 	set(new):
 		dir = new
 		global_rotation = dir.angle() + PI / 2
-		
+@export var set_target : Node2D = null
 
 @export var build_params : Dictionary[String,Variant] ={
 	"velocity" = 300,
@@ -59,7 +59,14 @@ var wait = false
 
 func check(area : Area2D):
 	if area is HitboxComponent:
-		hit()
+		if set_target:
+			if not is_instance_valid(set_target):
+				set_target = null
+				hit()
+			elif area.get_parent() == set_target:
+				hit()
+		else:
+			hit()
 		return
 
 func hit():

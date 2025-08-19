@@ -14,7 +14,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = -360.0
+shader_parameter/rotation_angle = 0.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -55,7 +55,7 @@ on_secondary = false
 mirror_animation = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xx4m5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdivu"]
 shader = ExtResource("5_3rion")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -63,7 +63,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 360.0
+shader_parameter/rotation_angle = 0.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -77,7 +77,7 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 1.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg3kb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rion"]
 bg_color = Color(0, 1, 0, 1)
 
 [sub_resource type="Resource" id="Resource_qdivu"]
@@ -117,7 +117,7 @@ on_secondary = false
 mirror_animation = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d3rcj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xx4m5"]
 shader = ExtResource("5_3rion")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -125,7 +125,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = -360.0
+shader_parameter/rotation_angle = 0.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -139,7 +139,7 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 1.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81k0h"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg3kb"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_lg3kb"]
@@ -178,6 +178,7 @@ zoom = Vector2(2, 2)
 material = SubResource("ShaderMaterial_xq12u")
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset = Vector2(20, 20)
 theme_override_styles/panel = SubResource("StyleBoxFlat_1kfbc")
 script = ExtResource("1_ktjvc")
 color = Color(0, 0, 0, 1)
@@ -186,27 +187,29 @@ starting_material = SubResource("ShaderMaterial_xq12u")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [node name="AnimatedPanel2" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_xx4m5")
+material = SubResource("ShaderMaterial_qdivu")
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 38.0
 offset_bottom = 38.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_lg3kb")
+pivot_offset = Vector2(18, 18)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3rion")
 script = ExtResource("1_ktjvc")
 color = Color(0, 1, 0, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_xx4m5")])
-starting_material = SubResource("ShaderMaterial_xx4m5")
+starting_material = SubResource("ShaderMaterial_qdivu")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [node name="AnimatedPanel3" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_d3rcj")
+material = SubResource("ShaderMaterial_xx4m5")
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 30.0
 offset_bottom = 30.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_81k0h")
+pivot_offset = Vector2(10, 10)
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg3kb")
 script = ExtResource("1_ktjvc")
 color = Color(0, 0, 0, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_d3rcj")])
-starting_material = SubResource("ShaderMaterial_d3rcj")
+starting_material = SubResource("ShaderMaterial_xx4m5")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"

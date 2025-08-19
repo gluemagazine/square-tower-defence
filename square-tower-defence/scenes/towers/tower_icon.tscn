@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw340efteoxof"]
+
+[ext_resource type="Script" uid="uid://dn24xth4geejc" path="res://scenes/towers/tower_icon.gd" id="1_n0gsf"]
+
+[node name="Tower Icon" type="Control"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n0gsf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.515, 3.515)

@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bgubqo0qquoyr" path="res://scenes/towers/base.tscn" id="8_gj7s8"]
 [ext_resource type="Resource" uid="uid://14321q0em26i" path="res://resources/enemies/fast enemy.tres" id="8_w0p8v"]
 [ext_resource type="PackedScene" uid="uid://su4d30wrw3ed" path="res://scenes/instakill zone.tscn" id="14_s6h2y"]
-[ext_resource type="PackedScene" uid="uid://downv7grip0yk" path="res://Towers/archerTower.tscn" id="15_w0p8v"]
+[ext_resource type="PackedScene" uid="uid://downv7grip0yk" path="res://Towers/TowerTemplate.tscn" id="15_w0p8v"]
 
 [sub_resource type="Resource" id="Resource_7ebxn"]
 script = ExtResource("2_73rso")
@@ -126,5 +126,14 @@ visible = false
 polygon = PackedVector2Array(-40, -86, 119, 22, 24, 94, -106, -46)
 disabled = true
 
+[node name="archerTower" parent="." instance=ExtResource("15_w0p8v")]
+position = Vector2(321, 236)
+
+[node name="archerTower4" parent="." instance=ExtResource("15_w0p8v")]
+position = Vector2(127, 70)
+
 [node name="archerTower2" parent="." instance=ExtResource("15_w0p8v")]
-position = Vector2(199, 194)
+position = Vector2(4, 138)
+
+[node name="archerTower3" parent="." instance=ExtResource("15_w0p8v")]
+position = Vector2(123, 255)

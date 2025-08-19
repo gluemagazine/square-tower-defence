@@ -8,7 +8,10 @@ class_name AnimatedPanel
 	"edges" : 3,
 	"shape_feather" : 0.0,
 	"progress" : 1.0,
-}
+}:
+	set(new):
+		starting_values = new
+		reset()
 
 var color : Color:
 	set(new):
@@ -48,6 +51,10 @@ func _get_property_list() -> Array[Dictionary]:
 	})
 	return properties
 
+func level_up():
+	starting_values["edges"] += 1
+	reset()
+
 var stylebox = StyleBoxFlat.new()
 var timer : Timer
 
@@ -56,10 +63,11 @@ func setup_from_container(container : PanelAnimationContainer):
 	animation_resources = container.animations.duplicate(true)
 	starting_material = container.starting_material.duplicate(true)
 	size = container.dimentions
+	pivot_offset = size / 2
 	starting_values = container.starting_values
 
 func adjust_n_of_sides(new_num):
-	material.set_shader_parameter("sides",new_num)
+	starting_values["edges"] = new_num
 
 func _ready() -> void:
 	add_theme_stylebox_override("panel",stylebox)
@@ -71,9 +79,9 @@ func _ready() -> void:
 	timer.one_shot = true
 	for value in starting_values:
 		material.set_shader_parameter(value,starting_values[value])
-	stylebox.bg_color = color
 	true_duplicate()
 	starting_material = starting_material.duplicate()
+	pivot_offset = size / 2
 
 var current_tweeners : Array[Tween] = []
 var current_animation = "walk"
@@ -92,8 +100,8 @@ func play_animation(animation_name):
 			timer.start()
 			
 		if not animation.loop:
-
 			timer.stop()
+		
 		var properties = animation.properties
 		
 		if on_mirror:
