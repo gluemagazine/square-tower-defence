@@ -28,6 +28,10 @@ func open():
 func close():
 	hide()
 
+func manual_close():
+	hide()
+	Game.tower_open = false
+
 func select():
 	Game.tower_open = false
 	Game.tower_opened.emit(self)

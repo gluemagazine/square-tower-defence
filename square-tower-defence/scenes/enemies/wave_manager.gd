@@ -35,14 +35,14 @@ func _ready() -> void:
 	timer = Timer.new()
 	timer.autostart = false
 	timer.one_shot = true
-	timer.wait_time = 3
+	timer.wait_time = 10
 	add_child(timer)
 	timer.timeout.connect(next_wave)
 	timer.start()
 	
 	wave_timer = Timer.new()
 	wave_timer.autostart = true
-	wave_timer.wait_time = 2
+	wave_timer.wait_time = 10
 	wave_timer.timeout.connect(check_for_wave_end.bind(null))
 	add_child(wave_timer)
 	

@@ -169,12 +169,17 @@ func create_container():
 @export_tool_button("stop animation") var new_call : Callable = self.stop.bind(true)
 
 func true_duplicate():
-	var dupe = []
+	var new_dict : Dictionary[String,Variant] = {}
+	for key in starting_values:
+		new_dict[key] = starting_values[key]
+	starting_values = new_dict
+	var dupe: Array[PanelAnimation] = []
 	for animation in animation_resources:
 		var anim := PanelAnimation.new()
 		anim.animation_name = animation.animation_name
 		anim.duration = animation.duration
 		anim.loop = animation.loop
+		
 		for property in animation.properties:
 			anim.properties.append(property.duplicate(true))
 		anim.played = animation.played
@@ -182,3 +187,4 @@ func true_duplicate():
 		if animation.secondary_animation:
 			anim.secondary_animation = animation.secondary_animation.duplicate(true)
 		dupe.append(anim)
+	animation_resources = dupe

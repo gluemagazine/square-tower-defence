@@ -24,7 +24,7 @@ static var valid_towers : Dictionary[String,TowerResource] = {
 
 func build_tower(tower):
 	var instance : TowerTemplate = tower_scene.instantiate()
-	instance.stats = tower
+	instance.stats = tower.duplicate(true)
 	current_tower = instance
 	instance.selected.connect(tower_interface.select)
 	add_child(instance)
@@ -35,3 +35,12 @@ func build_tower(tower):
 func _on_upgrade_pressed() -> void:
 	if current_tower:
 		current_tower.upgrade()
+
+
+func _on_sell_pressed() -> void:
+	if current_tower:
+		Game.add_gold(current_tower.stats.initial_cost)
+		current_tower.queue_free()
+		current_tower = null
+		empty_slot.show()
+		tower_interface.close()

@@ -2,13 +2,19 @@ extends Node2D
 class_name TowerTemplate
 
 #just me messign around
-@export var stats : TowerResource
+@export var stats : TowerResource:
+	set(new):
+		stats = new.duplicate(true)
 @export var sightComp:SightComponent
 @export var range : CollisionShape2D
 @export var range_visual : Panel
 @onready var cool_down: Timer = $coolDown
 @export var button : Button
-var panels : Array[AnimatedPanel]
+var panels : Array[AnimatedPanel]:
+	set(new):
+		panels = new
+		for panel in panels:
+			panel.true_duplicate()
 
 var modular_bullet = preload("uid://ig5c4t7spifk")
 var locked = false

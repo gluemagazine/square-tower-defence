@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfvgcog8opjnc"]
+[gd_scene load_steps=14 format=3 uid="uid://bfvgcog8opjnc"]
 
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="1_dr4k6"]
 [ext_resource type="Script" uid="uid://brymxc44teue8" path="res://scenes/towers/tower_slot.gd" id="1_rmpee"]
@@ -60,8 +60,6 @@ played = false
 on_secondary = false
 mirror_animation = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffgdi"]
 
 [node name="Tower slot" type="Node2D" node_paths=PackedStringArray("empty_slot", "build_interface", "tower_interface")]
 script = ExtResource("1_rmpee")
@@ -129,10 +127,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSeparator" type="HSeparator" parent="Build interface/VBoxContainer"]
+[node name="close" type="Button" parent="Build interface/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-theme_override_constants/separation = 500
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ffgdi")
+focus_mode = 0
+flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Build interface/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -150,10 +149,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSeparator" type="HSeparator" parent="tower interface/VBoxContainer"]
+[node name="close" type="Button" parent="tower interface/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-theme_override_constants/separation = 500
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ffgdi")
+focus_mode = 0
+flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="tower interface/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -163,9 +163,15 @@ alignment = 1
 [node name="upgrade" type="Button" parent="tower interface/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+text = "upgrade"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="sell" type="Button" parent="tower interface/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "sell
+"
 
 [connection signal="pressed" from="empty_slot/Button" to="Build interface" method="select"]
+[connection signal="pressed" from="Build interface/VBoxContainer/close" to="Build interface" method="manual_close"]
+[connection signal="pressed" from="tower interface/VBoxContainer/close" to="tower interface" method="manual_close"]
 [connection signal="pressed" from="tower interface/VBoxContainer/HBoxContainer/upgrade" to="." method="_on_upgrade_pressed"]
+[connection signal="pressed" from="tower interface/VBoxContainer/HBoxContainer/sell" to="." method="_on_sell_pressed"]
