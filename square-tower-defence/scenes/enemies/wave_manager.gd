@@ -95,13 +95,12 @@ func spawn_wave():
 func check_for_wave_end(erased_enemy):
 	if erased_enemy in current_enemies:
 		current_enemies.erase(erased_enemy)
-	await get_tree().physics_frame
+	else:
+		clear_dead_enemies()
 	if current_enemies == [] :
 		timer.stop()
 		next_wave()
 		check_for_victory()
-	else:
-		print(current_enemies)
 
 func check_for_victory():
 	if won:

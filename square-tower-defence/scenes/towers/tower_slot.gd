@@ -30,3 +30,8 @@ func build_tower(tower):
 	add_child(instance)
 	empty_slot.hide()
 	tower_interface.select()
+
+
+func _on_upgrade_pressed() -> void:
+	if current_tower:
+		current_tower.upgrade()

@@ -160,7 +160,12 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 alignment = 1
 
+[node name="upgrade" type="Button" parent="tower interface/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="empty_slot/Button" to="Build interface" method="select"]
+[connection signal="pressed" from="tower interface/VBoxContainer/HBoxContainer/upgrade" to="." method="_on_upgrade_pressed"]
