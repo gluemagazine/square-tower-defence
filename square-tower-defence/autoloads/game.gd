@@ -1,7 +1,10 @@
 extends Node
 
 signal gold_changed 
-var gold : int = 50
+var gold : int = 50:
+	set(new):
+		gold = new
+		gold_changed.emit()
 
 signal enemy_killed
 
@@ -21,4 +24,6 @@ func _input(event: InputEvent) -> void:
 
 func add_gold(amount : int):
 	gold += amount
-	gold_changed.emit()
+
+func subtract_gold(amount : int):
+	gold -= amount

@@ -23,7 +23,16 @@ func _ready() -> void:
 	button.custom_minimum_size = custom_minimum_size
 	move_child(button,-1)
 	label.text = str(tower.initial_cost)
+	check_viability()
+	Game.gold_changed.connect(check_viability)
 
+func check_viability():
+	if Game.gold >= tower.initial_cost:
+		button.disabled = false
+		button.flat = true
+	else:
+		button.disabled = true
+		button.flat = false
 
 func play():
 	for panel in panels:

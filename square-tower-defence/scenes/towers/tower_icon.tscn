@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw340efteoxof"]
+[gd_scene load_steps=3 format=3 uid="uid://cw340efteoxof"]
 
 [ext_resource type="Script" uid="uid://dn24xth4geejc" path="res://scenes/towers/tower_icon.gd" id="1_n0gsf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0gsf"]
+bg_color = Color(0.6, 0.6, 0.6, 0.219608)
 
 [node name="Tower Icon" type="Control" node_paths=PackedStringArray("button", "label")]
 custom_minimum_size = Vector2(50, 0)
@@ -17,10 +20,11 @@ label = NodePath("Label")
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = -48.0
-offset_top = -77.0
+offset_top = -82.0
 offset_right = 52.0
 offset_bottom = 73.0
 focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_n0gsf")
 flat = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

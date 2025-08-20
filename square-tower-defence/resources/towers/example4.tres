@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource("6_jovdn")
 tower_name = "Archer"
-initial_cost = 1
+initial_cost = 75
 panels = Array[ExtResource("2_abley")]([ExtResource("3_nsyiw"), ExtResource("4_l1d3q"), ExtResource("5_f2j4b")])
 cooldown = 1.0
 range_radius = 50

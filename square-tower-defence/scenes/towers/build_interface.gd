@@ -38,5 +38,7 @@ func check(tower):
 	else:
 		close()
 
-func click_tower(tower):
-	parent.build_tower(tower)
+func click_tower(tower : TowerResource):
+	if Game.gold >= tower.initial_cost:
+		parent.build_tower(tower)
+		Game.subtract_gold(tower.initial_cost)
