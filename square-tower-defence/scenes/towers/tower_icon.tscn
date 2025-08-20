@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dn24xth4geejc" path="res://scenes/towers/tower_icon.gd" id="1_n0gsf"]
 
-[node name="Tower Icon" type="Control"]
+[node name="Tower Icon" type="Control" node_paths=PackedStringArray("button", "label")]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -11,6 +11,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n0gsf")
+button = NodePath("Button")
+label = NodePath("Label")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -77.0
+offset_right = 52.0
+offset_bottom = 73.0
+focus_mode = 0
+flat = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.515, 3.515)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -86.0
+offset_right = 20.0
+offset_bottom = -63.0
+text = "yay!"
+
+[connection signal="pressed" from="Button" to="." method="select"]

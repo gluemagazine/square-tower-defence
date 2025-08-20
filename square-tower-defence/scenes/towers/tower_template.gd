@@ -7,7 +7,7 @@ class_name TowerTemplate
 @export var range : CollisionShape2D
 @export var range_visual : Panel
 @onready var cool_down: Timer = $coolDown
-
+@export var button : Button
 var panels : Array[AnimatedPanel]
 
 var modular_bullet = preload("uid://ig5c4t7spifk")
@@ -31,6 +31,7 @@ func _ready() -> void:
 		panels.append(instance)
 		instance.stop()
 	$baseTexture.hide()
+	move_child(button,-1)
 
 func _physics_process(delta: float) -> void:
 	if locked:

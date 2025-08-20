@@ -31,7 +31,7 @@ func frost_clicked() -> void:
 
 func archer_clicked() -> void:
 	if true:#replace with gold checking logic
-		var archer:ArcherTower = ResourceLoader.load("res://Towers/archerTower.tscn").instantiate()
+		var archer:TowerTemplate = ResourceLoader.load("res://Towers/TowerTemplate.tscn").instantiate()
 		get_parent().add_child(archer)
 		archer.global_position = global_position
 		queue_free()

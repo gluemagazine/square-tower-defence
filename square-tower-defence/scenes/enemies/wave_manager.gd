@@ -24,6 +24,8 @@ var current_wave : Wave
 
 var timer : Timer
 
+var wave_timer : Timer
+
 func _ready() -> void:
 	for i in range(spawner_array.size()):
 		spawners[i+1] = spawner_array[i]
@@ -37,6 +39,12 @@ func _ready() -> void:
 	add_child(timer)
 	timer.timeout.connect(next_wave)
 	timer.start()
+	
+	wave_timer = Timer.new()
+	wave_timer.autostart = true
+	wave_timer.wait_time = 2
+	wave_timer.timeout.connect(check_for_wave_end.bind(null))
+	add_child(wave_timer)
 	
 	Game.enemy_killed.connect(clear_dead_enemies)
 
@@ -87,10 +95,13 @@ func spawn_wave():
 func check_for_wave_end(erased_enemy):
 	if erased_enemy in current_enemies:
 		current_enemies.erase(erased_enemy)
-	if current_enemies == []:
+	await get_tree().physics_frame
+	if current_enemies == [] :
 		timer.stop()
 		next_wave()
 		check_for_victory()
+	else:
+		print(current_enemies)
 
 func check_for_victory():
 	if won:

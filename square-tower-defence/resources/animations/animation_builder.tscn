@@ -14,7 +14,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 0.0
+shader_parameter/rotation_angle = -360.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -63,7 +63,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 0.0
+shader_parameter/rotation_angle = 360.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -78,7 +78,7 @@ shader_parameter/progress = 1.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rion"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(0.54902, 0.760784, 1, 1)
 
 [sub_resource type="Resource" id="Resource_qdivu"]
 script = ExtResource("5_qdivu")
@@ -101,7 +101,7 @@ number_animated = false
 initial_value = 0.0
 final_value = 0.0
 initial_color = Color(1, 0, 0, 1)
-final_color = Color(0, 1, 0, 1)
+final_color = Color(0.54902, 0.760784, 1, 1)
 start = 0.0
 end = 0.5
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
@@ -125,7 +125,7 @@ shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 0.0
+shader_parameter/rotation_angle = -360.0
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -169,7 +169,7 @@ metadata/_custom_type_script = "uid://bttbxankdbyq"
 [node name="AnimationBuilder" type="Node2D"]
 script = ExtResource("1_dctvm")
 path = "res://resources/animations/towers/archer/"
-resource_name = "Archer"
+resource_name = "teal"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -195,7 +195,7 @@ offset_bottom = 38.0
 pivot_offset = Vector2(18, 18)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3rion")
 script = ExtResource("1_ktjvc")
-color = Color(0, 1, 0, 1)
+color = Color(0.54902, 0.760784, 1, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_xx4m5")])
 starting_material = SubResource("ShaderMaterial_qdivu")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"

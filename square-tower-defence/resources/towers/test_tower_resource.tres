@@ -4,15 +4,14 @@
 [ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_abnqx"]
 [ext_resource type="Script" uid="uid://b0616cg4l6x15" path="res://resources/towers/tower.gd" id="2_xiilh"]
 [ext_resource type="Resource" uid="uid://dekyupwgtwrab" path="res://resources/animations/towers/archer/Archer1.tres" id="3_t74xe"]
-[ext_resource type="Resource" uid="uid://dvj1pjxbeipbs" path="res://resources/animations/towers/archer/Archer2.tres" id="4_hcl3r"]
+[ext_resource type="Resource" uid="uid://dvj1pjxbeipbs" path="res://resources/animations/towers/archer/green2.tres" id="4_abnqx"]
 [ext_resource type="Resource" uid="uid://utdtv03jsoun" path="res://resources/animations/towers/archer/Archer3.tres" id="5_i31by"]
 
 [resource]
 script = ExtResource("2_xiilh")
 tower_name = "Archer"
-sides = 3
-color = Color(0, 1, 0, 1)
-panels = Array[ExtResource("2_abnqx")]([ExtResource("3_t74xe"), ExtResource("4_hcl3r"), ExtResource("5_i31by")])
+initial_cost = 1
+panels = Array[ExtResource("2_abnqx")]([ExtResource("3_t74xe"), ExtResource("4_abnqx"), ExtResource("5_i31by")])
 cooldown = 1.0
 range_radius = 50
 bullet_scene = ExtResource("1_5dxai")

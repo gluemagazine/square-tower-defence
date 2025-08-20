@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://downv7grip0yk"]
 
-[ext_resource type="Script" uid="uid://cci81of4pjdwv" path="res://Towers/archer_tower.gd" id="1_8aiwx"]
-[ext_resource type="Resource" uid="uid://cadpa641en0h4" path="res://resources/towers/test_tower_resource.tres" id="2_77yxy"]
+[ext_resource type="Script" uid="uid://cci81of4pjdwv" path="res://scenes/towers/tower_template.gd" id="1_8aiwx"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_pb4we"]
+[ext_resource type="Resource" uid="uid://bfqx0m0oevjtr" path="res://resources/towers/example5.tres" id="2_xmstg"]
 [ext_resource type="Script" uid="uid://bwatls00pqq80" path="res://components/sight_component.gd" id="3_pb4we"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjle4"]
@@ -98,12 +98,13 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vat4d"]
 bg_color = Color(0.52, 0.52, 0.52, 0.415686)
 
-[node name="Tower Template" type="Node2D" node_paths=PackedStringArray("sightComp", "range", "range_visual")]
+[node name="Tower Template" type="Node2D" node_paths=PackedStringArray("sightComp", "range", "range_visual", "button")]
 script = ExtResource("1_8aiwx")
-stats = ExtResource("2_77yxy")
+stats = ExtResource("2_xmstg")
 sightComp = NodePath("SightComponent")
 range = NodePath("SightComponent/CollisionShape2D")
 range_visual = NodePath("SightComponent/range")
+button = NodePath("Button")
 
 [node name="baseTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_xjle4")

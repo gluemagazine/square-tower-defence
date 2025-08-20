@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ig5c4t7spifk"]
 
-[ext_resource type="Script" uid="uid://c75hsuxg8j3ar" path="res://Towers/jacob's stuff/modular_bullet.gd" id="1_gi04f"]
+[ext_resource type="Script" uid="uid://c75hsuxg8j3ar" path="res://scenes/towers/modular_bullet.gd" id="1_gi04f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi04f"]
 radius = 1.0

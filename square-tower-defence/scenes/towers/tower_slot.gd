@@ -9,19 +9,24 @@ var current_tower : TowerTemplate:
 
 var tower_scene = preload("uid://downv7grip0yk")
 
+@export var empty_slot : Control
 @export var build_interface : BuildInterface
-@export var tower_interface : TowerInteface
+@export var tower_interface : TowerInterface
 
 static var valid_towers : Dictionary[String,TowerResource] = {
 	"archer" : preload("uid://cadpa641en0h4"),
-	"bomber" : preload("uid://cadpa641en0h4"),
-	"ice" : preload("uid://cadpa641en0h4"),
-	"sniper" : preload("uid://cadpa641en0h4"),
-	"machine_gun" : preload("uid://cadpa641en0h4"),
+	"bomber" : preload("uid://d3lbiruxcdvek"),
+	"ice" : preload("uid://ckx4xbo8ucm17"),
+	"sniper" : preload("uid://d2jsim4qx5b0e"),
+	"machine_gun" : preload("uid://d2ngv4oh4pite"),
+	"greg" : preload("uid://bfqx0m0oevjtr"),
 }
 
 func build_tower(tower):
 	var instance : TowerTemplate = tower_scene.instantiate()
 	instance.stats = tower
 	current_tower = instance
-	instance.selected.connect(tower_interface.build)
+	instance.selected.connect(tower_interface.select)
+	add_child(instance)
+	empty_slot.hide()
+	tower_interface.select()

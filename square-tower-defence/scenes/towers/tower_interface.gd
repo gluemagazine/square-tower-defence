@@ -1,5 +1,5 @@
 extends CanvasLayer
-class_name TowerInteface
+class_name TowerInterface
 
 func build():
 	pass

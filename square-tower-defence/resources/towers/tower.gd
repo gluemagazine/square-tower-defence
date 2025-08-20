@@ -3,8 +3,7 @@ class_name TowerResource
 
 @export var tower_name : String = "Archer"
 
-@export var sides : int = 3
-@export var color : Color = Color.GREEN
+@export var initial_cost : int = 100
 @export var panels : Array[PanelAnimationContainer]
 @export var cooldown : float = 2
 @export var range_radius : int = 50
