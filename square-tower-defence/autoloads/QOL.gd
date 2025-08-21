@@ -1,10 +1,13 @@
 extends Node
 
 ##returns an attack with the given parameters
-func generate_attack(impact,knockback = 0):
+func generate_attack(impact,freeze_dutation = 0.0,knockback = 0):
 	var attack = Attack.new()
 	attack.damage = impact
 	attack.knockback = knockback
+	if freeze_dutation != 0.0:
+		attack.freeze = true
+		attack.freeze_duration = freeze_dutation
 	return attack
 
 var shader : Shader = preload("uid://chudojcwfpmos").duplicate()

@@ -41,7 +41,7 @@ func _ready() -> void:
 	timer.start()
 	Game.enemy_killed.connect(clear_dead_enemies)
 	
-	await get_tree().create_timer(10)
+	await get_tree().create_timer(10).timeout
 	wave_timer = Timer.new()
 	wave_timer.autostart = true
 	wave_timer.wait_time = 2

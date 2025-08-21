@@ -20,7 +20,10 @@ class_name Bullet
 	"explosion_radius" = 15,
 	"explosion_damage" = 1,
 	"explosion_color" = Color.RED,
-	"homing" = false
+	"freeze" = false,
+	"freeze_duration" = 1.0,
+	"set_target" = false,
+	"homing" = false,
 }
 
 var child_effects : Dictionary[String,Node2D]
@@ -29,6 +32,9 @@ var effects : Array[Callable]
 var used = false
 
 var visual
+
+var freeze = false
+var freeze_duration = 0.0
 
 func _ready():
 	area_entered.connect(check)
@@ -51,6 +57,10 @@ func _ready():
 		explosion.finished.connect(expire)
 		effects.append(explode.bind())
 		effects.append(explosion.explode.bind())
+	
+	freeze = build_params["freeze"]
+	if build_params.has("freeze_duration"):
+		freeze_duration = build_params["freeze_duration"]
 
 func _physics_process(delta: float) -> void:
 	position += velocity * dir * delta
@@ -88,6 +98,6 @@ func explode():
 func attack_single():
 	for area in get_overlapping_areas():
 		if area is HitboxComponent:
-			var attack = QOL.generate_attack(damage)
+			var attack = QOL.generate_attack(damage,freeze_duration)
 			area.damage(attack)
 			return

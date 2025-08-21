@@ -52,3 +52,5 @@ path_postprocessing = 1
 avoidance_enabled = true
 radius = 1.0
 debug_enabled = true
+
+[connection signal="freeze" from="HitboxComponent" to="." method="freeze"]

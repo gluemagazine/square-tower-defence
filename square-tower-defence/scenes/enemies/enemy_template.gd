@@ -12,6 +12,8 @@ var panel_texture = StyleBoxFlat.new()
 var speed
 var distance = 0
 
+var frozen : bool = false
+
 signal killed
 
 func _ready() -> void:
@@ -46,6 +48,8 @@ func _ready() -> void:
 		distance += points[i].distance_to(points[i+1])
 
 func _physics_process(delta: float) -> void:
+	if frozen:
+		return
 	var next_position = nav.get_next_path_position()
 	var new_velocity = global_position.direction_to(next_position) * speed
 	if nav.avoidance_enabled:
@@ -70,3 +74,11 @@ func damage():
 
 func _exit_tree() -> void:
 	Game.enemy_killed.emit()
+
+
+func freeze(seconds):
+	if frozen:
+		return
+	frozen = true
+	await get_tree().create_timer(seconds).timeout
+	frozen = false

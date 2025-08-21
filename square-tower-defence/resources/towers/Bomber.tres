@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="TowerResource" load_steps=7 format=3 uid="uid://ckx4xbo8ucm17"]
+
+[ext_resource type="PackedScene" uid="uid://d2xoy8bd7beyr" path="res://Towers/arrow.tscn" id="1_rngei"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_hymny"]
+[ext_resource type="Resource" uid="uid://dekyupwgtwrab" path="res://resources/animations/towers/archer/Archer1.tres" id="3_83soq"]
+[ext_resource type="Resource" uid="uid://c5c64bnmq67y6" path="res://resources/animations/towers/archer/orange2.tres" id="4_egrft"]
+[ext_resource type="Resource" uid="uid://utdtv03jsoun" path="res://resources/animations/towers/archer/Archer3.tres" id="5_yr4cu"]
+[ext_resource type="Script" uid="uid://b0616cg4l6x15" path="res://resources/towers/tower.gd" id="6_uxbsm"]
+
+[resource]
+script = ExtResource("6_uxbsm")
+tower_name = "Bomber"
+initial_cost = 25
+panels = Array[ExtResource("2_hymny")]([ExtResource("3_83soq"), ExtResource("4_egrft"), ExtResource("5_yr4cu")])
+cooldown = 1.0
+range_radius = 50
+bullet_scene = ExtResource("1_rngei")
+bullet_stats = Dictionary[String, Variant]({
+"bullet_color": Color(0, 0, 0, 1),
+"bullet_size": Vector2(10, 10),
+"damage": 0,
+"damage_one": true,
+"explode": true,
+"explosion_color": Color(1, 0, 0, 0.545098),
+"explosion_damage": 25,
+"explosion_freeze": false,
+"explosion_freeze_duration": 1.0,
+"explosion_radius": 20,
+"freeze": false,
+"freeze_duration": 1.0,
+"homing": false,
+"set_target": false,
+"velocity": 300
+})
+metadata/_custom_type_script = "uid://b0616cg4l6x15"

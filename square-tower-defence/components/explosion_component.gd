@@ -10,6 +10,9 @@ class_name Explosion
 @export var radius : int = 15
 @export var color : Color = Color.RED
 
+@export var freeze : bool = false
+@export var freeze_duration : float = 0.0
+
 signal exploded
 signal finished
 
@@ -21,6 +24,10 @@ func set_params_from_dictionary(dictionary : Dictionary[String,Variant]):
 		color = dictionary["explosion_color"]
 	if dictionary.has("explosion_damage"):
 		damage = dictionary["explosion_damage"]
+	if dictionary.has("explosion_freeze"):
+		freeze = dictionary["explosion_freeze"]
+	if dictionary.has("explosion_freeze_duration"):
+		freeze_duration = dictionary["explosion_freeze_duration"]
 
 func _ready() -> void:
 	set_collision_mask_value(2,true)
@@ -45,7 +52,7 @@ func _ready() -> void:
 func explode():
 	exploded.emit()
 	panel.show()
-	var attack = QOL.generate_attack(damage)
+	var attack = QOL.generate_attack(damage,freeze_duration)
 	for area in get_overlapping_areas():
 		if area is HitboxComponent:
 			area.damage(attack)
