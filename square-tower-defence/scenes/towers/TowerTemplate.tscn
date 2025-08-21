@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cci81of4pjdwv" path="res://scenes/towers/tower_template.gd" id="1_8aiwx"]
 [ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="2_pb4we"]
-[ext_resource type="Resource" uid="uid://bfqx0m0oevjtr" path="res://resources/towers/example5.tres" id="2_xmstg"]
+[ext_resource type="Resource" uid="uid://bfqx0m0oevjtr" path="res://resources/towers/greg.tres" id="2_xmstg"]
 [ext_resource type="Script" uid="uid://bwatls00pqq80" path="res://components/sight_component.gd" id="3_pb4we"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjle4"]

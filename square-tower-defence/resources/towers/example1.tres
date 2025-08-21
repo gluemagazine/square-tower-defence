@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource("6_5xnnv")
-tower_name = "Archer"
+tower_name = "Wizard"
 initial_cost = 10
 panels = Array[ExtResource("2_s2mix")]([ExtResource("3_1e5vf"), ExtResource("4_txojl"), ExtResource("5_lqp01")])
 cooldown = 1.0

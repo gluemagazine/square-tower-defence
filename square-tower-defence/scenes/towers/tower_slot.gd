@@ -15,8 +15,8 @@ var tower_scene = preload("uid://downv7grip0yk")
 
 static var valid_towers : Dictionary[String,TowerResource] = {
 	"archer" : preload("uid://cadpa641en0h4"),
-	"bomber" : preload("uid://d3lbiruxcdvek"),
-	"ice" : preload("uid://ckx4xbo8ucm17"),
+	"bomber" : preload("uid://ckx4xbo8ucm17"),
+	"ice" : preload("uid://d3lbiruxcdvek"),
 	"sniper" : preload("uid://d2jsim4qx5b0e"),
 	"machine_gun" : preload("uid://d2ngv4oh4pite"),
 	"greg" : preload("uid://bfqx0m0oevjtr"),

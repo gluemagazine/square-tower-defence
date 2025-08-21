@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0gsf"]
 bg_color = Color(0.6, 0.6, 0.6, 0.219608)
 
-[node name="Tower Icon" type="Control" node_paths=PackedStringArray("button", "label")]
+[node name="Tower Icon" type="Control" node_paths=PackedStringArray("button", "price", "tower_name")]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -15,7 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n0gsf")
 button = NodePath("Button")
-label = NodePath("Label")
+price = NodePath("price")
+tower_name = NodePath("name")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -30,12 +31,22 @@ flat = true
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.515, 3.515)
 
-[node name="Label" type="Label" parent="."]
+[node name="price" type="Label" parent="."]
 layout_mode = 0
-offset_left = -20.0
-offset_top = -86.0
-offset_right = 20.0
-offset_bottom = -63.0
+offset_left = -18.0
+offset_top = 69.0
+offset_right = 22.0
+offset_bottom = 92.0
 text = "yay!"
+horizontal_alignment = 1
+
+[node name="name" type="Label" parent="."]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -89.0
+offset_right = 40.0
+offset_bottom = -66.0
+text = "yay!"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="select"]

@@ -39,14 +39,15 @@ func _ready() -> void:
 	add_child(timer)
 	timer.timeout.connect(next_wave)
 	timer.start()
+	Game.enemy_killed.connect(clear_dead_enemies)
 	
+	await get_tree().create_timer(10)
 	wave_timer = Timer.new()
 	wave_timer.autostart = true
-	wave_timer.wait_time = 10
+	wave_timer.wait_time = 2
 	wave_timer.timeout.connect(check_for_wave_end.bind(null))
 	add_child(wave_timer)
 	
-	Game.enemy_killed.connect(clear_dead_enemies)
 
 func clear_dead_enemies():
 	var to_keep : Array[Enemy] = []

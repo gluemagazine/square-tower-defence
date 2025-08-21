@@ -9,7 +9,6 @@ var zoom = 2:
 	set(new):
 		zoom = new
 		camera.zoom = Vector2(zoom,zoom)
-		print(camera.zoom)
 
 #phantom camera properties
 #_limit_sides.x = limit_left
@@ -40,4 +39,4 @@ func _input(event: InputEvent) -> void:
 					zoom += 0.1
 				MOUSE_BUTTON_WHEEL_DOWN:
 					zoom -= 0.1
-	zoom = clamp(zoom,min_zoom,max_zoom)
+		zoom = clamp(zoom,min_zoom,max_zoom)

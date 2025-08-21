@@ -25,6 +25,7 @@ func set_params_from_dictionary(dictionary : Dictionary[String,Variant]):
 func _ready() -> void:
 	set_collision_mask_value(2,true)
 	set_collision_layer_value(1,false)
+	input_pickable = false
 	if auto:
 		var collision_shape = CollisionShape2D.new()
 		var shape = CircleShape2D.new()
@@ -37,6 +38,7 @@ func _ready() -> void:
 		var resized = radius * 2
 		panel.size = Vector2(resized,resized)
 		panel.position = Vector2(-radius,-radius)
+		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	if panel:
 		panel.material.set_shader_parameter("progress",0.95)
 

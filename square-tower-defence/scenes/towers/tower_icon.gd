@@ -7,7 +7,8 @@ var panels : Array[AnimatedPanel] = []
 signal selected
 
 @export var button : Button
-@export var label : Label
+@export var price : Label
+@export var tower_name : Label
 
 func _ready() -> void:
 	for panel in tower.panels:
@@ -22,8 +23,9 @@ func _ready() -> void:
 	custom_minimum_size = Vector2(100,0)
 	button.custom_minimum_size = custom_minimum_size
 	move_child(button,-1)
-	label.text = str(tower.initial_cost)
+	price.text = str(tower.initial_cost)
 	check_viability()
+	tower_name.text = tower.tower_name
 	Game.gold_changed.connect(check_viability)
 
 func check_viability():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://kl6qgmxpv6il"]
+[gd_scene load_steps=24 format=4 uid="uid://kl6qgmxpv6il"]
 
 [ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://scenes/enemies/wave_manager.gd" id="1_fjhfp"]
 [ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/locations/player_manager.tscn" id="1_xscvl"]
@@ -15,12 +15,11 @@
 [ext_resource type="TileSet" uid="uid://dcxxr1qhfql2o" path="res://resources/tilemaps/buildings.tres" id="7_xd6eh"]
 [ext_resource type="PackedScene" uid="uid://bgubqo0qquoyr" path="res://scenes/towers/base.tscn" id="8_gj7s8"]
 [ext_resource type="Resource" uid="uid://14321q0em26i" path="res://resources/enemies/fast enemy.tres" id="8_w0p8v"]
-[ext_resource type="PackedScene" uid="uid://su4d30wrw3ed" path="res://scenes/instakill zone.tscn" id="14_s6h2y"]
+[ext_resource type="PackedScene" uid="uid://su4d30wrw3ed" path="res://scenes/debug/instakill zone.tscn" id="14_s6h2y"]
 [ext_resource type="PackedScene" uid="uid://bfvgcog8opjnc" path="res://scenes/towers/tower_slot.tscn" id="17_bfnn1"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="18_ldxcr"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="19_4knjt"]
-[ext_resource type="Script" uid="uid://cgt3dgxvapu32" path="res://scenes/locations/camera_man.gd" id="20_4knjt"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="21_tlr8g"]
+[ext_resource type="PackedScene" uid="uid://dgj5flxbxhhmt" path="res://scenes/locations/camera_man.tscn" id="20_4knjt"]
 
 [sub_resource type="Resource" id="Resource_7ebxn"]
 script = ExtResource("2_73rso")
@@ -151,22 +150,6 @@ tween_resource = SubResource("Resource_tlr8g")
 limit_target = NodePath("../visual")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
-[node name="CameraMan" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
-position = Vector2(290, 174)
-script = ExtResource("20_4knjt")
+[node name="camera man" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("20_4knjt")]
+position = Vector2(306, 155)
 camera = NodePath("../PhantomCamera2D")
-metadata/_custom_type_script = "uid://cgt3dgxvapu32"
-
-[node name="Camera2D" type="Camera2D" parent="CameraMan"]
-position = Vector2(0, -5)
-zoom = Vector2(2, 2)
-limit_left = -48
-limit_top = -48
-limit_right = 656
-limit_bottom = 368
-
-[node name="PhantomCameraHost" type="Node" parent="CameraMan/Camera2D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("21_tlr8g")
-metadata/_custom_type_script = "uid://bd046eokvcnu2"
