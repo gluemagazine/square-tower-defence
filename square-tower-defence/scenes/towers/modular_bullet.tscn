@@ -9,6 +9,18 @@ radius = 1.0
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_gi04f")
+build_params = Dictionary[String, Variant]({
+"bullet_color": Color(0, 1, 0, 1),
+"bullet_size": Vector2(10, 10),
+"damage": 1,
+"damage_one": true,
+"explode": true,
+"explosion_color": Color(1, 0, 0, 1),
+"explosion_damage": 1,
+"explosion_radius": 150,
+"homing": false,
+"velocity": 300
+})
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gi04f")

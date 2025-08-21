@@ -39,7 +39,7 @@ func _ready() -> void:
 	$baseTexture.hide()
 	move_child(button,-1)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if locked:
 		return
 	if sightComp.target:

@@ -9,13 +9,6 @@ class_name TowerResource
 @export var range_radius : int = 50
 @export var bullet_scene : PackedScene = preload("uid://d2xoy8bd7beyr")
 
-func duplicate_panels():
-	var new = []
-	for panel in panels:
-		var dupe : PanelAnimationContainer = panel.duplicate(true)
-		var anims = []
-		for thing in dupe.animations:
-			var anim = thing.duplicate(true)
 
 func true_duplicate():
 	var dupe : Dictionary[String,Variant] = {}

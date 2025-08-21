@@ -31,7 +31,7 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kfbc"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Resource" id="Resource_xq12u"]
+[sub_resource type="Resource" id="Resource_qdivu"]
 script = ExtResource("5_qdivu")
 property = "rotation_angle"
 invert_on_flip = true
@@ -44,78 +44,15 @@ start = 0.0
 end = 0.5
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_1kfbc"]
+[sub_resource type="Resource" id="Resource_3rion"]
 script = ExtResource("4_5ropb")
 animation_name = "walk"
 duration = 0.5
 loop = false
-properties = Array[ExtResource("5_qdivu")]([SubResource("Resource_xq12u")])
+properties = Array[ExtResource("5_qdivu")]([SubResource("Resource_qdivu")])
 played = false
 on_secondary = false
 mirror_animation = false
-metadata/_custom_type_script = "uid://bttbxankdbyq"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdivu"]
-shader = ExtResource("5_3rion")
-shader_parameter/use_sprite_alpha = true
-shader_parameter/use_transition_texture = false
-shader_parameter/transition_type = 2
-shader_parameter/position = Vector2(0.5, 0.5)
-shader_parameter/invert = true
-shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 0.0
-shader_parameter/stagger = Vector2(0, 0)
-shader_parameter/stagger_frequency = Vector2i(2, 2)
-shader_parameter/flip_frequency = Vector2i(1, 1)
-shader_parameter/basic_feather = 0.0
-shader_parameter/use_mask_size = false
-shader_parameter/mask_size = Vector2(100, 100)
-shader_parameter/edges = 3
-shader_parameter/shape_feather = 0.0
-shader_parameter/sectors = 1
-shader_parameter/clock_feather = 0.0
-shader_parameter/progress = 1.0
-shader_parameter/progress_bias = Vector2(0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rion"]
-bg_color = Color(0.54902, 0.760784, 1, 1)
-
-[sub_resource type="Resource" id="Resource_qdivu"]
-script = ExtResource("5_qdivu")
-property = "rotation_angle"
-invert_on_flip = true
-number_animated = true
-initial_value = 0.0
-final_value = 360.0
-initial_color = Color(0, 0, 0, 1)
-final_color = Color(0, 0, 0, 1)
-start = 0.0
-end = 0.5
-metadata/_custom_type_script = "uid://57bm4bwb17hy"
-
-[sub_resource type="Resource" id="Resource_3rion"]
-script = ExtResource("5_qdivu")
-property = "color"
-invert_on_flip = true
-number_animated = false
-initial_value = 0.0
-final_value = 0.0
-initial_color = Color(1, 0, 0, 1)
-final_color = Color(0.54902, 0.760784, 1, 1)
-start = 0.0
-end = 0.5
-metadata/_custom_type_script = "uid://57bm4bwb17hy"
-
-[sub_resource type="Resource" id="Resource_xx4m5"]
-script = ExtResource("4_5ropb")
-animation_name = "fire"
-duration = 0.5
-loop = false
-properties = Array[ExtResource("5_qdivu")]([SubResource("Resource_qdivu"), SubResource("Resource_3rion")])
-played = false
-on_secondary = false
-mirror_animation = false
-metadata/_custom_type_script = "uid://bttbxankdbyq"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xx4m5"]
 shader = ExtResource("5_3rion")
@@ -140,9 +77,70 @@ shader_parameter/progress = 1.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg3kb"]
+bg_color = Color(0.54902, 0.760784, 1, 1)
+
+[sub_resource type="Resource" id="Resource_d3rcj"]
+script = ExtResource("5_qdivu")
+property = "rotation_angle"
+invert_on_flip = true
+number_animated = true
+initial_value = 0.0
+final_value = 360.0
+initial_color = Color(0, 0, 0, 1)
+final_color = Color(0, 0, 0, 1)
+start = 0.0
+end = 0.5
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_81k0h"]
+script = ExtResource("5_qdivu")
+property = "color"
+invert_on_flip = true
+number_animated = false
+initial_value = 0.0
+final_value = 0.0
+initial_color = Color(1, 0, 0, 1)
+final_color = Color(0.54902, 0.760784, 1, 1)
+start = 0.0
+end = 0.5
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_wecuw"]
+script = ExtResource("4_5ropb")
+animation_name = "fire"
+duration = 0.5
+loop = false
+properties = Array[ExtResource("5_qdivu")]([SubResource("Resource_d3rcj"), SubResource("Resource_81k0h")])
+played = false
+on_secondary = false
+mirror_animation = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1i5v"]
+shader = ExtResource("5_3rion")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb0la"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Resource" id="Resource_lg3kb"]
+[sub_resource type="Resource" id="Resource_4rr8g"]
 script = ExtResource("5_qdivu")
 property = "rotation_angle"
 invert_on_flip = true
@@ -155,16 +153,15 @@ start = 0.0
 end = 0.5
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_d3rcj"]
+[sub_resource type="Resource" id="Resource_6bx5l"]
 script = ExtResource("4_5ropb")
 animation_name = "fire"
 duration = 0.5
 loop = false
-properties = Array[ExtResource("5_qdivu")]([SubResource("Resource_lg3kb")])
+properties = Array[ExtResource("5_qdivu")]([SubResource("Resource_4rr8g")])
 played = false
 on_secondary = false
 mirror_animation = false
-metadata/_custom_type_script = "uid://bttbxankdbyq"
 
 [node name="AnimationBuilder" type="Node2D"]
 script = ExtResource("1_dctvm")
@@ -182,34 +179,34 @@ pivot_offset = Vector2(20, 20)
 theme_override_styles/panel = SubResource("StyleBoxFlat_1kfbc")
 script = ExtResource("1_ktjvc")
 color = Color(0, 0, 0, 1)
-animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_1kfbc")])
+animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_3rion")])
 starting_material = SubResource("ShaderMaterial_xq12u")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [node name="AnimatedPanel2" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_qdivu")
+material = SubResource("ShaderMaterial_xx4m5")
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 38.0
 offset_bottom = 38.0
 pivot_offset = Vector2(18, 18)
-theme_override_styles/panel = SubResource("StyleBoxFlat_3rion")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg3kb")
 script = ExtResource("1_ktjvc")
 color = Color(0.54902, 0.760784, 1, 1)
-animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_xx4m5")])
-starting_material = SubResource("ShaderMaterial_qdivu")
+animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_wecuw")])
+starting_material = SubResource("ShaderMaterial_xx4m5")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [node name="AnimatedPanel3" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_xx4m5")
+material = SubResource("ShaderMaterial_l1i5v")
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 30.0
 offset_bottom = 30.0
 pivot_offset = Vector2(10, 10)
-theme_override_styles/panel = SubResource("StyleBoxFlat_lg3kb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xb0la")
 script = ExtResource("1_ktjvc")
 color = Color(0, 0, 0, 1)
-animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_d3rcj")])
-starting_material = SubResource("ShaderMaterial_xx4m5")
+animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_6bx5l")])
+starting_material = SubResource("ShaderMaterial_l1i5v")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"

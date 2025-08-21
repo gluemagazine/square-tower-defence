@@ -5,7 +5,7 @@ var gold : int = 50:
 	set(new):
 		gold = new
 		gold_changed.emit()
-
+@warning_ignore("unused_signal")
 signal enemy_killed
 
 signal tower_opened(slot)

@@ -10,9 +10,9 @@
 [resource]
 script = ExtResource("6_l26wo")
 tower_name = "Archer"
-initial_cost = 100
+initial_cost = 1
 panels = Array[ExtResource("2_4spyt")]([ExtResource("3_8c54m"), ExtResource("4_lbsgn"), ExtResource("5_k66cd")])
-cooldown = 0.05
+cooldown = 1.0
 range_radius = 50
 bullet_scene = ExtResource("1_lbsgn")
 bullet_stats = Dictionary[String, Variant]({
@@ -23,7 +23,7 @@ bullet_stats = Dictionary[String, Variant]({
 "explode": true,
 "explosion_color": Color(1, 0.831373, 0, 0.431373),
 "explosion_damage": 250,
-"explosion_radius": 100,
+"explosion_radius": 150,
 "freeze": false,
 "homing": false,
 "set_target": false,

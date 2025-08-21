@@ -44,14 +44,14 @@ func updateTarget()->void:
 	#this section works, however I wanted to make the turrets target
 	#the enemies that were closest to the base. eventually this will
 	#be a toggle for fire mode
-	var closestTarget:CharacterBody2D = null
-	for i:CharacterBody2D in targets:
-		if closestTarget != null:
-			if (closestTarget.global_position-global_position)<i.global_position-global_position:
-				closestTarget = i
-		else:
-			closestTarget = i
-	target = closestTarget
+	#var closestTarget:CharacterBody2D = null
+	#for i:CharacterBody2D in targets:
+		#if closestTarget != null:
+			#if (closestTarget.global_position-global_position)<i.global_position-global_position:
+				#closestTarget = i
+		#else:
+			#closestTarget = i
+	#target = closestTarget
 
 func on_body_exited(body:Node)->void:
 	if body in targets:

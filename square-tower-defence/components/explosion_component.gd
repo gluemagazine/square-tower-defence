@@ -37,6 +37,8 @@ func _ready() -> void:
 		var resized = radius * 2
 		panel.size = Vector2(resized,resized)
 		panel.position = Vector2(-radius,-radius)
+	if panel:
+		panel.material.set_shader_parameter("progress",0.95)
 
 func explode():
 	exploded.emit()

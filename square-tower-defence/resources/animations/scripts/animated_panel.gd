@@ -141,14 +141,14 @@ func play_on_top(animation_name):
 				tweener.tween_method(func(value): stylebox.set("bg_color",value),property.initial_color,property.final_color,property.end)
 
 func play_index(index : int):
-	current_animation = animation_resources[0].animation_name
-	play_animation(animation_resources[0].animation_name)
+	current_animation = animation_resources[index].animation_name
+	play_animation(animation_resources[index].animation_name)
 
-func stop(reset = true):
+func stop(reset_stuff = true):
 	for tweener in current_tweeners:
 		tweener.stop()
 	timer.stop()
-	if reset:
+	if reset_stuff:
 		reset()
 
 func reset():

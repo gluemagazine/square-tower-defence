@@ -37,7 +37,7 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g82np"]
 bg_color = Color(0, 0.729412, 0, 1)
 
-[sub_resource type="Resource" id="Resource_hehpx"]
+[sub_resource type="Resource" id="Resource_mp2je"]
 script = ExtResource("5_w2n2k")
 property = "rotation_angle"
 invert_on_flip = true
@@ -50,16 +50,15 @@ start = 0.0
 end = 2.0
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_g82np"]
+[sub_resource type="Resource" id="Resource_b5j1t"]
 script = ExtResource("3_ffgdi")
 animation_name = "spin"
 duration = 2.0
 loop = true
-properties = Array[ExtResource("5_w2n2k")]([SubResource("Resource_hehpx")])
+properties = Array[ExtResource("5_w2n2k")]([SubResource("Resource_mp2je")])
 played = false
 on_secondary = false
 mirror_animation = false
-metadata/_custom_type_script = "uid://bttbxankdbyq"
 
 [node name="Tower slot" type="Node2D" node_paths=PackedStringArray("empty_slot", "build_interface", "tower_interface")]
 script = ExtResource("1_rmpee")
@@ -99,7 +98,7 @@ starting_values = Dictionary[String, Variant]({
 "shape_feather": 0.0
 })
 color = Color(0, 0.729412, 0, 1)
-animation_resources = Array[ExtResource("3_ffgdi")]([SubResource("Resource_g82np")])
+animation_resources = Array[ExtResource("3_ffgdi")]([SubResource("Resource_b5j1t")])
 starting_material = SubResource("ShaderMaterial_hehpx")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
