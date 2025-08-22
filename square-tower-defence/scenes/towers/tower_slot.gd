@@ -66,7 +66,7 @@ func check_gold_for_upgrade():
 
 func _on_sell_pressed() -> void:
 	if current_tower:
-		Game.add_gold(current_tower.stats.initial_cost)
+		Game.add_gold(current_tower.stats.get_refund())
 		current_tower.queue_free()
 		current_tower = null
 		empty_slot.show()

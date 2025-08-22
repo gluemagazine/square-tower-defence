@@ -25,7 +25,15 @@ func true_duplicate():
 	for key in bullet_stats:
 		dupe[key] = bullet_stats[key]
 	bullet_stats = dupe
-	
+
+func get_refund():
+	var total = initial_cost
+	var num = level
+	if level >= upgrades.size():
+		num = upgrades.size()
+	for i in range(num):
+		total += upgrades[i].cost
+	return total
 
 @export var bullet_stats: Dictionary[String,Variant] = {
 	"velocity" = 300,
