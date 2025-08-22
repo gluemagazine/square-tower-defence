@@ -71,3 +71,9 @@ var mod_params : Dictionary[String,Variant] = {
 	"explosion_color" = Color.RED,
 	"homing" = false
 }
+
+func connect_pause_signals(node : Node):
+	if node.has_method("lock"):
+		Game.pause.connect(node.lock)
+	if node.has_method("unlock"):
+		Game.unpause.connect(node.unlock)

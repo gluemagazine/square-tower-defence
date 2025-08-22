@@ -24,9 +24,14 @@ var current_wave : Wave
 
 var timer : Timer
 
+var wave_interval : Timer
 var wave_timer : Timer
 
+
+var locked = false
+
 func _ready() -> void:
+	QOL.connect_pause_signals(self)
 	for i in range(spawner_array.size()):
 		spawners[i+1] = spawner_array[i]
 	for key in spawners:
@@ -41,12 +46,17 @@ func _ready() -> void:
 	timer.start()
 	Game.enemy_killed.connect(clear_dead_enemies)
 	
-	await get_tree().create_timer(10).timeout
+	wave_interval = Timer.new()
+	wave_interval.autostart = false
+	add_child(wave_interval)
+	
+	await timer.timeout
 	wave_timer = Timer.new()
 	wave_timer.autostart = true
 	wave_timer.wait_time = 2
 	wave_timer.timeout.connect(check_for_wave_end.bind(null))
 	add_child(wave_timer)
+	
 	
 
 func clear_dead_enemies():
@@ -87,7 +97,9 @@ func spawn_wave():
 				spawn_again = true
 				break
 	if spawn_again:
-		await get_tree().create_timer(current_wave.spawn_interval).timeout
+		wave_interval.wait_time = current_wave.spawn_interval
+		wave_interval.start()
+		await wave_interval.timeout
 		spawn_wave()
 	else:
 		current_wave.finished = true
@@ -119,6 +131,19 @@ func check_for_victory():
 	else:
 		clear_dead_enemies()
 		return "not caught"
+
+func lock():
+	locked = true
+	timer.paused = true
+	wave_interval.paused = true
+	if wave_timer:
+		wave_timer.paused = true
+func unlock():
+	locked = false
+	timer.paused = false
+	wave_interval.paused = false
+	if wave_timer:
+		wave_timer.paused = false
 
 #func test_check():
 	#var result = check_for_victory()

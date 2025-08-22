@@ -20,13 +20,14 @@ metadata/_custom_type_script = "uid://n1c5q3ar4ftf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh075"]
 
-[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("health", "nav") groups=["enemy"]]
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("health", "nav", "freeze_timer") groups=["enemy"]]
 collision_layer = 7
 collision_mask = 0
 script = ExtResource("1_sjt85")
 stats = SubResource("Resource_54dnp")
 health = NodePath("HealthComponent")
 nav = NodePath("NavigationAgent2D")
+freeze_timer = NodePath("freeze_timer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_icmaq")
@@ -53,5 +54,8 @@ path_postprocessing = 1
 avoidance_enabled = true
 radius = 1.0
 debug_enabled = true
+
+[node name="freeze_timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="freeze" from="HitboxComponent" to="." method="freeze"]

@@ -22,6 +22,7 @@ var locked = false
 signal selected
 
 func _ready() -> void:
+	QOL.connect_pause_signals(self)
 	cool_down.timeout.connect(unlock)
 	cool_down.wait_time = stats.cooldown
 	range.shape.radius = stats.range_radius
@@ -69,8 +70,10 @@ func upgrade():
 
 func lock():
 	locked = true
+	cool_down.paused = true
 func unlock():
 	locked = false
+	cool_down.paused = false
 
 
 func _on_button_pressed() -> void:

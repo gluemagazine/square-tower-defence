@@ -29,6 +29,7 @@ metadata/_custom_type_script = "uid://bfomybb5km6al"
 script = ExtResource("7_nr0jh")
 properties = Array[ExtResource("8_6lbsi")]([SubResource("Resource_hy52a"), SubResource("Resource_f2n3c")])
 description = "upgrade 1"
+cost = 100
 metadata/_custom_type_script = "uid://2ugsdc4osvg6"
 
 [resource]

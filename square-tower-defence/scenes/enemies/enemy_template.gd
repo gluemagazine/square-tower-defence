@@ -7,6 +7,7 @@ var panels : Array[AnimatedPanel]
 @export var target : Node2D
 @export var nav : NavigationAgent2D
 @export var path_num : int = 1
+@export var freeze_timer : Timer
 var shader : Shader = preload("uid://chudojcwfpmos").duplicate()
 var panel_texture = StyleBoxFlat.new()
 var speed
@@ -14,9 +15,12 @@ var distance = 0
 
 var frozen : bool = false
 
+var locked = false
+
 signal killed
 
 func _ready() -> void:
+	QOL.connect_pause_signals(self)
 	if target:
 		nav.target_position = target.global_position
 	else:
@@ -48,6 +52,8 @@ func _ready() -> void:
 		distance += points[i].distance_to(points[i+1])
 
 func _physics_process(delta: float) -> void:
+	if locked:
+		return
 	if frozen:
 		return
 	var next_position = nav.get_next_path_position()
@@ -81,5 +87,14 @@ func freeze(seconds):
 		return
 	frozen = true
 	var duration = min(0.1,seconds * stats.freeze_modifier)
-	await get_tree().create_timer(duration).timeout
+	freeze_timer.wait_time = duration
+	freeze_timer.start()
+	await freeze_timer.timeout
 	frozen = false
+
+func lock():
+	locked = true
+	freeze_timer.paused = true
+func unlock():
+	locked = false
+	freeze_timer.paused = false

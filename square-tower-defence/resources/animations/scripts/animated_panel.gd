@@ -70,6 +70,8 @@ func adjust_n_of_sides(new_num):
 	starting_values["edges"] = new_num
 
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		QOL.connect_pause_signals(self)
 	add_theme_stylebox_override("panel",stylebox)
 	stylebox.bg_color = color
 	material = starting_material
@@ -156,6 +158,17 @@ func reset():
 		material.set_shader_parameter(value,starting_values[value])
 	stylebox.bg_color = color
 	current_animation = ""
+
+func lock():
+	if current_tweeners != []:
+		for tweener in current_tweeners:
+			tweener.pause()
+	timer.paused = true
+func unlock():
+	if current_tweeners != []:
+		for tweener in current_tweeners:
+			tweener.play()
+	timer.paused = false
 
 func create_container():
 	var container = PanelAnimationContainer.new()
