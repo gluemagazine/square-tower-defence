@@ -4,6 +4,7 @@ class_name PropertyAnimation
 @export_enum("color","position","grid_size",
 "rotation_angle","edges","shape_feather","progress") var property : String = "rotation_angle"
 
+@export var from_default : bool = false
 @export var invert_on_flip : bool = true
 
 @export var number_animated : bool = true

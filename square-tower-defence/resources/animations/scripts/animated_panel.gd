@@ -5,12 +5,14 @@ class_name AnimatedPanel
 @export var starting_values : Dictionary[String,Variant] = {
 	"position" : Vector2(0.5,0.5),
 	"rotation_angle" : 0.0,
+	"rotation_degrees" : 0.0,
 	"edges" : 3,
 	"shape_feather" : 0.0,
 	"progress" : 1.0,
 }:
 	set(new):
 		starting_values = new
+		update_starting_values()
 		reset()
 
 var color : Color:
@@ -65,6 +67,17 @@ func setup_from_container(container : PanelAnimationContainer):
 	size = container.dimentions
 	pivot_offset = size / 2
 	starting_values = container.starting_values
+	update_starting_values()
+
+func update_starting_values():
+	for animation in animation_resources:
+		for property in animation.properties:
+			if not property.from_default: continue
+			if property.property == "color":
+				property.initial_color = color
+			else:
+				property.initial_value = starting_values[property.property]
+				property.initial_value += starting_values[property.property]
 
 func adjust_n_of_sides(new_num):
 	starting_values["edges"] = new_num
@@ -131,6 +144,8 @@ func play_animation(animation_name):
 					tweener.tween_method(func(value): material.set_shader_parameter(property.property,value),property.final_value,property.initial_value,property.end)
 				else:
 					tweener.tween_method(func(value): stylebox.set("bg_color",value),property.final_color,property.initial_color,property.end)
+
+
 func play_on_top(animation_name):
 	for animation in animation_resources:
 		if not animation.animation_name == animation_name:
@@ -155,7 +170,10 @@ func stop(reset_stuff = true):
 
 func reset():
 	for value in starting_values:
+		if value == "rotation_degrees":
+			continue
 		material.set_shader_parameter(value,starting_values[value])
+	rotation_degrees = starting_values["rotation_degrees"]
 	stylebox.bg_color = color
 	current_animation = ""
 	current_tweeners = []

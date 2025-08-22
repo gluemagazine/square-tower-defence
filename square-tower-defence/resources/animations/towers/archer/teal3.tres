@@ -1,84 +1,72 @@
-[gd_resource type="Resource" script_class="PanelAnimationContainer" load_steps=12 format=3 uid="uid://dpngldap1s3ru"]
+[gd_resource type="Resource" script_class="PanelAnimationContainer" load_steps=12 format=3 uid="uid://c6kaxcjnydj55"]
 
-[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="1_paeix"]
-[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="2_j0mob"]
-[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="3_bwcga"]
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="1_6adeb"]
+[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="2_t3pbx"]
+[ext_resource type="Resource" uid="uid://bpas0a87vke8n" path="res://resources/animations/spin.tres" id="3_ouepj"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="4_3kwu4"]
 
-[sub_resource type="Resource" id="Resource_oqomy"]
-script = ExtResource("2_j0mob")
+[sub_resource type="Resource" id="Resource_ndbtk"]
+script = ExtResource("2_t3pbx")
 property = "rotation_angle"
 invert_on_flip = true
 number_animated = true
-initial_value = 60.0
-final_value = 420.0
+initial_value = 0.0
+final_value = 360.0
 initial_color = Color(0, 0, 0, 1)
 final_color = Color(0, 0, 0, 1)
 start = 0.0
 end = 2.0
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_paeix"]
-script = ExtResource("2_j0mob")
+[sub_resource type="Resource" id="Resource_otg53"]
+script = ExtResource("2_t3pbx")
 property = "rotation_angle"
 invert_on_flip = true
 number_animated = false
 initial_value = 0.0
 final_value = 0.0
-initial_color = Color(1, 0, 0, 1)
+initial_color = Color(0, 0, 1, 1)
 final_color = Color(1, 1, 1, 1)
 start = 0.0
 end = 2.0
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_bn8mr"]
-script = ExtResource("2_j0mob")
-property = "rotation_angle"
-invert_on_flip = true
-number_animated = true
-initial_value = 60.0
-final_value = 420.0
-initial_color = Color(0, 0, 0, 1)
-final_color = Color(0, 0, 0, 1)
-start = 0.0
-end = 2.0
-metadata/_custom_type_script = "uid://57bm4bwb17hy"
-
-[sub_resource type="Resource" id="Resource_81k0h"]
-script = ExtResource("2_j0mob")
+[sub_resource type="Resource" id="Resource_wecuw"]
+script = ExtResource("2_t3pbx")
 property = "rotation_angle"
 invert_on_flip = true
 number_animated = false
 initial_value = 0.0
 final_value = 0.0
 initial_color = Color(1, 1, 1, 1)
-final_color = Color(1, 0, 0, 1)
+final_color = Color(0, 0, 1, 1)
 start = 0.0
 end = 2.0
 metadata/_custom_type_script = "uid://57bm4bwb17hy"
 
-[sub_resource type="Resource" id="Resource_j0mob"]
-script = ExtResource("1_paeix")
+[sub_resource type="Resource" id="Resource_rr1rf"]
+script = ExtResource("1_6adeb")
 animation_name = "walk"
 duration = 2.0
 loop = true
-properties = Array[ExtResource("2_j0mob")]([SubResource("Resource_bn8mr"), SubResource("Resource_81k0h")])
+properties = Array[ExtResource("2_t3pbx")]([ExtResource("3_ouepj"), SubResource("Resource_wecuw")])
 played = false
 on_secondary = false
 mirror_animation = false
 metadata/_custom_type_script = "uid://bttbxankdbyq"
 
-[sub_resource type="Resource" id="Resource_bwcga"]
-script = ExtResource("1_paeix")
+[sub_resource type="Resource" id="Resource_c7y5y"]
+script = ExtResource("1_6adeb")
 animation_name = "walk"
 duration = 2.0
 loop = true
-properties = Array[ExtResource("2_j0mob")]([SubResource("Resource_oqomy"), SubResource("Resource_paeix")])
+properties = Array[ExtResource("2_t3pbx")]([SubResource("Resource_ndbtk"), SubResource("Resource_otg53")])
 played = false
 on_secondary = false
 mirror_animation = false
-secondary_animation = SubResource("Resource_j0mob")
+secondary_animation = SubResource("Resource_rr1rf")
 
-[sub_resource type="Shader" id="Shader_q04nw"]
+[sub_resource type="Shader" id="Shader_1wwhs"]
 code = "shader_type canvas_item;
 
 // courtesy of cashew-olddew, shown in a youtube video, very nice shader
@@ -250,15 +238,15 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqomy"]
-shader = SubResource("Shader_q04nw")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6adeb"]
+shader = SubResource("Shader_1wwhs")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
 shader_parameter/transition_type = 2
 shader_parameter/position = Vector2(0.5, 0.5)
 shader_parameter/invert = true
 shader_parameter/grid_size = Vector2(1, 1)
-shader_parameter/rotation_angle = 131.892
+shader_parameter/rotation_angle = 71.8924
 shader_parameter/stagger = Vector2(0, 0)
 shader_parameter/stagger_frequency = Vector2i(2, 2)
 shader_parameter/flip_frequency = Vector2i(1, 1)
@@ -273,12 +261,12 @@ shader_parameter/progress = 0.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
 [resource]
-script = ExtResource("3_bwcga")
+script = ExtResource("4_3kwu4")
 layer_num = 1
 dimentions = Vector2(40, 40)
-animations = Array[ExtResource("1_paeix")]([SubResource("Resource_bwcga")])
-color = Color(1, 0, 0, 1)
-starting_material = SubResource("ShaderMaterial_oqomy")
+animations = Array[ExtResource("1_6adeb")]([SubResource("Resource_c7y5y")])
+color = Color(0, 0, 1, 1)
+starting_material = SubResource("ShaderMaterial_6adeb")
 starting_values = Dictionary[String, Variant]({
 "edges": 3,
 "position": Vector2(0.5, 0.5),
