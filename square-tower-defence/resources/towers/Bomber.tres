@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TowerResource" load_steps=7 format=3 uid="uid://ckx4xbo8ucm17"]
+[gd_resource type="Resource" script_class="TowerResource" load_steps=8 format=3 uid="uid://ckx4xbo8ucm17"]
 
 [ext_resource type="PackedScene" uid="uid://d2xoy8bd7beyr" path="res://Towers/arrow.tscn" id="1_rngei"]
 [ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_hymny"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://c5c64bnmq67y6" path="res://resources/animations/towers/archer/orange2.tres" id="4_egrft"]
 [ext_resource type="Resource" uid="uid://utdtv03jsoun" path="res://resources/animations/towers/archer/Archer3.tres" id="5_yr4cu"]
 [ext_resource type="Script" uid="uid://b0616cg4l6x15" path="res://resources/towers/tower.gd" id="6_uxbsm"]
+[ext_resource type="Script" uid="uid://2ugsdc4osvg6" path="res://resources/towers/upgrades/upgrade.gd" id="7_hymny"]
 
 [resource]
 script = ExtResource("6_uxbsm")
@@ -15,6 +16,8 @@ panels = Array[ExtResource("2_hymny")]([ExtResource("3_83soq"), ExtResource("4_e
 cooldown = 1.0
 range_radius = 50
 bullet_scene = ExtResource("1_rngei")
+level = 0
+upgrades = Array[ExtResource("7_hymny")]([])
 bullet_stats = Dictionary[String, Variant]({
 "bullet_color": Color(0, 0, 0, 1),
 "bullet_size": Vector2(10, 10),

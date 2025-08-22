@@ -161,6 +161,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="upgrade" type="Button" parent="tower interface/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "upgrade"

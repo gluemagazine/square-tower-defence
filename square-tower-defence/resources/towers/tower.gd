@@ -9,6 +9,8 @@ class_name TowerResource
 @export var range_radius : int = 50
 @export var bullet_scene : PackedScene = preload("uid://d2xoy8bd7beyr")
 
+@export var level : int = 0
+@export var upgrades : Array[Upgrade] = []
 
 func true_duplicate():
 	var dupe : Dictionary[String,Variant] = {}

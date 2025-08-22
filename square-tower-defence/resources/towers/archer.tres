@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TowerResource" load_steps=7 format=3 uid="uid://cadpa641en0h4"]
+[gd_resource type="Resource" script_class="TowerResource" load_steps=12 format=3 uid="uid://cadpa641en0h4"]
 
 [ext_resource type="PackedScene" uid="uid://d2xoy8bd7beyr" path="res://Towers/arrow.tscn" id="1_0gsqp"]
 [ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_swa2y"]
@@ -6,6 +6,30 @@
 [ext_resource type="Resource" uid="uid://dvj1pjxbeipbs" path="res://resources/animations/towers/archer/green2.tres" id="4_6lbsi"]
 [ext_resource type="Resource" uid="uid://utdtv03jsoun" path="res://resources/animations/towers/archer/Archer3.tres" id="5_hy52a"]
 [ext_resource type="Script" uid="uid://b0616cg4l6x15" path="res://resources/towers/tower.gd" id="6_f2n3c"]
+[ext_resource type="Script" uid="uid://2ugsdc4osvg6" path="res://resources/towers/upgrades/upgrade.gd" id="7_nr0jh"]
+[ext_resource type="Script" uid="uid://bfomybb5km6al" path="res://resources/towers/upgrades/property_upgrade.gd" id="8_6lbsi"]
+
+[sub_resource type="Resource" id="Resource_hy52a"]
+script = ExtResource("8_6lbsi")
+cooldown = false
+property = "damage"
+increase_type = "add"
+modify_value = 100.0
+metadata/_custom_type_script = "uid://bfomybb5km6al"
+
+[sub_resource type="Resource" id="Resource_f2n3c"]
+script = ExtResource("8_6lbsi")
+cooldown = true
+property = "damage"
+increase_type = "add"
+modify_value = -0.5
+metadata/_custom_type_script = "uid://bfomybb5km6al"
+
+[sub_resource type="Resource" id="Resource_gsx56"]
+script = ExtResource("7_nr0jh")
+properties = Array[ExtResource("8_6lbsi")]([SubResource("Resource_hy52a"), SubResource("Resource_f2n3c")])
+description = "upgrade 1"
+metadata/_custom_type_script = "uid://2ugsdc4osvg6"
 
 [resource]
 script = ExtResource("6_f2n3c")
@@ -15,6 +39,8 @@ panels = Array[ExtResource("2_swa2y")]([ExtResource("3_nr0jh"), ExtResource("4_6
 cooldown = 1.0
 range_radius = 50
 bullet_scene = ExtResource("1_0gsqp")
+level = 0
+upgrades = Array[ExtResource("7_nr0jh")]([SubResource("Resource_gsx56")])
 bullet_stats = Dictionary[String, Variant]({
 "bullet_color": Color(0, 1, 0, 1),
 "bullet_size": Vector2(5, 10),

@@ -80,5 +80,6 @@ func freeze(seconds):
 	if frozen:
 		return
 	frozen = true
-	await get_tree().create_timer(seconds).timeout
+	var duration = min(0.1,seconds * stats.freeze_modifier)
+	await get_tree().create_timer(duration).timeout
 	frozen = false

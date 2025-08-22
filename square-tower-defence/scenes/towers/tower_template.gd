@@ -58,6 +58,10 @@ func _physics_process(_delta: float) -> void:
 func upgrade():
 	for panel in panels:
 		panel.level_up()
+	stats.upgrades[stats.level].apply(stats)
+	stats.level += 1
+	cool_down.wait_time = stats.cooldown
+
 
 func lock():
 	locked = true

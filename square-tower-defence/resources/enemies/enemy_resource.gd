@@ -17,3 +17,5 @@ class_name EnemyResource
 @export var speed : int = 100
 
 @export var reward : int = 10
+
+@export var freeze_modifier : float = 1.0

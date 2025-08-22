@@ -7,11 +7,18 @@ var current_tower : TowerTemplate:
 		if tower_interface:
 			tower_interface.build()
 
+var tower : TowerResource:
+	get:
+		if not current_tower: return null
+		return current_tower.stats
+
 var tower_scene = preload("uid://downv7grip0yk")
 
 @export var empty_slot : Control
 @export var build_interface : BuildInterface
 @export var tower_interface : TowerInterface
+
+@onready var upgrade: Button = %upgrade
 
 static var valid_towers : Dictionary[String,TowerResource] = {
 	"archer" : preload("uid://cadpa641en0h4"),
@@ -30,12 +37,19 @@ func build_tower(tower):
 	add_child(instance)
 	empty_slot.hide()
 	tower_interface.select()
+	if tower.level >= tower.upgrades.size():
+		upgrade.disabled = true
+		upgrade.tooltip_text = "Max Level"
 
 
 func _on_upgrade_pressed() -> void:
 	if current_tower:
 		current_tower.upgrade()
-
+		if not tower.level >= tower.upgrades.size():
+			upgrade.tooltip_text = tower.upgrades[tower.level].description
+		else:
+			upgrade.disabled = true
+			upgrade.tooltip_text = "Max Level"
 
 func _on_sell_pressed() -> void:
 	if current_tower:
@@ -44,3 +58,4 @@ func _on_sell_pressed() -> void:
 		current_tower = null
 		empty_slot.show()
 		tower_interface.close()
+		upgrade.disabled = false
