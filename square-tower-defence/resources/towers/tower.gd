@@ -12,6 +12,14 @@ class_name TowerResource
 @export var level : int = 0
 @export var upgrades : Array[Upgrade] = []
 
+var next_upgrade:
+	get:
+		if upgrades.size() <= 0:
+			return null
+		if upgrades.size() <= level:
+			return null
+		return upgrades[level]
+
 func true_duplicate():
 	var dupe : Dictionary[String,Variant] = {}
 	for key in bullet_stats:

@@ -29,6 +29,9 @@ static var valid_towers : Dictionary[String,TowerResource] = {
 	"greg" : preload("uid://bfqx0m0oevjtr"),
 }
 
+func _ready() -> void:
+	Game.gold_changed.connect(check_gold_for_upgrade)
+
 func build_tower(tower):
 	var instance : TowerTemplate = tower_scene.instantiate()
 	instance.stats = tower.duplicate(true)
@@ -41,7 +44,6 @@ func build_tower(tower):
 		upgrade.disabled = true
 		upgrade.tooltip_text = "Max Level"
 
-
 func _on_upgrade_pressed() -> void:
 	if current_tower:
 		current_tower.upgrade()
@@ -50,6 +52,17 @@ func _on_upgrade_pressed() -> void:
 		else:
 			upgrade.disabled = true
 			upgrade.tooltip_text = "Max Level"
+
+func check_gold_for_upgrade():
+	await get_tree().physics_frame
+	if not tower:
+		return
+	if not tower.next_upgrade:
+		return
+	if Game.gold >= tower.next_upgrade.cost:
+		upgrade.disabled = false
+	else:
+		upgrade.disabled = true
 
 func _on_sell_pressed() -> void:
 	if current_tower:

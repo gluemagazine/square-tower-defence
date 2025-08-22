@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://dn24xth4geejc" path="res://scenes/towers/tower_icon.gd" id="1_n0gsf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lakg8"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.376471)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0gsf"]
-bg_color = Color(0.6, 0.6, 0.6, 0.219608)
+bg_color = Color(0.6, 0.6, 0.6, 0.643137)
 
 [node name="Tower Icon" type="Control" node_paths=PackedStringArray("button", "price", "tower_name")]
 custom_minimum_size = Vector2(50, 0)
@@ -26,15 +26,16 @@ layout_mode = 0
 offset_left = -52.0
 offset_top = -93.0
 offset_right = 53.0
-offset_bottom = 91.0
+offset_bottom = -42.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lakg8")
 
 [node name="Button" type="Button" parent="."]
+z_index = 5
 layout_mode = 0
-offset_left = -48.0
-offset_top = -50.0
-offset_right = 52.0
-offset_bottom = 49.0
+offset_left = -53.0
+offset_top = -42.0
+offset_right = 53.0
+offset_bottom = 57.0
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_n0gsf")
 flat = true

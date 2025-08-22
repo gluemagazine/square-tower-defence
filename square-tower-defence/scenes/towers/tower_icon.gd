@@ -29,6 +29,7 @@ func _ready() -> void:
 	Game.gold_changed.connect(check_viability)
 
 func check_viability():
+	await  get_tree().physics_frame
 	if Game.gold >= tower.initial_cost:
 		button.disabled = false
 		button.flat = true

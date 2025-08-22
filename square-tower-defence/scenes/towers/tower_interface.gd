@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name TowerInterface
 
+@export var parent : TowerSlot
+
 func _ready() -> void:
 	Game.tower_opened.connect(check)
 

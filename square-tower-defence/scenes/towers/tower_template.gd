@@ -56,6 +56,10 @@ func _physics_process(_delta: float) -> void:
 		lock()
 
 func upgrade():
+	if Game.gold >= stats.upgrades[stats.level].cost:
+		Game.gold -= stats.upgrades[stats.level].cost
+	else:
+		return
 	for panel in panels:
 		panel.level_up()
 	stats.upgrades[stats.level].apply(stats)

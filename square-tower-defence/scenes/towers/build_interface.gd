@@ -23,6 +23,7 @@ func _ready() -> void:
 		container.add_child(instance)
 		instance.selected.connect(click_tower)
 
+
 func open():
 	show()
 	Game.tower_open = true
