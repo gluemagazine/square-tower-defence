@@ -1030,6 +1030,13 @@ starting_values = Dictionary[String, Variant]({
 "rotation_degrees": 0.0,
 "shape_feather": 0.0
 })
+use_ending_values = null
+override_animations = null
+loop = null
+mirror = null
+duration = null
+ending_color = null
+ending_values = null
 color = Color(0, 1, 0, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_6bx5l")])
 starting_material = SubResource("ShaderMaterial_lg3kb")
@@ -1052,6 +1059,13 @@ starting_values = Dictionary[String, Variant]({
 "rotation_degrees": 30.0,
 "shape_feather": 0.0
 })
+use_ending_values = null
+override_animations = null
+loop = null
+mirror = null
+duration = null
+ending_color = null
+ending_values = null
 color = Color(1, 0, 0, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_uci2g")])
 starting_material = SubResource("ShaderMaterial_57udo")
@@ -1074,6 +1088,13 @@ starting_values = Dictionary[String, Variant]({
 "rotation_degrees": 60.0,
 "shape_feather": 0.0
 })
+use_ending_values = null
+override_animations = null
+loop = null
+mirror = null
+duration = null
+ending_color = null
+ending_values = null
 color = Color(0, 0, 1, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_o1tfi")])
 starting_material = SubResource("ShaderMaterial_jw3cb")
@@ -1095,6 +1116,13 @@ starting_values = Dictionary[String, Variant]({
 "rotation_degrees": 0.0,
 "shape_feather": 0.0
 })
+use_ending_values = null
+override_animations = null
+loop = null
+mirror = null
+duration = null
+ending_color = null
+ending_values = null
 color = Color(1, 0, 1, 1)
 animation_resources = Array[ExtResource("4_5ropb")]([SubResource("Resource_n8xfu")])
 starting_material = SubResource("ShaderMaterial_dqdnl")

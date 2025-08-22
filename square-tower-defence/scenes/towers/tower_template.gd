@@ -19,6 +19,8 @@ var panels : Array[AnimatedPanel]:
 var modular_bullet = preload("uid://ig5c4t7spifk")
 var locked = false
 
+var on_cooldown = false
+
 signal selected
 
 func _ready() -> void:
@@ -39,9 +41,12 @@ func _ready() -> void:
 		instance.stop()
 	$baseTexture.hide()
 	move_child(button,-1)
+	cool_down.timeout.connect(set.bind("on_cooldown",false))
 
 func _physics_process(_delta: float) -> void:
 	if locked:
+		return
+	if on_cooldown:
 		return
 	if sightComp.target:
 		var shot : Bullet = modular_bullet.instantiate()
@@ -54,7 +59,7 @@ func _physics_process(_delta: float) -> void:
 		for panel in panels:
 			panel.play_animation("fire")
 		cool_down.start()
-		lock()
+		on_cooldown = true
 
 func upgrade():
 	if Game.gold >= stats.upgrades[stats.level].cost:

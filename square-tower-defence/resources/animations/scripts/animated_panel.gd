@@ -25,6 +25,23 @@ var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicat
 		starting_material = new
 		material = starting_material
 
+@export_category("easy animation")
+@export var use_ending_values : bool = false
+@export var override_animations : bool = false
+@export var loop : bool = false
+@export var mirror : bool = false
+@export var duration : bool = false
+@export var ending_color : Color = Color.WHITE
+
+@export var ending_values : Dictionary[String,Variant] = {
+	"position" : Vector2(0.5,0.5),
+	"rotation_angle" : 0.0,
+	"rotation_degrees" : 0.0,
+	"edges" : 3,
+	"shape_feather" : 0.0,
+	"progress" : 1.0,
+}
+
 var on_alt = false
 var on_mirror = false
 
@@ -62,7 +79,8 @@ var timer : Timer
 
 func setup_from_container(container : PanelAnimationContainer):
 	color = container.color
-	animation_resources = container.animations.duplicate(true)
+	if not container.override_animations:
+		animation_resources = container.animations.duplicate(true)
 	starting_material = container.starting_material.duplicate(true)
 	size = container.dimentions
 	pivot_offset = size / 2
@@ -157,6 +175,13 @@ func play_on_top(animation_name):
 			else:
 				tweener.tween_method(func(value): stylebox.set("bg_color",value),property.initial_color,property.final_color,property.end)
 
+func easy_animate():
+	for key in starting_values:
+		if starting_values[key] != ending_values[key]:
+			var tweener = create_tween()
+			tweener.tween_method(func(value): material.set_shader_parameter(key,value),starting_values[key],[key],duration)
+			tweener
+
 func play_index(index : int):
 	current_animation = animation_resources[index].animation_name
 	play_animation(animation_resources[index].animation_name)
@@ -173,7 +198,8 @@ func reset():
 		if value == "rotation_degrees":
 			continue
 		material.set_shader_parameter(value,starting_values[value])
-	rotation_degrees = starting_values["rotation_degrees"]
+	if starting_values.has("rotation_degrees"):
+		rotation_degrees = starting_values["rotation_degrees"]
 	stylebox.bg_color = color
 	current_animation = ""
 	current_tweeners = []

@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_6bx5l"]
 script = ExtResource("2_4obj4")
 property = "rotation_angle"
+from_default = false
 invert_on_flip = true
 number_animated = true
 initial_value = 60.0
@@ -21,6 +22,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_57udo"]
 script = ExtResource("2_4obj4")
 property = "rotation_angle"
+from_default = false
 invert_on_flip = true
 number_animated = false
 initial_value = 0.0
@@ -34,6 +36,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_bn8mr"]
 script = ExtResource("2_4obj4")
 property = "rotation_angle"
+from_default = false
 invert_on_flip = true
 number_animated = true
 initial_value = 60.0
@@ -47,6 +50,7 @@ metadata/_custom_type_script = "uid://57bm4bwb17hy"
 [sub_resource type="Resource" id="Resource_81k0h"]
 script = ExtResource("2_4obj4")
 property = "rotation_angle"
+from_default = false
 invert_on_flip = true
 number_animated = false
 initial_value = 0.0
@@ -112,7 +116,17 @@ starting_material = SubResource("ShaderMaterial_p8s71")
 starting_values = Dictionary[String, Variant]({
 "edges": 3,
 "position": Vector2(0.5, 0.5),
-"progress": 1,
+"progress": 1.0,
 "rotation_angle": 0.0,
-"shape_feather": 0
+"rotation_degrees": 0.0,
+"shape_feather": 0.0
+})
+loop = false
+ending_values = Dictionary[String, Variant]({
+"edges": 3,
+"position": Vector2(0.5, 0.5),
+"progress": 1.0,
+"rotation_angle": 0.0,
+"rotation_degrees": 0.0,
+"shape_feather": 0.0
 })

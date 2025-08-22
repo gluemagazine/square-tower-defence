@@ -38,10 +38,8 @@ func check(tower):
 func _unhandled_input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton:
-		print("a button")
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if delay:
-				print("not yet")
 				return
 			if visible:
 				close()

@@ -40,6 +40,7 @@ bg_color = Color(0, 0.729412, 0, 1)
 [sub_resource type="Resource" id="Resource_mp2je"]
 script = ExtResource("5_w2n2k")
 property = "rotation_angle"
+from_default = false
 invert_on_flip = true
 number_animated = true
 initial_value = 45.0
@@ -97,6 +98,13 @@ starting_values = Dictionary[String, Variant]({
 "rotation_angle": 45.0,
 "shape_feather": 0.0
 })
+use_ending_values = null
+override_animations = null
+loop = null
+mirror = null
+duration = null
+ending_color = null
+ending_values = null
 color = Color(0, 0.729412, 0, 1)
 animation_resources = Array[ExtResource("3_ffgdi")]([SubResource("Resource_b5j1t")])
 starting_material = SubResource("ShaderMaterial_hehpx")
