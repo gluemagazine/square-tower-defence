@@ -76,6 +76,7 @@ func level_up():
 
 var stylebox = StyleBoxFlat.new()
 var timer : Timer
+var easy_timer : Timer
 
 func setup_from_container(container : PanelAnimationContainer):
 	color = container.color
@@ -106,10 +107,17 @@ func _ready() -> void:
 	add_theme_stylebox_override("panel",stylebox)
 	stylebox.bg_color = color
 	material = starting_material
+	
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(play_animation.bind(""))
 	timer.one_shot = true
+	
+	easy_timer = Timer.new()
+	add_child(timer)
+	easy_timer.timeout.connect(easy_animate)
+	easy_timer.one_shot = true
+	
 	for value in starting_values:
 		material.set_shader_parameter(value,starting_values[value])
 	true_duplicate()
@@ -175,12 +183,21 @@ func play_on_top(animation_name):
 			else:
 				tweener.tween_method(func(value): stylebox.set("bg_color",value),property.initial_color,property.final_color,property.end)
 
+var flip : bool = true
+
 func easy_animate():
 	for key in starting_values:
 		if starting_values[key] != ending_values[key]:
 			var tweener = create_tween()
-			tweener.tween_method(func(value): material.set_shader_parameter(key,value),starting_values[key],[key],duration)
-			tweener
+			tweener.tween_method(func(value): material.set_shader_parameter(key,value),starting_values[key],ending_values[key],duration)
+			current_tweeners.append(tweener)
+	if color != ending_color:
+		var tweener = create_tween()
+		tweener.tween_method(func(value): stylebox.set("bg_color",value),color,ending_color,duration)
+		current_tweeners.append(tweener)
+	if loop:
+		easy_timer.start()
+	flip = !flip
 
 func play_index(index : int):
 	current_animation = animation_resources[index].animation_name
