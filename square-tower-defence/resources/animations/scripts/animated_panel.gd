@@ -92,7 +92,7 @@ func play_animation(animation_name):
 	if animation_name == "":
 		if current_animation != "":
 			animation_name = current_animation
-	
+	clear_invalid_tweeners()
 	#stop(false)
 	for animation in animation_resources:
 		if not animation.animation_name == animation_name:
@@ -158,6 +158,14 @@ func reset():
 		material.set_shader_parameter(value,starting_values[value])
 	stylebox.bg_color = color
 	current_animation = ""
+	current_tweeners = []
+
+func clear_invalid_tweeners():
+	var new = current_tweeners.duplicate()
+	for tweener in current_tweeners:
+		if not tweener.is_valid():
+			new.erase(tweener)
+	current_tweeners = new
 
 func lock():
 	if current_tweeners != []:
@@ -167,7 +175,8 @@ func lock():
 func unlock():
 	if current_tweeners != []:
 		for tweener in current_tweeners:
-			tweener.play()
+			if  tweener.is_valid():
+				tweener.play()
 	timer.paused = false
 
 func create_container():
