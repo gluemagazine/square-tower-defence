@@ -3,6 +3,8 @@ class_name TowerInterface
 
 @export var parent : TowerSlot
 
+var delay : bool = true
+
 func _ready() -> void:
 	Game.tower_opened.connect(check)
 
@@ -12,13 +14,17 @@ func build():
 func open():
 	Game.tower_open = true
 	show()
+	await  get_tree().physics_frame
+	delay = false
 
 func close():
 	hide()
+	delay = true
 
 func manual_close():
 	hide()
 	Game.tower_open = false
+	delay = true
 
 func select():
 	Game.tower_opened.emit(self)
@@ -28,3 +34,14 @@ func check(tower):
 		open()
 	else:
 		close()
+
+func _unhandled_input(event: InputEvent) -> void:
+	
+	if event is InputEventMouseButton:
+		print("a button")
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if delay:
+				print("not yet")
+				return
+			if visible:
+				close()

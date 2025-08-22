@@ -15,25 +15,32 @@ var towers :
 		else:
 			return null
 
+var delay = true
+
 func _ready() -> void:
 	Game.tower_opened.connect(check)
+	
 	for key in towers:
 		var instance : TowerIcon = icon.instantiate()
 		instance.tower = towers[key]
 		container.add_child(instance)
 		instance.selected.connect(click_tower)
 
-
 func open():
 	show()
 	Game.tower_open = true
+	delay = true
+	await  get_tree().physics_frame
+	delay = false
 
 func close():
 	hide()
+	delay = true
 
 func manual_close():
 	hide()
 	Game.tower_open = false
+	delay = true
 
 func select():
 	Game.tower_open = false
@@ -51,3 +58,11 @@ func click_tower(tower : TowerResource):
 		if tower.upgrades != []:
 			upgrade.tooltip_text = tower.upgrades[0].description
 		Game.subtract_gold(tower.initial_cost)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if delay:
+		return
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if visible:
+				close()

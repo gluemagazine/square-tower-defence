@@ -64,6 +64,7 @@ func check_gold_for_upgrade():
 	else:
 		upgrade.disabled = true
 
+
 func _on_sell_pressed() -> void:
 	if current_tower:
 		Game.add_gold(current_tower.stats.get_refund())

@@ -103,6 +103,7 @@ starting_material = SubResource("ShaderMaterial_hehpx")
 metadata/_custom_type_script = "uid://chm5b7j15jddi"
 
 [node name="Button" type="Button" parent="empty_slot"]
+z_index = 10
 layout_mode = 0
 offset_left = -16.0
 offset_top = -16.0
@@ -123,15 +124,10 @@ icon = ExtResource("8_mp2je")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 498.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="close" type="Button" parent="Build interface/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
-layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Build interface/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -139,6 +135,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="tower interface" type="CanvasLayer" parent="." node_paths=PackedStringArray("parent")]
+layer = 2
 visible = false
 script = ExtResource("7_hehpx")
 parent = NodePath("..")
@@ -147,14 +144,9 @@ parent = NodePath("..")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 498.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="close" type="Button" parent="tower interface/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
-layout_mode = 2
-focus_mode = 0
-flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="tower interface/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -173,7 +165,5 @@ text = "sell
 "
 
 [connection signal="pressed" from="empty_slot/Button" to="Build interface" method="select"]
-[connection signal="pressed" from="Build interface/VBoxContainer/close" to="Build interface" method="manual_close"]
-[connection signal="pressed" from="tower interface/VBoxContainer/close" to="tower interface" method="manual_close"]
 [connection signal="pressed" from="tower interface/VBoxContainer/HBoxContainer/upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="tower interface/VBoxContainer/HBoxContainer/sell" to="." method="_on_sell_pressed"]
