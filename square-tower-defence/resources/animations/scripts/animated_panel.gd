@@ -15,22 +15,53 @@ class_name AnimatedPanel
 		update_starting_values()
 		reset()
 
-var color : Color:
+@export var color : Color:
 	set(new):
 		color = new
 		stylebox.bg_color = color
-var animation_resources : Array[PanelAnimation]
-var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicate():
+@export var animation_resources : Array[PanelAnimation]
+@export var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicate():
 	set(new):
 		starting_material = new
 		material = starting_material
 
-@export_category("easy animation")
+@export_tool_button("run animation") var call : Callable = self.play_index.bind(0)
+@export_tool_button("stop animation") var new_call : Callable = self.stop.bind(true)
+
+var on_alt = false
+var on_mirror = false
+#
+#func _get_property_list() -> Array[Dictionary]:
+	#var properties : Array[Dictionary] = []
+	#
+	#properties.append({
+		#"name": "color",
+		#"type": TYPE_COLOR,
+		#"usage": PROPERTY_USAGE_DEFAULT,
+	#})
+	#properties.append({
+		#"name": "animation_resources",
+		#"type": TYPE_ARRAY,
+		#"usage": PROPERTY_USAGE_DEFAULT,
+		#"hint" : PROPERTY_HINT_TYPE_STRING,
+		#"hint_string" : str("%d/%d:" + "PanelAnimation") % \
+		#[TYPE_OBJECT,PROPERTY_HINT_RESOURCE_TYPE]
+	#})
+	#properties.append({
+		#"name" : "starting_material",
+		#"type" : TYPE_OBJECT,
+		#"usage" : PROPERTY_USAGE_DEFAULT,
+		#"hint": PROPERTY_HINT_TYPE_STRING,
+		#"hind_string" : str("TYPE_OBJECT/PROPERTY_HINY_RESOURCE_TYPE:ShaderMaterial")
+	#})
+	#return properties
+
+@export_group("easy animation")
 @export var use_ending_values : bool = false
 @export var override_animations : bool = false
 @export var loop : bool = false
 @export var mirror : bool = false
-@export var duration : bool = false
+@export var duration : float = 1.0
 @export var ending_color : Color = Color.WHITE
 
 @export var ending_values : Dictionary[String,Variant] = {
@@ -42,33 +73,6 @@ var starting_material : ShaderMaterial = preload("uid://b0cobtuo68gj7").duplicat
 	"progress" : 1.0,
 }
 
-var on_alt = false
-var on_mirror = false
-
-func _get_property_list() -> Array[Dictionary]:
-	var properties : Array[Dictionary] = []
-	
-	properties.append({
-		"name": "color",
-		"type": TYPE_COLOR,
-		"usage": PROPERTY_USAGE_DEFAULT,
-	})
-	properties.append({
-		"name": "animation_resources",
-		"type": TYPE_ARRAY,
-		"usage": PROPERTY_USAGE_DEFAULT,
-		"hint" : PROPERTY_HINT_TYPE_STRING,
-		"hint_string" : str("%d/%d:" + "PanelAnimation") % \
-		[TYPE_OBJECT,PROPERTY_HINT_RESOURCE_TYPE]
-	})
-	properties.append({
-		"name" : "starting_material",
-		"type" : TYPE_OBJECT,
-		"usage" : PROPERTY_USAGE_DEFAULT,
-		"hint": PROPERTY_HINT_TYPE_STRING,
-		"hind_string" : str("TYPE_OBJECT/PROPERTY_HINY_RESOURCE_TYPE:ShaderMaterial")
-	})
-	return properties
 
 func level_up():
 	starting_values["edges"] += 1
@@ -87,6 +91,12 @@ func setup_from_container(container : PanelAnimationContainer):
 	pivot_offset = size / 2
 	starting_values = container.starting_values
 	update_starting_values()
+	ending_values = container.ending_values
+	ending_color = container.ending_color
+	override_animations = container.override_animations
+	loop = container.loop
+	mirror = container.mirror
+	duration = container.duration
 
 func update_starting_values():
 	for animation in animation_resources:
@@ -114,7 +124,7 @@ func _ready() -> void:
 	timer.one_shot = true
 	
 	easy_timer = Timer.new()
-	add_child(timer)
+	add_child(easy_timer)
 	easy_timer.timeout.connect(easy_animate)
 	easy_timer.one_shot = true
 	
@@ -132,7 +142,11 @@ func play_animation(animation_name):
 		if current_animation != "":
 			animation_name = current_animation
 	clear_invalid_tweeners()
+	if use_ending_values:
+		easy_animate()
 	#stop(false)
+	if animation_resources == []:
+		return
 	for animation in animation_resources:
 		if not animation.animation_name == animation_name:
 			continue
@@ -189,17 +203,27 @@ func easy_animate():
 	for key in starting_values:
 		if starting_values[key] != ending_values[key]:
 			var tweener = create_tween()
-			tweener.tween_method(func(value): material.set_shader_parameter(key,value),starting_values[key],ending_values[key],duration)
+			if flip and mirror and key != "rotation_angle":
+				tweener.tween_method(func(value): material.set_shader_parameter(key,value),ending_values[key],starting_values[key],duration)
+			else:
+				tweener.tween_method(func(value): material.set_shader_parameter(key,value),starting_values[key],ending_values[key],duration)
 			current_tweeners.append(tweener)
 	if color != ending_color:
 		var tweener = create_tween()
-		tweener.tween_method(func(value): stylebox.set("bg_color",value),color,ending_color,duration)
+		if flip and mirror:
+			tweener.tween_method(func(value): stylebox.set("bg_color",value),ending_color,color,duration)
+		else:
+			tweener.tween_method(func(value): stylebox.set("bg_color",value),color,ending_color,duration)
 		current_tweeners.append(tweener)
 	if loop:
 		easy_timer.start()
 	flip = !flip
 
 func play_index(index : int):
+	if use_ending_values:
+		easy_animate()
+	if animation_resources.size() <= 0:
+		return
 	current_animation = animation_resources[index].animation_name
 	play_animation(animation_resources[index].animation_name)
 
@@ -207,6 +231,7 @@ func stop(reset_stuff = true):
 	for tweener in current_tweeners:
 		tweener.stop()
 	timer.stop()
+	easy_timer.stop()
 	if reset_stuff:
 		reset()
 
@@ -246,10 +271,14 @@ func create_container():
 	container.animations = animation_resources.duplicate(true)
 	container.starting_material = starting_material.duplicate()
 	container.dimentions = size 
+	container.ending_values = ending_values
+	container.ending_color = ending_color
+	container.override_animations = override_animations
+	container.loop = loop
+	container.mirror = mirror
+	container.duration = duration
 	return container
 
-@export_tool_button("run animation") var call : Callable = self.play_index.bind(0)
-@export_tool_button("stop animation") var new_call : Callable = self.stop.bind(true)
 
 func true_duplicate():
 	var new_dict : Dictionary[String,Variant] = {}

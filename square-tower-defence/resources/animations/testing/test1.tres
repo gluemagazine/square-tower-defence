@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="PanelAnimationContainer" load_steps=5 format=3 uid="uid://dy0ahjd2masrm"]
+
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="1_3cgmh"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_jwte1"]
+[ext_resource type="Shader" uid="uid://chudojcwfpmos" path="res://resources/shaders/cool shader.gdshader" id="3_t4pbk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0q30"]
+shader = ExtResource("3_t4pbk")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[resource]
+script = ExtResource("2_jwte1")
+layer_num = 1
+dimentions = Vector2(40, 40)
+animations = Array[ExtResource("1_3cgmh")]([])
+color = Color(0, 0, 0, 1)
+starting_material = SubResource("ShaderMaterial_m0q30")
+starting_values = Dictionary[String, Variant]({
+"edges": 3,
+"position": Vector2(0.5, 0.5),
+"progress": 1.0,
+"rotation_angle": 0.0,
+"rotation_degrees": 0.0,
+"shape_feather": 0.0
+})
+use_ending_values = false
+override_animations = true
+loop = true
+mirror = false
+duration = true
+ending_color = Color(1, 1, 1, 1)
+ending_values = Dictionary[String, Variant]({
+"edges": 3,
+"position": Vector2(0.5, 0.5),
+"progress": 1.0,
+"rotation_angle": 360.0,
+"rotation_degrees": 0.0,
+"shape_feather": 0.0
+})

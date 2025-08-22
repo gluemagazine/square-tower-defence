@@ -1,11 +1,75 @@
-[gd_scene load_steps=8 format=3 uid="uid://5mm5n1pdtdty"]
+[gd_resource type="Resource" script_class="PanelAnimationContainer" load_steps=12 format=3 uid="uid://qco8nxfm2kvj"]
 
-[ext_resource type="Script" uid="uid://dvurxwnsxq214" path="res://resources/animations/scripts/animation_builder.gd" id="1_dctvm"]
-[ext_resource type="Script" uid="uid://chm5b7j15jddi" path="res://resources/animations/scripts/animated_panel.gd" id="1_ktjvc"]
-[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_lg3kb"]
-[ext_resource type="Resource" uid="uid://dy0ahjd2masrm" path="res://resources/animations/testing/test1.tres" id="3_5ropb"]
+[ext_resource type="Script" uid="uid://bttbxankdbyq" path="res://resources/animations/scripts/panel_animation.gd" id="1_xplnt"]
+[ext_resource type="Script" uid="uid://57bm4bwb17hy" path="res://resources/animations/scripts/property_animation.gd" id="2_3cm5q"]
+[ext_resource type="Resource" uid="uid://bpas0a87vke8n" path="res://resources/animations/spin.tres" id="3_o5n68"]
+[ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="4_jfyvp"]
 
-[sub_resource type="Shader" id="Shader_xq12u"]
+[sub_resource type="Resource" id="Resource_1bxkr"]
+script = ExtResource("2_3cm5q")
+property = "rotation_angle"
+from_default = true
+invert_on_flip = true
+number_animated = true
+initial_value = 0.0
+final_value = 360.0
+initial_color = Color(0, 0, 0, 1)
+final_color = Color(0, 0, 0, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_rh5vn"]
+script = ExtResource("2_3cm5q")
+property = "rotation_angle"
+from_default = false
+invert_on_flip = true
+number_animated = false
+initial_value = 0.0
+final_value = 0.0
+initial_color = Color(0, 0, 1, 1)
+final_color = Color(1, 1, 1, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_wecuw"]
+script = ExtResource("2_3cm5q")
+property = "rotation_angle"
+from_default = false
+invert_on_flip = true
+number_animated = false
+initial_value = 0.0
+final_value = 0.0
+initial_color = Color(1, 1, 1, 1)
+final_color = Color(0, 0, 1, 1)
+start = 0.0
+end = 2.0
+metadata/_custom_type_script = "uid://57bm4bwb17hy"
+
+[sub_resource type="Resource" id="Resource_17sgk"]
+script = ExtResource("1_xplnt")
+animation_name = "walk"
+duration = 2.0
+loop = true
+properties = Array[ExtResource("2_3cm5q")]([ExtResource("3_o5n68"), SubResource("Resource_wecuw")])
+played = false
+on_secondary = false
+mirror_animation = false
+metadata/_custom_type_script = "uid://bttbxankdbyq"
+
+[sub_resource type="Resource" id="Resource_o1tfi"]
+script = ExtResource("1_xplnt")
+animation_name = "walk"
+duration = 2.0
+loop = true
+properties = Array[ExtResource("2_3cm5q")]([SubResource("Resource_1bxkr"), SubResource("Resource_rh5vn")])
+played = false
+on_secondary = false
+mirror_animation = false
+secondary_animation = SubResource("Resource_17sgk")
+
+[sub_resource type="Shader" id="Shader_cjq17"]
 code = "shader_type canvas_item;
 
 // courtesy of cashew-olddew, shown in a youtube video, very nice shader
@@ -177,8 +241,8 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kfbc"]
-shader = SubResource("Shader_xq12u")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxs5a"]
+shader = SubResource("Shader_cjq17")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
 shader_parameter/transition_type = 2
@@ -192,33 +256,39 @@ shader_parameter/flip_frequency = Vector2i(1, 1)
 shader_parameter/basic_feather = 0.0
 shader_parameter/use_mask_size = false
 shader_parameter/mask_size = Vector2(100, 100)
-shader_parameter/edges = 3
+shader_parameter/edges = 4
 shader_parameter/shape_feather = 0.0
 shader_parameter/sectors = 1
 shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 1.0
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdivu"]
-bg_color = Color(0, 0, 0, 1)
-
-[node name="AnimationBuilder" type="Node2D" node_paths=PackedStringArray("panels")]
-script = ExtResource("1_dctvm")
-path = "res://resources/animations/testing/"
-resource_name = "test"
-panels_to_load = Array[ExtResource("2_lg3kb")]([ExtResource("3_5ropb")])
-panels = [NodePath("panel")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-
-[node name="panel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_1kfbc")
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-pivot_offset = Vector2(20, 20)
-theme_override_styles/panel = SubResource("StyleBoxFlat_qdivu")
-script = ExtResource("1_ktjvc")
-starting_material = SubResource("ShaderMaterial_1kfbc")
+[resource]
+script = ExtResource("4_jfyvp")
+layer_num = 1
+dimentions = Vector2(40, 40)
+animations = Array[ExtResource("1_xplnt")]([SubResource("Resource_o1tfi")])
+color = Color(0, 0, 1, 1)
+starting_material = SubResource("ShaderMaterial_uxs5a")
+starting_values = Dictionary[String, Variant]({
+"edges": 3,
+"position": Vector2(0.5, 0.5),
+"progress": 1.0,
+"rotation_angle": 0.0,
+"rotation_degrees": 0.0,
+"shape_feather": 0.0
+})
+use_ending_values = false
+override_animations = false
+loop = false
+mirror = false
+duration = false
+ending_color = Color(1, 1, 1, 1)
+ending_values = Dictionary[String, Variant]({
+"edges": 3,
+"position": Vector2(0.5, 0.5),
+"progress": 1.0,
+"rotation_angle": 0.0,
+"rotation_degrees": 0.0,
+"shape_feather": 0.0
+})
