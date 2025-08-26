@@ -120,7 +120,12 @@ starting_values = Dictionary[String, Variant]({
 "rotation_angle": 0.0,
 "shape_feather": 0
 })
+use_ending_values = false
+override_animations = false
 loop = false
+mirror = false
+duration = false
+ending_color = Color(1, 1, 1, 1)
 ending_values = Dictionary[String, Variant]({
 "edges": 3,
 "position": Vector2(0.5, 0.5),

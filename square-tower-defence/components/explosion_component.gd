@@ -10,7 +10,6 @@ class_name Explosion
 @export var radius : int = 15
 @export var color : Color = Color.RED
 
-@export var freeze : bool = false
 @export var freeze_duration : float = 0.0
 
 signal exploded
@@ -24,8 +23,6 @@ func set_params_from_dictionary(dictionary : Dictionary[String,Variant]):
 		color = dictionary["explosion_color"]
 	if dictionary.has("explosion_damage"):
 		damage = dictionary["explosion_damage"]
-	if dictionary.has("explosion_freeze"):
-		freeze = dictionary["explosion_freeze"]
 	if dictionary.has("explosion_freeze_duration"):
 		freeze_duration = dictionary["explosion_freeze_duration"]
 

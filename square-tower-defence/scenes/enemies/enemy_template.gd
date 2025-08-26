@@ -86,7 +86,7 @@ func freeze(seconds):
 	if frozen:
 		return
 	frozen = true
-	var duration = min(0.1,seconds * stats.freeze_modifier)
+	var duration = max(0.1,seconds * stats.freeze_modifier)
 	freeze_timer.wait_time = duration
 	freeze_timer.start()
 	await freeze_timer.timeout

@@ -44,7 +44,7 @@ level = 0
 upgrades = Array[ExtResource("7_nr0jh")]([SubResource("Resource_gsx56")])
 bullet_stats = Dictionary[String, Variant]({
 "bullet_color": Color(0, 1, 0, 1),
-"bullet_size": Vector2(5, 10),
+"bullet_size": Vector2(3, 15),
 "damage": 15,
 "damage_one": true,
 "explode": false,
@@ -53,7 +53,7 @@ bullet_stats = Dictionary[String, Variant]({
 "explosion_radius": 15,
 "freeze": false,
 "freeze_duration": 0.0,
-"homing": false,
+"homing": true,
 "set_target": false,
 "velocity": 300
 })

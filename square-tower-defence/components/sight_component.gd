@@ -9,8 +9,14 @@ class_name SightComponent
 
 var sort_timer : Timer 
 
-var target:Node2D
+var target:Node2D:
+	set(new):
+		if target != new:
+			target_changed.emit(new)
+			target = new
 var targets:Array = []
+
+signal target_changed(new_target)
 
 func _ready() -> void:
 	body_entered.connect(on_body_entered)

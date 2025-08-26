@@ -9,6 +9,20 @@ class_name Bullet
 		dir = new
 		global_rotation = dir.angle() + PI / 2
 @export var set_target : Node2D = null
+@export var parent_object : TowerTemplate
+
+var distance_to_parent:
+	get: return global_position.distance_to(parent_object.global_position)
+
+var parent_range : 
+	get : return parent_object.stats.range_radius
+
+func set_new_target(new):
+	if is_instance_valid(set_target):
+		return
+	if distance_to_parent >= parent_range:
+		return
+	set_target = new
 
 @export var build_params : Dictionary[String,Variant] ={
 	"velocity" = 300,
@@ -33,7 +47,6 @@ var used = false
 
 var visual
 
-var freeze = false
 var freeze_duration = 0.0
 
 func _ready():
@@ -58,12 +71,14 @@ func _ready():
 		effects.append(explode.bind())
 		effects.append(explosion.explode.bind())
 	
-	freeze = build_params["freeze"]
 	if build_params.has("freeze_duration"):
 		freeze_duration = build_params["freeze_duration"]
 
 func _physics_process(delta: float) -> void:
 	position += velocity * dir * delta
+	if build_params["homing"]:
+		if set_target:
+			dir = (set_target.global_position - global_position).normalized()
 
 var wait = false
 

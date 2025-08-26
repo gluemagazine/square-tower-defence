@@ -9,6 +9,7 @@ class_name AnimatedPanel
 	"edges" : 3,
 	"shape_feather" : 0.0,
 	"progress" : 1.0,
+	"progress_bias" : Vector2(0,0)
 }:
 	set(new):
 		starting_values = new
@@ -61,7 +62,11 @@ var on_mirror = false
 @export var override_animations : bool = false
 @export var loop : bool = false
 @export var mirror : bool = false
-@export var duration : float = 1.0
+@export var duration : float = 1.0:
+	set(new):
+		duration = new
+		if easy_timer:
+			easy_timer.wait_time = duration
 @export var ending_color : Color = Color.WHITE
 
 @export var ending_values : Dictionary[String,Variant] = {
@@ -71,6 +76,7 @@ var on_mirror = false
 	"edges" : 3,
 	"shape_feather" : 0.0,
 	"progress" : 1.0,
+	"progress_bias" : Vector2(0,0)
 }
 
 

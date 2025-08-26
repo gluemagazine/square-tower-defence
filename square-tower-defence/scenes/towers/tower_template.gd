@@ -54,8 +54,10 @@ func _physics_process(_delta: float) -> void:
 		get_tree().current_scene.add_child(shot)
 		shot.global_position = global_position
 		shot.dir = (sightComp.target.global_position-global_position).normalized()
-		if stats.bullet_stats["set_target"]:
+		shot.parent_object = self
+		if stats.bullet_stats["set_target"] or stats.bullet_stats["homing"]:
 			shot.set_target = sightComp.target
+			sightComp.target_changed.connect(shot.set_new_target)
 		for panel in panels:
 			panel.play_animation("fire")
 		cool_down.start()
