@@ -13,18 +13,18 @@ func build():
 
 func open():
 	Game.tower_open = true
-	parent.show_range()
+	parent.open_tower()
 	show()
 	await  get_tree().physics_frame
 	delay = false
 
 func close():
-	parent.hide_range()
-	hide()
+	parent.close_tower()
 	delay = true
+	hide()
 
 func manual_close():
-	parent.hide_range()
+	parent.close_tower()
 	hide()
 	Game.tower_open = false
 	delay = true

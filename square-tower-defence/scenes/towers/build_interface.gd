@@ -6,8 +6,6 @@ class_name BuildInterface
 @export var container : HBoxContainer
 @export var icon : PackedScene
 
-@onready var upgrade: Button = %upgrade
-
 var towers :
 	get:
 		if parent:
@@ -55,8 +53,6 @@ func check(tower):
 func click_tower(tower : TowerResource):
 	if Game.gold >= tower.initial_cost:
 		parent.build_tower(tower)
-		if tower.upgrades != []:
-			upgrade.tooltip_text = tower.upgrades[0].description
 		Game.subtract_gold(tower.initial_cost)
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -141,30 +141,4 @@ visible = false
 script = ExtResource("7_hehpx")
 parent = NodePath("..")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="tower interface"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 498.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="tower interface/VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-alignment = 1
-
-[node name="upgrade" type="Button" parent="tower interface/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-text = "upgrade"
-
-[node name="sell" type="Button" parent="tower interface/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "sell
-"
-
 [connection signal="pressed" from="empty_slot/Button" to="Build interface" method="select"]
-[connection signal="pressed" from="tower interface/VBoxContainer/HBoxContainer/upgrade" to="." method="_on_upgrade_pressed"]
-[connection signal="pressed" from="tower interface/VBoxContainer/HBoxContainer/sell" to="." method="_on_sell_pressed"]

@@ -10,6 +10,9 @@ class_name TowerTemplate
 @export var range_visual : Panel
 @onready var cool_down: Timer = $coolDown
 @export var button : Button
+@onready var upgrade_button: Button = $upgrade
+@onready var sell_button: Button = $sell
+
 var panels : Array[AnimatedPanel]:
 	set(new):
 		panels = new
@@ -22,6 +25,7 @@ var locked = false
 var on_cooldown = false
 
 signal selected
+signal sold
 
 func _ready() -> void:
 	QOL.connect_pause_signals(self)
@@ -42,6 +46,10 @@ func _ready() -> void:
 	$baseTexture.hide()
 	move_child(button,-1)
 	cool_down.timeout.connect(set.bind("on_cooldown",false))
+	Game.gold_changed.connect(check_gold_for_upgrade)
+	if stats.level >= stats.upgrades.size():
+		upgrade_button.disabled = true
+		upgrade_button.tooltip_text = "Max Level"
 
 func _physics_process(_delta: float) -> void:
 	if locked:
@@ -76,7 +84,10 @@ func upgrade():
 	var radius = stats.range_radius
 	range_visual.size = Vector2(radius,radius)
 	range_visual.position = Vector2(-radius,-radius)
-
+	if stats.level >= stats.upgrades.size():
+		upgrade_button.disabled = true
+		upgrade_button.tooltip_text = "Max Level"
+	
 
 func lock():
 	locked = true
@@ -85,7 +96,6 @@ func unlock():
 	locked = false
 	cool_down.paused = false
 
-
 func show_range():
 	range_visual.show()
 func hide_range():
@@ -93,3 +103,35 @@ func hide_range():
 
 func _on_button_pressed() -> void:
 	selected.emit()
+	open()
+
+func open():
+	sell_button.show()
+	upgrade_button.show()
+	show_range()
+func close():
+	hide_range()
+	sell_button.hide()
+	upgrade_button.hide()
+
+func _on_upgrade_pressed() -> void:
+	upgrade()
+	if not stats.level >= stats.upgrades.size():
+		upgrade_button.tooltip_text = stats.upgrades[stats.level].description
+	else:
+		upgrade_button.disabled = true
+		upgrade_button.tooltip_text = "Max Level"
+
+func check_gold_for_upgrade():
+	await get_tree().physics_frame
+	if not stats.next_upgrade:
+		return
+	if Game.gold >= stats.next_upgrade.cost:
+		upgrade_button.disabled = false
+	else:
+		upgrade_button.disabled = true
+
+func _on_sell_pressed() -> void:
+	Game.add_gold(stats.get_refund())
+	queue_free()
+	sold.emit()

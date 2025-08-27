@@ -1,0 +1,118 @@
+[gd_scene load_steps=21 format=3 uid="uid://kl6qgmxpv6il"]
+
+[ext_resource type="Script" uid="uid://bplmlt0rdsi7r" path="res://scenes/enemies/wave_manager.gd" id="1_fjhfp"]
+[ext_resource type="PackedScene" uid="uid://qunequ0snvhy" path="res://scenes/locations/player_manager.tscn" id="1_xscvl"]
+[ext_resource type="Script" uid="uid://cfidvnm38saep" path="res://resources/User/level_info.gd" id="2_73rso"]
+[ext_resource type="Script" uid="uid://cimw6eha4lytp" path="res://resources/waves/wave.gd" id="2_gj7s8"]
+[ext_resource type="Script" uid="uid://dsrsqrxwy3wns" path="res://scenes/enemies/manual_spawner.gd" id="2_xd6eh"]
+[ext_resource type="Resource" uid="uid://ce5c5uu5q1ncf" path="res://resources/waves/basic wave.tres" id="3_xscvl"]
+[ext_resource type="Resource" uid="uid://bd5e1itlkx167" path="res://resources/waves/stars.tres" id="5_7ebxn"]
+[ext_resource type="Resource" uid="uid://bslwvov6rrvqv" path="res://resources/waves/fast wave.tres" id="5_7nsrw"]
+[ext_resource type="TileSet" uid="uid://c4hina6s2qtir" path="res://resources/tilemaps/map tiles.tres" id="5_24haj"]
+[ext_resource type="TileSet" uid="uid://ckmygcjmpbdex" path="res://resources/tilemaps/navigation tiles.tres" id="6_fjhfp"]
+[ext_resource type="Script" uid="uid://n1c5q3ar4ftf" path="res://resources/enemies/enemy_resource.gd" id="6_i4h0e"]
+[ext_resource type="Resource" uid="uid://40154clyob1r" path="res://resources/enemies/basic enemy.tres" id="7_s6h2y"]
+[ext_resource type="PackedScene" uid="uid://bgubqo0qquoyr" path="res://scenes/towers/base.tscn" id="8_gj7s8"]
+[ext_resource type="Resource" uid="uid://14321q0em26i" path="res://resources/enemies/fast enemy.tres" id="8_w0p8v"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="18_ldxcr"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="19_4knjt"]
+[ext_resource type="PackedScene" uid="uid://dgj5flxbxhhmt" path="res://scenes/locations/camera_man.tscn" id="20_4knjt"]
+
+[sub_resource type="Resource" id="Resource_7ebxn"]
+script = ExtResource("2_73rso")
+starting_gold = 1000000
+base_health = 500
+base_max_health = 500
+level_name = "Level 1"
+metadata/_custom_type_script = "uid://cfidvnm38saep"
+
+[sub_resource type="Resource" id="Resource_73rso"]
+script = ExtResource("2_gj7s8")
+enemies = Dictionary[ExtResource("6_i4h0e"), int]({
+ExtResource("7_s6h2y"): 10,
+ExtResource("8_w0p8v"): 5
+})
+duration = 5.0
+spawn_interval = 1.0
+metadata/_custom_type_script = "uid://cimw6eha4lytp"
+
+[sub_resource type="Resource" id="Resource_tlr8g"]
+script = ExtResource("19_4knjt")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Map Template" type="Node2D"]
+
+[node name="PlayerManager" parent="." instance=ExtResource("1_xscvl")]
+info = SubResource("Resource_7ebxn")
+
+[node name="WaveManager" type="Node2D" parent="." node_paths=PackedStringArray("spawner_array")]
+script = ExtResource("1_fjhfp")
+spawner_array = [NodePath("ManualSpawner"), NodePath("ManualSpawner2"), NodePath("ManualSpawner3"), NodePath("ManualSpawner4")]
+waves = Array[ExtResource("2_gj7s8")]([ExtResource("5_7ebxn"), ExtResource("3_xscvl"), ExtResource("5_7nsrw"), SubResource("Resource_73rso")])
+metadata/_custom_type_script = "uid://bplmlt0rdsi7r"
+
+[node name="ManualSpawner" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(12, -75)
+script = ExtResource("2_xd6eh")
+path_num = 1
+new_parent = NodePath("../../Enemies")
+target = NodePath("../../bases/Base")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner2" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(29, -75)
+script = ExtResource("2_xd6eh")
+path_num = 2
+new_parent = NodePath("../../Enemies")
+target = NodePath("../../bases/Base")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner3" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(-5, -75)
+script = ExtResource("2_xd6eh")
+path_num = 3
+new_parent = NodePath("../../Enemies")
+target = NodePath("../../bases/Base")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="ManualSpawner4" type="Node2D" parent="WaveManager" node_paths=PackedStringArray("new_parent", "target")]
+position = Vector2(-22, -75)
+script = ExtResource("2_xd6eh")
+path_num = 4
+new_parent = NodePath("../../Enemies")
+target = NodePath("../../bases/Base")
+metadata/_custom_type_script = "uid://dsrsqrxwy3wns"
+
+[node name="tiles" type="Node2D" parent="."]
+
+[node name="visual" type="TileMapLayer" parent="tiles"]
+tile_set = ExtResource("5_24haj")
+
+[node name="paths" type="TileMapLayer" parent="tiles"]
+tile_set = ExtResource("6_fjhfp")
+
+[node name="universal navigation" type="TileMapLayer" parent="tiles"]
+tile_set = ExtResource("6_fjhfp")
+
+[node name="bases" type="Node2D" parent="."]
+
+[node name="Base" parent="bases" instance=ExtResource("8_gj7s8")]
+position = Vector2(-46, -4)
+
+[node name="towers" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="camera man" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("20_4knjt")]
+position = Vector2(-203, -76)
+camera = NodePath("../PhantomCamera2D")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+position = Vector2(-143, -76)
+script = ExtResource("18_ldxcr")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_tlr8g")
+limit_target = NodePath("../tiles/visual")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
