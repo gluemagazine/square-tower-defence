@@ -154,7 +154,6 @@ debug_color = Color(0, 0.595, 0.7, 0)
 metadata/_edit_lock_ = true
 
 [node name="range" type="Panel" parent="SightComponent"]
-visible = false
 material = SubResource("ShaderMaterial_oxt30")
 anchors_preset = 8
 anchor_left = 0.5
@@ -166,6 +165,7 @@ offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vat4d")
 
 [node name="coolDown" type="Timer" parent="."]

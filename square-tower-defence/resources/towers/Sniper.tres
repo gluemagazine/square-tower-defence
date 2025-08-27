@@ -27,10 +27,10 @@ bullet_stats = Dictionary[String, Variant]({
 "explosion_color": Color(1, 0, 0, 1),
 "explosion_damage": 1,
 "explosion_freeze": false,
-"explosion_freeze_duration": 1.0,
+"explosion_freeze_duration": 0.0,
 "explosion_radius": 15,
 "freeze": false,
-"freeze_duration": 1.0,
+"freeze_duration": 0.0,
 "homing": false,
 "set_target": true,
 "velocity": 1000

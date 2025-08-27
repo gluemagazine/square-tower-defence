@@ -4,6 +4,7 @@ class_name CameraMan
 @export var camera : PhantomCamera2D
 @export var max_zoom : float = 4
 @export var min_zoom : float = 1.7
+@export var speed : int = 250
 var limits : Dictionary
 var zoom = 2:
 	set(new):
@@ -19,7 +20,7 @@ var zoom = 2:
 func _physics_process(delta: float) -> void:
 	var dir = Input.get_vector("left","right","up","down")
 	
-	camera.global_position += dir * delta * 100
+	camera.global_position += dir * delta * speed * 1 / zoom
 	bind_to_area()
 	
 

@@ -73,3 +73,10 @@ func _on_sell_pressed() -> void:
 		empty_slot.show()
 		tower_interface.close()
 		upgrade.disabled = false
+
+func show_range():
+	if current_tower:
+		current_tower.show_range()
+func hide_range():
+	if current_tower:
+		current_tower.hide_range()

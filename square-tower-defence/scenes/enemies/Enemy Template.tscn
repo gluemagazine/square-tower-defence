@@ -53,7 +53,6 @@ path_max_distance = 10.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 1.0
-debug_enabled = true
 
 [node name="freeze_timer" type="Timer" parent="."]
 one_shot = true

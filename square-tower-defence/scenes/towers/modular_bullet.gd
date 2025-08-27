@@ -92,7 +92,6 @@ func check(area : Area2D):
 				hit()
 		else:
 			hit()
-		return
 
 func hit():
 	if used: return

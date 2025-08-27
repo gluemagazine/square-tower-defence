@@ -73,6 +73,9 @@ func upgrade():
 	stats.upgrades[stats.level].apply(stats)
 	stats.level += 1
 	cool_down.wait_time = stats.cooldown
+	var radius = stats.range_radius
+	range_visual.size = Vector2(radius,radius)
+	range_visual.position = Vector2(-radius,-radius)
 
 
 func lock():
@@ -82,6 +85,11 @@ func unlock():
 	locked = false
 	cool_down.paused = false
 
+
+func show_range():
+	range_visual.show()
+func hide_range():
+	range_visual.hide()
 
 func _on_button_pressed() -> void:
 	selected.emit()
