@@ -89,8 +89,12 @@ func freeze(seconds):
 	var duration = max(0.1,seconds * stats.freeze_modifier)
 	freeze_timer.wait_time = duration
 	freeze_timer.start()
+	for panel in panels:
+		panel.lock()
 	await freeze_timer.timeout
 	frozen = false
+	for panel in panels:
+		panel.unlock()
 
 func lock():
 	locked = true

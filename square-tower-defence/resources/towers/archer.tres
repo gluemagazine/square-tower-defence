@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TowerResource" load_steps=13 format=3 uid="uid://cadpa641en0h4"]
+[gd_resource type="Resource" script_class="TowerResource" load_steps=15 format=3 uid="uid://cadpa641en0h4"]
 
 [ext_resource type="PackedScene" uid="uid://d2xoy8bd7beyr" path="res://Towers/arrow.tscn" id="1_0gsqp"]
 [ext_resource type="Script" uid="uid://dqusptgsgmn34" path="res://resources/animations/scripts/panel_animations_container.gd" id="2_swa2y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b0616cg4l6x15" path="res://resources/towers/tower.gd" id="6_f2n3c"]
 [ext_resource type="Script" uid="uid://2ugsdc4osvg6" path="res://resources/towers/upgrades/upgrade.gd" id="7_nr0jh"]
 [ext_resource type="Script" uid="uid://bfomybb5km6al" path="res://resources/towers/upgrades/property_upgrade.gd" id="8_6lbsi"]
+[ext_resource type="Script" uid="uid://ciwo4jnjoupjy" path="res://resources/towers/upgrades/override_upgrade.gd" id="9_6lbsi"]
 
 [sub_resource type="Resource" id="Resource_hy52a"]
 script = ExtResource("8_6lbsi")
@@ -32,12 +33,35 @@ description = "upgrade 1"
 cost = 100
 metadata/_custom_type_script = "uid://2ugsdc4osvg6"
 
-[sub_resource type="Resource" id="Resource_nr0jh"]
-script = ExtResource("7_nr0jh")
-properties = Array[ExtResource("8_6lbsi")]([])
+[sub_resource type="Resource" id="Resource_6lbsi"]
+script = ExtResource("8_6lbsi")
+cooldown = true
+property = "damage"
+increase_type = "set"
+modify_value = 0.1
+metadata/_custom_type_script = "uid://bfomybb5km6al"
+
+[sub_resource type="Resource" id="Resource_75dxc"]
+script = ExtResource("9_6lbsi")
+override = Dictionary[String, Variant]({
+"bullet_color": Color(0, 0, 0, 1),
+"bullet_size": Vector2(10, 5),
+"damage": 0,
+"damage_one": false,
+"explode": true,
+"explosion_color": Color(1, 0, 0, 0.411765),
+"explosion_damage": 10,
+"explosion_freeze_duration": 15.0,
+"explosion_radius": 100,
+"freeze_duration": 100.0,
+"homing": true,
+"set_target": false,
+"velocity": 500
+})
+properties = Array[ExtResource("8_6lbsi")]([SubResource("Resource_6lbsi")])
 description = "Do a thing"
 cost = 100
-metadata/_custom_type_script = "uid://2ugsdc4osvg6"
+metadata/_custom_type_script = "uid://ciwo4jnjoupjy"
 
 [resource]
 script = ExtResource("6_f2n3c")
@@ -48,7 +72,7 @@ cooldown = 1.0
 range_radius = 50
 bullet_scene = ExtResource("1_0gsqp")
 level = 0
-upgrades = Array[ExtResource("7_nr0jh")]([SubResource("Resource_gsx56"), SubResource("Resource_nr0jh")])
+upgrades = Array[ExtResource("7_nr0jh")]([SubResource("Resource_gsx56"), SubResource("Resource_75dxc")])
 bullet_stats = Dictionary[String, Variant]({
 "bullet_color": Color(0, 1, 0, 1),
 "bullet_size": Vector2(3, 15),
