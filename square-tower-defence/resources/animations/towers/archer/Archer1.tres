@@ -55,7 +55,7 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [resource]
 script = ExtResource("3_lqpa0")
 layer_num = 1
-dimentions = Vector2(40, 40)
+dimentions = Vector2(32, 32)
 animations = Array[ExtResource("1_77huc")]([SubResource("Resource_1kfbc")])
 color = Color(0, 0, 0, 1)
 starting_material = SubResource("ShaderMaterial_u4fhf")

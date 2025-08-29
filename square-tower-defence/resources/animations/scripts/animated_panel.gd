@@ -120,6 +120,7 @@ func adjust_n_of_sides(new_num):
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		QOL.connect_pause_signals(self)
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_theme_stylebox_override("panel",stylebox)
 	stylebox.bg_color = color
 	material = starting_material
